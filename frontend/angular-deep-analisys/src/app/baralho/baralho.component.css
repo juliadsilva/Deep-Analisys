@@ -1,0 +1,33 @@
+.bg-image {
+    background-image: url('../../assets/img/principal.jpg');
+    height: 100vh;
+    background-position:top; /* Center the image */
+    background-repeat: repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */ 
+
+}
+
+.user-image{ 
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.opacity-card{
+    opacity : 0.4;
+    height: 200px;
+    width: auto;   
+}
+
+.card-deck{
+    padding-top: 50px;
+}
+
+.text-title{
+    color: #fdfdfd; 
+    text-shadow: 0.1em 0.1em #014a40;
+    font-size: x-large;
+}
+
+
+
