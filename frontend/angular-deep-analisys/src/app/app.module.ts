@@ -9,6 +9,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { TimeComponent } from './time/time.component';
 import { BaralhoComponent } from './baralho/baralho.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DadosComponent } from './dados/dados.component';
+import { NovaPartidaComponent } from './nova-partida/nova-partida.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegistroComponent,
     TimeComponent,
     BaralhoComponent,
+    DadosComponent,
+    NovaPartidaComponent,
   ],
   imports: [
     BrowserModule,

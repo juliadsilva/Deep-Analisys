@@ -1,0 +1,22 @@
+.bg-image {
+    background-image: url('../../assets/img/partida.jpg');
+    height: 100vh;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+}
+
+.opacity-card {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text-green {
+    color: #A8DADC;
+    text-shadow: 0.1em 0.1em #333;
+    font-size: x-large;
+    justify-content: center;
+}
