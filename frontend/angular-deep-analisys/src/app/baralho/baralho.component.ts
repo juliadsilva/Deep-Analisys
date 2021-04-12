@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BaralhoService} from '../service/baralho.service';
 
 @Component({
   selector: 'app-baralho',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BaralhoComponent implements OnInit {
 
-  constructor() { }
+  baralhos:any[] = [];
 
+  closeResult: string  = '';
+
+  constructor(private  baralhoService:BaralhoService) { }
+
+  // Acontece antes da tela ser desenhada
   ngOnInit(): void {
+    this.baralhos = this.baralhoService.getBaralhos();
   }
 
+  public getWinRate(baralho:any) {
+    let win = baralho.win;
+    let loss = baralho.loss;
+    let total = win + loss;
+    let winRate = (win/total)*100;
+    return winRate;
+  }
 }

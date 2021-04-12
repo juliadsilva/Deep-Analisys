@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DadosComponent } from './dados/dados.component';
 import { NovaPartidaComponent } from './nova-partida/nova-partida.component';
 
+import {BaralhoService} from './service/baralho.service';
+import { ModalNovoBaralhoComponent } from './modal-novo-baralho/modal-novo-baralho.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +25,16 @@ import { NovaPartidaComponent } from './nova-partida/nova-partida.component';
     BaralhoComponent,
     DadosComponent,
     NovaPartidaComponent,
+    ModalNovoBaralhoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    BaralhoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,204 +11,31 @@
 </nav>
 
 <div class="bg-image">
+
     <div class="card-deck">
         <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-sm-auto justify-content-between">
-                    <div class="card bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/inicio_bg.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Novo Baralho</h5>
-                            <input type="text" class="form-control input-info" id="nomeNovoBaralho">
-                            <button class="btn btn-outline-info btn-sm btn-block mt-2" type="submit">Adicionar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img02.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
+            <div class="row">
+                <!-- NGFOR para criar cards com os baralhos-->
+                <div *ngFor="let baralho of baralhos; " class="col-md-4">
+                    <div class="card bg-dark mt-2 opacity-card">
+                        <!-- <img class="card-img opacity-card " src="{{baralho.bg_image}} " alt="Imagem do card "> -->
+                        <div class="card-body text-justify table-responsive ">
+                            <h5 class="card-title text-center text-title ">Baralho de {{baralho.usuario}}</h5>
+                            <h6 class="card-subtitle mb-2 text-light text-center">Cor: {{baralho.cor}} </h6>
+                            <table class="table table-sm text-center ">
                                 <thead>
                                     <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
+                                        <th scope="col ">WINRATE</th>
+                                        <th scope="col ">MATCHES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
+                                    <tr class="text-white ">
+                                        <td>{{getWinRate(baralho)}} %</td>
+                                        <td>{{baralho.win}}-{{baralho.loss}}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img03.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col-sm-auto">
-                    <div class="card mt-2 bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img04.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card mt-2 bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img05.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card mt-2 bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img06.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col-sm-auto">
-                    <div class="card mt-2 bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img01.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card mt-2  bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img06.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div class="card mt-2 bg-dark">
-                        <img class="card-img opacity-card" src="../../assets/img/bl/img04.jpg" alt="Imagem do card">
-                        <div class="card-img-overlay text-justify table-responsive">
-                            <h5 class="card-title text-center text-title">Nome do Baralho</h5>
-                            <table class="table table-sm text-center">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col">WINRATE</th>
-                                        <th scope="col">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td>80%</td>
-                                        <td>10-2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button routerLink="/dados" class="btn btn-outline-info btn-sm btn-block" type="submit">Dados</button>
                         </div>
                     </div>
                 </div>
@@ -216,3 +43,5 @@
         </div>
     </div>
 </div>
+
+<app-modal-novo-baralho></app-modal-novo-baralho>
