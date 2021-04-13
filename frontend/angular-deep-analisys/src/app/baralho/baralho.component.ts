@@ -24,6 +24,6 @@ export class BaralhoComponent implements OnInit {
     let loss = baralho.loss;
     let total = win + loss;
     let winRate = (win/total)*100;
-    return winRate;
+    return winRate.toPrecision();
   }
 }

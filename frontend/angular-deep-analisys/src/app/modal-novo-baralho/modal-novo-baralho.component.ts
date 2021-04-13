@@ -23,6 +23,8 @@ export class ModalNovoBaralhoComponent implements OnInit {
   addBaralho(form:any){
     let newBaralho = form;
     newBaralho.id = this.baralhoService.getBaralhos().length + 1;
+    newBaralho.win = 0;
+    newBaralho.loss = 0;
     this.baralhoService.addBaralho(newBaralho);
     }
 }

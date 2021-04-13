@@ -6,7 +6,7 @@
 <ng-template #mymodal let-modal>
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title text-center text-info">Novo Baralho</h5>
+            <h5 class="modal-title text-center text-info">Nova Partida</h5>
             <button type="button" class="close text-dark" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -14,16 +14,15 @@
         <div class="modal-body">
             <form #form="ngForm">
                 <div class="form-group text-info text-center">
-                    <label>Cor</label>
-                    <input type="text" name="cor" #cor="ngModel" ngModel required class="form-control">
-                    <label>Nome</label>
-                    <input type="text" name="nome" #cor="ngModel" ngModel required class="form-control">
+                    <label>Win</label>
+                    <input type="number" name="win" #loss="ngModel" ngModel required class="form-control" min="0" step="0">
+                    <label>Loss</label>
+                    <input type="number" name="loss" #loss="ngModel" ngModel required class="form-control" min="0" step="0">
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="addBaralho(form.value)">Adicionar</button>
+            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="addPartida(form.value)">Adicionar</button>
         </div>
     </div>
 </ng-template>
