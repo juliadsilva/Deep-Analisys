@@ -11,33 +11,34 @@
 </nav>
 
 <div class="bg-image">
-
     <div class="card-deck">
         <div class="container">
             <div class="row">
                 <!-- NGFOR para criar cards com os baralhos-->
-                <div *ngFor="let baralho of baralhos; " class="col-md-4">
-                    <div class="card bg-dark mt-2 opacity-card">
-                        <!-- <img class="card-img opacity-card " src="{{baralho.bg_image}} " alt="Imagem do card "> -->
-                        <div class="card-body text-justify table-responsive ">
-                            <h5 class="card-title text-center text-title ">Baralho de {{baralho.usuario}}</h5>
-                            <h6 class="card-subtitle mb-2 text-light text-center">Cor: {{baralho.cor}} </h6>
-                            <table class="table table-sm text-center ">
-                                <thead>
-                                    <tr class="card-text text-white font-weight-bolder ">
-                                        <th scope="col ">WINRATE</th>
-                                        <th scope="col ">MATCHES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-white ">
-                                        <td>{{getWinRate(baralho)}} %</td>
-                                        <td>{{baralho.win}}-{{baralho.loss}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div *ngFor="let baralho of baralhos; " class="col-md-4 animate__animated animate__bounceInRight">
+                    <a href="#">
+                        <div class="card mt-2">
+                            <div class="card-body text-justify table-responsive ">
+                                <h5 class="card-title text-center text-title ">Baralho de {{baralho.usuario}}</h5>
+                                <h6 class="card-subtitle mb-2 text-light text-center ">Cor: {{baralho.cor}} </h6>
+                                <h6 class="card-subtitle mb-2 text-light text-center ">Id: {{baralho.id}} </h6>
+                                <table class="table table-sm text-center ">
+                                    <thead>
+                                        <tr class="card-text text-white font-weight-bolder ">
+                                            <th scope="col ">WINRATE</th>
+                                            <th scope="col ">MATCHES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-white ">
+                                            <td>{{getWinRate(baralho)}} %</td>
+                                            <td>{{baralho.win}}-{{baralho.loss}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

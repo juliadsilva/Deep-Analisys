@@ -14,6 +14,7 @@ import { NovaPartidaComponent } from './nova-partida/nova-partida.component';
 
 import {BaralhoService} from './service/baralho.service';
 import { ModalNovoBaralhoComponent } from './modal-novo-baralho/modal-novo-baralho.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalNovoBaralhoComponent } from './modal-novo-baralho/modal-novo-baral
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     BaralhoService

@@ -7,8 +7,8 @@
     background-size: cover;
 }
 
-.opacity-card {
-    opacity: 0.9;
+.card {
+    background-color: rgba(6, 47, 79, 0.5);
 }
 
 .card-deck {
@@ -17,6 +17,10 @@
 
 .text-title {
     color: #fdfdfd;
-    text-shadow: 0.1em 0.1em #014a40;
+    text-shadow: 0.2em 0.2em #4c4f52;
     font-size: x-large;
+}
+
+a:hover {
+    text-decoration: underline;
 }

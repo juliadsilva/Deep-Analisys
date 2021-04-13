@@ -17,19 +17,12 @@ export class ModalNovoBaralhoComponent implements OnInit {
   }
 
   open(content: any) {
-    this.modalService.open(content, {centered: true});
+    this.modalService.open(content, {centered: true, size: 'sm'});
   }
 
-  addBaralho(){
-    let newBaralho = {
-      'id': 6,
-      'usuario': 'Maria',
-      'cor': 'Azul',
-      'win': 9,
-      'loss': 1
-    }
-
+  addBaralho(form:any){
+    let newBaralho = form;
+    newBaralho.id = this.baralhoService.getBaralhos().length + 1;
     this.baralhoService.addBaralho(newBaralho);
-
-  }
+    }
 }

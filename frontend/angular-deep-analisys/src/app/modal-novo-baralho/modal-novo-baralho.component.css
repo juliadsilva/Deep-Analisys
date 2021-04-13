@@ -12,11 +12,13 @@
     border-radius: 30px;
 }
 
-.no-borders {
-    border: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
-    border-left: none !important;
-    border-right: none !important;
-    margin: 0px !important
+.bk {
+    background-color: #012a4a;
+}
+
+.text-title {
+    color: #fdfdfd;
+    text-shadow: 0.1em 0.1em #062f4f;
+    text-align: center;
+    font-size: x-large;
 }
