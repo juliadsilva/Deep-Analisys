@@ -10,12 +10,14 @@ import { TimeComponent } from './time/time.component';
 import { BaralhoComponent } from './baralho/baralho.component';
 import { DadosComponent } from './dados/dados.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaralhoService } from './service/baralho.service';
 import { PartidaService } from './service/partida.service';
 import { ModalNovoBaralhoComponent } from './modal-novo-baralho/modal-novo-baralho.component';
 import { ModalNovaPartidaComponent } from './modal-nova-partida/modal-nova-partida.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [
     BaralhoService,

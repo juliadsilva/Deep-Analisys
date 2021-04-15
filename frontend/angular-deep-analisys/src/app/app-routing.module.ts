@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:"registro", component: RegistroComponent},
   {path:"equipe", component: TimeComponent},
   {path:"baralho", component: BaralhoComponent},
-  {path:"dados", component: DadosComponent},
+  {path:"dados/:id", component: DadosComponent},
 ];
 
 @NgModule({

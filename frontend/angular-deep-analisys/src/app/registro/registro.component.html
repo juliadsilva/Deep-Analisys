@@ -23,16 +23,15 @@
                 </div>
                 <div class="card-body">
                     <div class="container">
-                        <form>
+                        <form #form="ngForm">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="usernameInput">Username</label>
-                                    <input type="text" class="form-control input-info" id="usernameInput" placeholder="Username">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" #username="ngModel" ngModel required class="form-control" placeholder="Username">
                                 </div>
-
                                 <div class="form-group col-md-6">
-                                    <label for="paisInput">País</label>
-                                    <select id="paisInput" class="form-control">
+                                    <label for="pais">País</label>
+                                    <select name="pais" #pais="ngModel" ngModel required class="form-control">
                                         <option selected>Brasil...</option>
                                         <option>...</option>
                                         <option>...</option>
@@ -40,11 +39,10 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="estadoInput">Estado</label>
-                                    <select id="estadoInput" class="form-control">
+                                    <label for="estado">Estado</label>
+                                    <select name="estado" #estado="ngModel" ngModel required class="form-control">
                                         <option selected>Estado...</option>
                                         <option>...</option>
                                         <option>...</option>
@@ -53,8 +51,8 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="cidadeInput">Estado</label>
-                                    <select id="cidadeInput" class="form-control">
+                                    <label for="cidade">Cidade</label>
+                                    <select name="cidade" #cidade="ngModel" ngModel required class="form-control">
                                         <option selected>Cidade...</option>
                                         <option>...</option>
                                         <option>...</option>
@@ -62,20 +60,18 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="emailInput">E-mail</label>
-                                    <input type="text" class="form-control input-info" id="emailInput" placeholder="E-mail">
+                                    <label for="email">E-mail</label>
+                                    <input type="text" name="email" #email="ngModel" ngModel required class="form-control" placeholder="E-mail">
                                 </div>
-
                                 <div class="form-group col-md-6">
-                                    <label for="senhaInput">Senha</label>
-                                    <input type="password" class="form-control" id="senhaInput" placeholder="Senha">
+                                    <label for="senha">Senha</label>
+                                    <input type="password" name="senha" #senha="ngModel" ngModel required class="form-control" placeholder="Senha">
                                 </div>
                             </div>
                         </form>
-                        <button type="button" class="btn btn-block btn-outline-info mb-2">Cadastrar</button>
+                        <button type="button" class="btn btn-block btn-outline-info" [disabled]=" !form.valid " (click)="addUsuario(form.value)">Cadastrar</button>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
             <div class="row">
                 <!-- NGFOR para criar cards com os baralhos-->
                 <div *ngFor="let baralho of baralhos; " class="col-md-4 animate__animated animate__bounceInRight">
-                    <a routerLink="/dados">
+                    <a routerLink="/dados/{{baralho.id}}">
                         <div class=" card mt-2 ">
                             <div class="card-body text-justify table-responsive ">
                                 <h5 class="card-title text-center text-title ">{{baralho.nome}}</h5>
@@ -33,7 +33,6 @@
                                         <tr class="text-white ">
                                             <td>{{getWinRate(baralho)}} %</td>
                                             <td>{{baralho.win}}-{{baralho.loss}}</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
