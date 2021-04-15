@@ -10,16 +10,17 @@ export class RegistroComponent implements OnInit {
 
   usuarios:any[] = [];
 
-  constructor(private  usuarioService:UsuarioService) { }
+  closeResult: string  = '';
+
+  constructor(private usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarios = this.usuarioService.getUsuarios();
+    this.usuarios = this.usuarioService.getUsuarios();   
   }
 
   addUsuario(form:any){
     let newUsuario = form;
-    newUsuario.id = this.usuarioService.getUsuarios.length + 1;
+    newUsuario.id = this.usuarioService.getUsuarios().length + 1;
     this.usuarioService.addUsuario(newUsuario);
   }
-
 }
