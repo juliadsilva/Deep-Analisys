@@ -13,8 +13,8 @@ export class UsuarioService {
       'pais': 'Brasil',
       'estado': 'MG',
       'cidade': 'Pouso Alegre',
-      'email' : 'adm@',
-      'senha' : '123'
+      'email': 'adm@',
+      'senha': '123'
     },
     {
       'id': 2,
@@ -22,8 +22,8 @@ export class UsuarioService {
       'pais': 'Brasil',
       'estado': 'MG',
       'cidade': 'Pouso Alegre',
-      'email' : 'admdois@',
-      'senha' : '123'
+      'email': 'admdois@',
+      'senha': '123'
     }
   ]
 
@@ -31,6 +31,10 @@ export class UsuarioService {
 
   getUsuarios(): any[] {
     return this.usuarios;
+  }
+
+  getUsuariosById(id: number) {
+    return this.usuarios.filter(u => u.id == id);
   }
 
   addUsuario(usuario: any) {

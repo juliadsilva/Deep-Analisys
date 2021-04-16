@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioService} from '../service/usuario.service';
+import { UsuarioService } from '../service/usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -8,17 +8,17 @@ import {UsuarioService} from '../service/usuario.service';
 })
 export class RegistroComponent implements OnInit {
 
-  usuarios:any[] = [];
+  usuarios: any[] = [];
 
-  closeResult: string  = '';
+  closeResult: string = '';
 
-  constructor(private usuarioService:UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarios = this.usuarioService.getUsuarios();   
+    this.usuarios = this.usuarioService.getUsuarios();
   }
 
-  addUsuario(form:any){
+  addUsuario(form: any) {
     let newUsuario = form;
     newUsuario.id = this.usuarioService.getUsuarios().length + 1;
     this.usuarioService.addUsuario(newUsuario);

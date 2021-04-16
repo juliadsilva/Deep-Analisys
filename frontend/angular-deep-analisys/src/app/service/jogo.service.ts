@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class PartidaService {
+export class JogoService {
 
-  // Simulação do banco de dados partida
-  partidas:any[] = [
+  // Simulação do banco de dados jogo
+  jogos: any[] = [
     {
       'id': 1,
       'idBaralho': 1,
@@ -43,20 +43,20 @@ export class PartidaService {
       'win': 2,
       'loss': 1
     },
-    
+
   ]
 
-  constructor() {}
+  constructor() { }
 
-  getPartidas():any[]{
-    return this.partidas;
+  getjogos(): any[] {
+    return this.jogos;
   }
 
-  getPartidasbyId(id:number){
-    return this.partidas.filter(p => p.idBaralho == id);
+  getjogosbyId(id: number) {
+    return this.jogos.filter(p => p.idBaralho == id);
   }
 
-  addPartida(partida:any){
-    this.partidas.push(partida);
+  addjogo(jogo: any) {
+    this.jogos.push(jogo);
   }
 }

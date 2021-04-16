@@ -31,16 +31,16 @@
                         <table class="table table-sm table-bordered table-hover text-center col-sm-auto ">
                             <thead>
                                 <tr class="font-weight-bolder table-info ">
-                                    <th scope="col ">PARTIDA</th>
+                                    <th scope="col ">JOGOS</th>
                                     <th scope="col ">WINRATE</th>
                                     <th scope="col ">MATCHES</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let partida of partidas ">
+                            <tbody *ngFor="let jogo of jogos ">
                                 <tr class="text-white ">
-                                    <td> {{partida.id}}</td>
-                                    <td> {{getWinRate(partida)}} %</td>
-                                    <td> {{partida.win}}-{{partida.loss}}</td>
+                                    <td> {{jogo.id}}</td>
+                                    <td> {{getWinRate(jogo)}} %</td>
+                                    <td> {{jogo.win}}-{{jogo.loss}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -52,4 +52,4 @@
     </div>
 </div>
 
-<app-modal-nova-partida (close)="addNewPartida($event) "></app-modal-nova-partida>
+<app-modal-novo-jogo (close)="addNewjogo($event) "></app-modal-novo-jogo>
