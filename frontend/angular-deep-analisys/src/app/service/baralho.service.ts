@@ -9,32 +9,58 @@ export class BaralhoService {
   baralhos = [
     {
       'id': 1,
-      'nome' : 'Bant',
-      'usuario': 'Joaquin',
+      'idUser' : 1,
+      'usuario': 'ADM',
+      'nome' : 'Bant',      
       'cor': 'Branco'
     },
     {
       'id': 2,
+      'idUser' : 1,
+      'usuario': 'ADM',
       'nome' : 'Esper',
-      'usuario': 'Pedro',
       'cor': 'Azul'
     },
     {
       'id': 3,
+      'idUser' : 1,
+      'usuario': 'ADM',
       'nome' : 'Grixis',
-      'usuario': 'Matheus',
       'cor': 'Preto'
     },
     {
       'id': 4,
+      'idUser' : 1,
+      'usuario': 'ADM',
       'nome' : 'Jundin',
-      'usuario': 'Joana',
       'cor': 'Branco'
     },
     {
       'id': 5,
+      'idUser' : 1,
+      'usuario': 'ADM',
       'nome' : 'Naya',
-      'usuario': 'Josefina',
+      'cor': 'Verde'
+    },
+    {
+      'id': 6,
+      'idUser' : 2,
+      'usuario': 'ADM2',
+      'nome' : 'Naya',
+      'cor': 'Verde'
+    },
+    {
+      'id': 7,
+      'idUser' : 2,
+      'usuario': 'ADM2',
+      'nome' : 'Naya',
+      'cor': 'Verde'
+    },
+    {
+      'id': 8,
+      'idUser' : 2,
+      'usuario': 'ADM2',
+      'nome' : 'Naya',
       'cor': 'Verde'
     }
   ]
@@ -46,9 +72,7 @@ export class BaralhoService {
   }
 
   getBaralhosById(id:number){
-    let baralho = this.baralhos.find(b => b.id = id);
-    if (!baralho) return null;
-    else return baralho;   
+    return this.baralhos.filter(b => b.idUser == id);
   }
 
   addBaralho(baralho:any){

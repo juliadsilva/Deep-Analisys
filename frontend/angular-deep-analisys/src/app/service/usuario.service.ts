@@ -13,7 +13,16 @@ export class UsuarioService {
       'pais': 'Brasil',
       'estado': 'MG',
       'cidade': 'Pouso Alegre',
-      'email' : 'julia@',
+      'email' : 'adm@',
+      'senha' : '123'
+    },
+    {
+      'id': 2,
+      'username': 'ADM2',
+      'pais': 'Brasil',
+      'estado': 'MG',
+      'cidade': 'Pouso Alegre',
+      'email' : 'admdois@',
       'senha' : '123'
     }
   ]

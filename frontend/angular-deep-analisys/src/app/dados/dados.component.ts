@@ -17,7 +17,6 @@ export class DadosComponent implements OnInit {
 
   public baralhoId:number = 0;
 
-
   barChartData: ChartDataSets[] = 
   [
     { data: [], 
@@ -80,6 +79,8 @@ export class DadosComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
   barChartType = 'bar' as const;
+
+  
   constructor(private route:ActivatedRoute, private partidaService:PartidaService) { }
 
   ngOnInit(): void {

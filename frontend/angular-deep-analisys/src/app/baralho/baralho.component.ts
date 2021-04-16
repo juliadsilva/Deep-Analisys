@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaralhoService} from '../service/baralho.service';
 import { PartidaService } from '../service/partida.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-baralho',
@@ -13,11 +14,16 @@ export class BaralhoComponent implements OnInit {
 
   closeResult: string  = '';
 
-  constructor(private  baralhoService:BaralhoService, private partidasService:PartidaService) { }
+  public userId:number = 0;
+
+  constructor(private route:ActivatedRoute, private  baralhoService:BaralhoService, private partidasService:PartidaService) { }
 
   // Acontece antes da tela ser desenhada
   ngOnInit(): void {
-    this.baralhos = this.baralhoService.getBaralhos();
+    this.route.params.subscribe(params => {
+    this.userId = params.id
+    });
+    this.baralhos = this.baralhoService.getBaralhosById(this.userId)
   }
 
   public getWinRate(baralho:any) {
@@ -49,4 +55,8 @@ export class BaralhoComponent implements OnInit {
     });
     return `${totalWin} - ${totalLoss}`;
   }
+
+  addNewBaralho(baralho:any) {
+    this.baralhos.push(baralho);
+  } 
 }

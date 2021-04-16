@@ -7,7 +7,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title text-center text-info">Novo Baralho</h5>
-            <button type="button" class="close text-dark" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <button type="button" class="close text-dark" aria-label="Close" (click)="modal.close()">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -22,7 +22,6 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="addBaralho(form.value)">Adicionar</button>
         </div>
     </div>
