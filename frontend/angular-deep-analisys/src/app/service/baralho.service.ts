@@ -10,28 +10,24 @@ export class BaralhoService {
     {
       'id': 1,
       'idUser' : 1,
-      'usuario': 'ADM',
       'nome' : 'Bant',      
       'cor': 'Branco'
     },
     {
       'id': 2,
       'idUser' : 1,
-      'usuario': 'ADM',
       'nome' : 'Esper',
       'cor': 'Azul'
     },
     {
       'id': 3,
       'idUser' : 1,
-      'usuario': 'ADM',
       'nome' : 'Grixis',
       'cor': 'Preto'
     },
     {
       'id': 4,
       'idUser' : 1,
-      'usuario': 'ADM',
       'nome' : 'Jundin',
       'cor': 'Branco'
     },
@@ -45,22 +41,19 @@ export class BaralhoService {
     {
       'id': 6,
       'idUser' : 2,
-      'usuario': 'ADM2',
       'nome' : 'Naya',
       'cor': 'Verde'
     },
     {
       'id': 7,
       'idUser' : 2,
-      'usuario': 'ADM2',
-      'nome' : 'Naya',
+      'nome' : 'Jundin',
       'cor': 'Verde'
     },
     {
       'id': 8,
       'idUser' : 2,
-      'usuario': 'ADM2',
-      'nome' : 'Naya',
+      'nome' : 'Esper',
       'cor': 'Verde'
     }
   ]
