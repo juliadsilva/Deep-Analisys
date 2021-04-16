@@ -17,10 +17,9 @@
 
 .text-title {
     color: #fdfdfd;
-    text-shadow: 0.2em 0.2em #4c4f52;
     font-size: x-large;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }

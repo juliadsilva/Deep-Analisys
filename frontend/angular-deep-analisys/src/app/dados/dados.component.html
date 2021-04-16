@@ -1,7 +1,7 @@
 <html>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:  #012a4a;">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:  #012a4a;margin-botton:20px;">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" routerLink="/">
             <img src="../../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
         </a>
         <ul class="navbar-nav">
@@ -13,31 +13,46 @@
 </nav>
 
 <div class="bg-image">
-    <div class="container text-center">
-        <div>
-            <img src="../../assets/img/grafico.png" class="grafico">
-        </div>
-        <div class="table-responsive-sm">
-            <table class="table table-sm table-bordered table-hover text-center col-sm-auto">
-                <thead>
-                    <tr class="font-weight-bolder table-info">
-                        <th scope="col">ID BARALHO</th>
-                        <th scope="col">PARTIDA</th>
-                        <th scope="col">WINRATE</th>
-                        <th scope="col">MATCHES</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let partida of partidas">
-                    <tr class="text-white ">
-                        <td> {{partida.idBaralho}} </td>
-                        <td> {{partida.id}}</td>
-                        <td> {{getWinRate(partida)}} %</td>
-                        <td> {{partida.win}}-{{partida.loss}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <div class="card-deck ">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10 offset-1 mt-4">
+                    <div class="card mt-2">
+                        <canvas baseChart [datasets]="barChartData " [labels]="barChartLabels " [options]="barChartOptions " [colors]="barChartColors" [legend]="barChartLegend " [chartType]="barChartType " [plugins]="barChartPlugins">
+                            </canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-10 offset-1 mt-4 ">
+                    <div class="table-responsive-sm ">
+                        <table class="table table-sm table-bordered table-hover text-center col-sm-auto ">
+                            <thead>
+                                <tr class="font-weight-bolder table-info ">
+                                    <th scope="col ">PARTIDA</th>
+                                    <th scope="col ">WINRATE</th>
+                                    <th scope="col ">MATCHES</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let partida of partidas ">
+                                <tr class="text-white ">
+                                    <td> {{partida.id}}</td>
+                                    <td> {{getWinRate(partida)}} %</td>
+                                    <td> {{partida.win}}-{{partida.loss}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 
-<app-modal-nova-partida></app-modal-nova-partida>
+
+
+
+<app-modal-nova-partida (close)="addNewPartida($event) "></app-modal-nova-partida>

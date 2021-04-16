@@ -12,8 +12,16 @@ table {
     background-size: cover;
 }
 
-.grafico {
-    padding-top: 60px;
+canvas {
+    margin-top: 20px;
     max-width: auto;
-    max-height: 300px;
+    max-height: 400px;
+}
+
+.card-deck {
+    padding-top: 80px;
+}
+
+.card {
+    background-color: rgb(6, 47, 79);
 }

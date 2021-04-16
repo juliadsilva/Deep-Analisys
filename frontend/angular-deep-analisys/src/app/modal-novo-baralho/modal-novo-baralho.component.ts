@@ -26,5 +26,6 @@ export class ModalNovoBaralhoComponent implements OnInit {
     newBaralho.win = 0;
     newBaralho.loss = 0;
     this.baralhoService.addBaralho(newBaralho);
+    this.modalService.dismissAll();
     }
 }

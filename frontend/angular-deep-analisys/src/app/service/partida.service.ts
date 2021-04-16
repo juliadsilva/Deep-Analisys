@@ -38,7 +38,7 @@ export class PartidaService {
       'loss': 1
     },
     {
-      'id': 5,
+      'id': 6,
       'idBaralho': 2,
       'win': 2,
       'loss': 1
@@ -53,11 +53,10 @@ export class PartidaService {
   }
 
   getPartidasbyId(id:number){
-    return this.partidas.find(p => p.idBaralho == id);
+    return this.partidas.filter(p => p.idBaralho == id);
   }
 
   addPartida(partida:any){
     this.partidas.push(partida);
   }
-
 }

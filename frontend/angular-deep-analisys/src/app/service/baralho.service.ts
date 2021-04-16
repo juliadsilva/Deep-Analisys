@@ -11,41 +11,31 @@ export class BaralhoService {
       'id': 1,
       'nome' : 'Bant',
       'usuario': 'Joaquin',
-      'cor': 'Branco',
-      'win': 5,
-      'loss': 5
+      'cor': 'Branco'
     },
     {
       'id': 2,
       'nome' : 'Esper',
       'usuario': 'Pedro',
-      'cor': 'Azul',
-      'win': 3,
-      'loss': 7
+      'cor': 'Azul'
     },
     {
       'id': 3,
       'nome' : 'Grixis',
       'usuario': 'Matheus',
-      'cor': 'Preto',
-      'win': 8,
-      'loss': 2
+      'cor': 'Preto'
     },
     {
       'id': 4,
       'nome' : 'Jundin',
       'usuario': 'Joana',
-      'cor': 'Branco',
-      'win': 6,
-      'loss': 4
+      'cor': 'Branco'
     },
     {
       'id': 5,
       'nome' : 'Naya',
       'usuario': 'Josefina',
-      'cor': 'Verde',
-      'win': 4,
-      'loss': 6
+      'cor': 'Verde'
     }
   ]
 
