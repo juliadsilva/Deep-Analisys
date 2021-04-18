@@ -1,10 +1,26 @@
-.my-card{
-    padding-top: 50px;
-    padding-left: center;
-    padding-right: auto;
-    padding-bottom: auto ;  
+.bg {
+    background-color: aliceblue;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
-.my-bg{
-    background-color: #d3d1d1;
+.card {
+    background-color: #012a4a;
+    border-radius: 10px;
+}
+
+.card-deck {
+    padding-top: 80px;
+    padding-left: 200px;
+    margin: auto;
+}
+
+.card-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin: auto;
 }

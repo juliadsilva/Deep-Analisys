@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaralhoService } from '../service/baralho.service';
-import { JogoService } from '../service/jogo.service';
+import { PartidasService } from '../service/partidas.service';
 import { UsuarioService } from '../service/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class BaralhoComponent implements OnInit {
 
   public userId: number = 0;
 
-  constructor(private route: ActivatedRoute, private baralhoService: BaralhoService, private jogosService: JogoService, private usuarioService: UsuarioService) { }
+  constructor(private route: ActivatedRoute, private baralhoService: BaralhoService, private partidasService: PartidasService, private usuarioService: UsuarioService) { }
 
   // Acontece antes da tela ser desenhada
   ngOnInit(): void {
@@ -31,13 +31,13 @@ export class BaralhoComponent implements OnInit {
 
   public getWinRate(baralho: any) {
     let id = baralho.id;
-    let jogos = this.jogosService.getjogosbyId(id);
+    let partidas = this.partidasService.getpartidasbyId(id);
     let totalWin = 0;
     let totalLoss = 0;
-    if (jogos.length > 0) {
-      jogos.forEach(jogo => {
-        totalWin += jogo.win
-        totalLoss += jogo.loss
+    if (partidas.length > 0) {
+      partidas.forEach(partida => {
+        totalWin += partida.win
+        totalLoss += partida.loss
       });
 
       let total = totalWin + totalLoss;
@@ -49,12 +49,12 @@ export class BaralhoComponent implements OnInit {
 
   public getMatches(baralho: any) {
     let id = baralho.id;
-    let jogos = this.jogosService.getjogosbyId(id);
+    let partidas = this.partidasService.getpartidasbyId(id);
     let totalWin = 0;
     let totalLoss = 0;
-    jogos.forEach(jogo => {
-      totalWin += jogo.win
-      totalLoss += jogo.loss
+    partidas.forEach(partida => {
+      totalWin += partida.win
+      totalLoss += partida.loss
     });
     return `${totalWin} - ${totalLoss}`;
   }

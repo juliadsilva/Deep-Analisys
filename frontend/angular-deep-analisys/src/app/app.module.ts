@@ -16,10 +16,10 @@ import { BaralhoComponent } from './baralho/baralho.component';
 import { DadosComponent } from './dados/dados.component';
 
 import { BaralhoService } from './service/baralho.service';
-import { JogoService } from './service/jogo.service';
+import { PartidasService } from './service/partidas.service';
 import { UsuarioService } from './service/usuario.service';
 import { ModalNovoBaralhoComponent } from './modal-novo-baralho/modal-novo-baralho.component';
-import { ModalNovoJogoComponent } from './modal-novo-jogo/modal-novo-jogo.component';
+import { ModalNovaPartidaComponent } from './modal-nova-partida/modal-nova-partida.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { ModalNovoJogoComponent } from './modal-novo-jogo/modal-novo-jogo.compon
     BaralhoComponent,
     DadosComponent,
     ModalNovoBaralhoComponent,
-    ModalNovoJogoComponent
+    ModalNovaPartidaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,7 @@ import { ModalNovoJogoComponent } from './modal-novo-jogo/modal-novo-jogo.compon
   ],
   providers: [
     BaralhoService,
-    JogoService,
+    PartidasService,
     UsuarioService
   ],
   bootstrap: [AppComponent]

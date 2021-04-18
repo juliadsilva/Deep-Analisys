@@ -13,8 +13,7 @@
 </nav>
 
 <div class="bg-image">
-
-    <div class="card-deck ">
+    <div class="card-deck">
         <div class="container">
             <div class="row ">
                 <div class="col-md-10 offset-1 mt-4">
@@ -22,7 +21,6 @@
                         <canvas baseChart [datasets]="barChartData " [labels]="barChartLabels " [options]="barChartOptions " [colors]="barChartColors" [legend]="barChartLegend " [chartType]="barChartType " [plugins]="barChartPlugins">
                             </canvas>
                     </div>
-
                 </div>
             </div>
             <div class="row ">
@@ -31,16 +29,16 @@
                         <table class="table table-sm table-bordered table-hover text-center col-sm-auto ">
                             <thead>
                                 <tr class="font-weight-bolder table-info ">
-                                    <th scope="col ">JOGOS</th>
+                                    <th scope="col ">PARTIDA</th>
                                     <th scope="col ">WINRATE</th>
-                                    <th scope="col ">MATCHES</th>
+                                    <th scope="col ">RESULTADO</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let jogo of jogos ">
+                            <tbody *ngFor="let partida of partidas ">
                                 <tr class="text-white ">
-                                    <td> {{jogo.id}}</td>
-                                    <td> {{getWinRate(jogo)}} %</td>
-                                    <td> {{jogo.win}}-{{jogo.loss}}</td>
+                                    <td> {{partida.id}}</td>
+                                    <td> {{getWinRate(partida)}} %</td>
+                                    <td> {{partida.win}}-{{partida.loss}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -52,4 +50,4 @@
     </div>
 </div>
 
-<app-modal-novo-jogo (close)="addNewjogo($event) "></app-modal-novo-jogo>
+<app-modal-nova-partida (close)="addNewPartida($event) "></app-modal-nova-partida>
