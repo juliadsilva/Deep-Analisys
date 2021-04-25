@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "179390bc-6946-45ae-a961-c761e318d6ca",
+		"name": "Deep Analysis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "POST usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Julia\",\r\n    \"pais\": \"Brasil\",\r\n    \"estado\": \"Minas Gerais\",\r\n    \"cidade\": \"Pouso Alegre\",\r\n    \"email\": \"julia@julia.com\",\r\n    \"senha\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuario (email)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuario/email/julia@julia.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"email",
+								"julia@julia.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuario/6085c4e633962a0a1074d75d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"6085c4e633962a0a1074d75d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "baralho",
+			"item": [
+				{
+					"name": "POST baralho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Galix\",\r\n    \"cor\": \"Azul\",\r\n    \"idUsuario\": \"6085b1bac6dc761090b9f260\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/baralho",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"baralho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET baralho",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/baralho/6085c37784f1b7381c48853c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"baralho",
+								"6085c37784f1b7381c48853c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET baralho (usuario)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/baralho/idUsuario/6085b1bac6dc761090b9f260",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"baralho",
+								"idUsuario",
+								"6085b1bac6dc761090b9f260"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE baralho",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/baralho/6085bb30628ff829b8ca78fd",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"baralho",
+								"6085bb30628ff829b8ca78fd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT baralho",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"atualiza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/baralho/6085c37784f1b7381c48853c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"baralho",
+								"6085c37784f1b7381c48853c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "partida",
+			"item": [
+				{
+					"name": "POST partida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"win\": 7,\r\n    \"loss\": 3,\r\n    \"idBaralho\": \"6085bb30628ff829b8ca78fd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/partida/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"partida",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE partida",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/partida/6085c35884f1b7381c48853b",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"partida",
+								"6085c35884f1b7381c48853b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET partida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/partida/6085c5d4fcbe864d44aec9fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"partida",
+								"6085c5d4fcbe864d44aec9fd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET partida (baralho)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/partida/idBaralho/6085bb30628ff829b8ca78fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"partida",
+								"idBaralho",
+								"6085bb30628ff829b8ca78fd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
