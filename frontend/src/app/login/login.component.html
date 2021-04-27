@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #012a4a;">
     <div class="container">
         <a class="navbar-brand" routerLink="/">
-            <img src="../../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
+            <img src="../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
         </a>
     </div>
 </nav>
@@ -20,21 +20,20 @@
                     </div>
                     <div class="card-body">
                         <div class="container align-content-center">
-                            <form #loginform="ngForm">
+                            <form ngForm #form="ngForm" (ngSubmit)="onSubmit(form)">
                                 <div class=" form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" #username="ngModel" ngModel required class="form-control " placeholder="Username ">
+                                    <input type="text" name="username" ngModel required #nomeField="ngModel" class="form-control " placeholder="Username ">
                                 </div>
                                 <div class="form-group">
                                     <label for="senhaInput ">Senha</label>
-                                    <input type="password" name="senha " #senha="ngModel" ngModel required class="form-control " placeholder="Senha ">
+                                    <input type="password" name="senha " ngModel required #senhaField="ngModel" class="form-control " placeholder="Senha ">
                                 </div>
+                                <button type="button" class="btn btn-block btn-outline-info" [disabled]="!form.valid ">Login</button>
                             </form>
-                            <button type="button" class="btn btn-block btn-outline-info" [disabled]=" !loginform.valid ">Login</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

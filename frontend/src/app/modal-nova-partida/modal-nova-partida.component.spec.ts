@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ModalNovaPartidaComponent } from './modal-nova-partida.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ModalNovaPartidaComponent', () => {
   let component: ModalNovaPartidaComponent;
@@ -8,6 +8,7 @@ describe('ModalNovaPartidaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ ModalNovaPartidaComponent ]
     })
     .compileComponents();

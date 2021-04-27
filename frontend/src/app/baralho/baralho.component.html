@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:  #012a4a;">
     <div class="container">
         <a class="navbar-brand" routerLink="/">
-            <img src="../../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
+            <img src="../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
         </a>
         <div *ngFor="let usuario of usuario; ">
             <button class="btn btn-outline-info btn-md" type="submit">{{usuario.username}}</button>
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <!-- NGFOR para criar cards com os baralhos-->
-                <div *ngFor="let baralho of baralhos; " class="col-md-4 animate__animated animate__bounceInRight">
+                <form *ngFor="let baralho of baralhos; " class="col-md-4 animate__animated animate__bounceInRight">
                     <a routerLink="/dados/{{baralho.id}}">
                         <div class=" card mt-2 ">
                             <div class="card-body text-justify table-responsive ">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </form>
             </div>
         </div>
     </div>
