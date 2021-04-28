@@ -11,22 +11,19 @@
 <h1 align="center">Deep Analisys</h1>
 <p align="center">O coletor e organizador de dados para Magic: the Gathering Online</p>
 
-
-=================
-<!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Funcionalidades](#funcionalidades)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Execução](#execucao)
-   * [Tecnologias](#tecnologias)
-   * [Autores](#autores)
-<!--te-->
+<p align="center">
+ <a href="#sobre">Sobre</a> •
+ <a href="#funcionalidades">Funcionalidades</a> • 
+ <a href="#como-usar">Como Usar</a> • 
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#autor">Autor</a>
+</p>
 
 <h4 align="center"> 
 	🚧  Deep-Analisys -> Em construção...  🚧
 </h4>
+
+### Sobre
 
 ### Funcionalidades
 
