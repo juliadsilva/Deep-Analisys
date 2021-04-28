@@ -16,7 +16,7 @@
  <a href="#funcionalidades">Funcionalidades</a> • 
  <a href="#como-usar">Como Usar</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#autor">Autor</a>
+ <a href="#autores">Autores</a>
 </p>
 
 <h4 align="center"> 
@@ -39,6 +39,8 @@
 	  - [x] Cadastrar 
 	  - [x] Listar
     - [x] Deletar  
+
+### Como Usar
 
 #### Pré-requisitos
 
@@ -78,7 +80,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### **Mobile**
 - **Dependências**:
 
-### **Web**  
+#### **Web**  
 - **Dependências**:
 
 ## Autores
