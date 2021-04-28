@@ -8,6 +8,10 @@
   </a>
 </p>
 
+<h1>Tecnologias:</h1>
+![image](https://img.shields.io/badge/Xcode-007ACC?style=flat-square&logo=Xcode&logoColor=white)
+<img src="{https://img.shields.io/badge/Xcode-007ACC?style=flat-square&logo=Xcode&logoColor=white" />
+
 <h1 align="center">Deep Analisys</h1>
 <p align="center">O coletor e organizador de dados para Magic: the Gathering Online</p>
 
