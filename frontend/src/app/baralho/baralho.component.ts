@@ -4,6 +4,7 @@ import { PartidasService } from '../service/partidas.service';
 import { UsuarioService } from '../service/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-baralho',
   templateUrl: './baralho.component.html',
@@ -52,6 +53,7 @@ export class BaralhoComponent implements OnInit {
     let partidas = this.partidasService.getpartidasbyId(id);
     let totalWin = 0;
     let totalLoss = 0;
+
     partidas.forEach(partida => {
       totalWin += partida.win
       totalLoss += partida.loss
