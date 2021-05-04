@@ -22,7 +22,7 @@
 <p align="center">
  <a href="#sobre">Sobre</a> •
  <a href="#funcionalidades">Funcionalidades</a> •
- <a href="#layout">Layout</a> 	
+ <a href="#layout">Layout</a>  • 	
  <a href="#como-executar-o-projetor">Como executar o projeto</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#autores">Autores</a>
