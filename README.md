@@ -8,27 +8,31 @@
   </a>
 </p>
 
-<h1>Tecnologias:</h1>
-<img src="https://img.shields.io/badge/Xcode-007ACC?style=flat-square&logo=Xcode&logoColor=white" />
+<h4 align="center"> 
+	🚧  Deep-Analisys -> Em construção...  🚧
+</h4>
+
+<h1 align="center">
+    <img alt="NextLevelWeek" title="#NextLevelWeek" src="./frontend/src/assets/img/logo.png" />
+</h1>
 
 <h1 align="center">Deep Analisys</h1>
 <p align="center">O coletor e organizador de dados para Magic: the Gathering Online</p>
 
 <p align="center">
  <a href="#sobre">Sobre</a> •
- <a href="#funcionalidades">Funcionalidades</a> • 
- <a href="#como-usar">Como Usar</a> • 
+ <a href="#funcionalidades">Funcionalidades</a> •
+ <a href="#layout">Layout</a> 	
+ <a href="#como-executar-o-projetor">Como executar o projeto</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#autores">Autores</a>
 </p>
 
-<h4 align="center"> 
-	🚧  Deep-Analisys -> Em construção...  🚧
-</h4>
+### 💻 Sobre
 
-### Sobre
+---
 
-### Funcionalidades
+### ⚙️ Funcionalidades
 
  - Usuário:
 	  - [x] Cadastrar  
@@ -37,56 +41,77 @@
 	  - [x] Cadastrar 
 	  - [x] Listar
 	  - [x] Pesquisar
-    - [x] Deletar 
- - Baralhos:
+    	  - [x] Deletar 
+ - Partidas:
 	  - [x] Cadastrar 
 	  - [x] Listar
-    - [x] Deletar  
+          - [x] Deletar  
 
-### Como Usar
-
-#### Pré-requisitos
-
-Antes de começar, você vai precisar ter instalado em sua máquina a seguinte ferramenta:
-- Angular 6 - Framework web responsável pelo front-end.
-
-#### Instalação
-
-  ```bash
-  $ npm install -g @angular/cli
-  ```
-
-#### Executando o font-end
-
-   ```bash
-    # Clone este repositório
-    $ git clone 
-
-    # Acesse a pasta do projeto no seu terminal/cmd
-    $ cd angular-test-cards
-
-    # Execute a aplicação
-    $ ng serve --open
-
-    # Execute os testes
-    $ ng test
-   ```
 ---
 
-### Tecnologias
+## 🎨 Layout
+---
+
+## 🚀 Como executar o projeto
+
+Este projeto é divido em três partes:
+1. Backend  
+2. Frontend 
+3. Mobile 
+
+💡Tanto o Frontend quanto o Mobile precisam que o Backend esteja sendo executado para funcionar.
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Node.js](https://nodejs.org/en/) e  ([Angular](https://angular.io/docs/) 
+
+#### 🎲 Rodando o Backend
+
+```bash
+
+# Clone este repositório
+$ git clone 
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd backend
+
+# Execute a aplicação em modo de desenvolvimento
+$ nodemon index.jx
+
+# O servidor inciará na --------
+
+```
+
+#### 🎲 Rodando o Backend
+
+```bash
+
+# Clone este repositório
+$ git clone 
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd frontend
+
+# Execute a aplicação em modo de desenvolvimento
+$ ng serve --open
+
+# O servidor inciará na --------
+
+```
+
+### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Node.js](https://nodejs.org/en/)
-- [Angular]
+#### **Website**  ([Angular](https://angular.io/docs/)  +  [TypeScript](https://www.typescriptlang.org/))
+
+#### **Server** ([NodeJS](https://nodejs.org/en/)  + [TypeScript](https://www.typescriptlang.org/))
 
 #### **Mobile**
-- **Dependências**:
 
-#### **Web**  
-- **Dependências**:
 
-## Autores
+## 🦸 Autores
 <a href="https://github.com/juliadsilva">Julia Daniele Moreira da Silva </a>
  
     
