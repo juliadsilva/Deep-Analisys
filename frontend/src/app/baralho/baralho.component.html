@@ -41,6 +41,12 @@
             </div>
         </div>
     </div>
-</div>
 
-<app-modal-novo-baralho (close)="addNewBaralho($event)"></app-modal-novo-baralho>
+    <div>
+        <app-modal-adicionar-baralho (close)="addBaralho($event)"></app-modal-adicionar-baralho>
+
+        <app-modal-editar-baralho (close)="editBaralho($event)"></app-modal-editar-baralho>
+
+        <app-modal-deletar-baralho (close)="delBaralho($event)"></app-modal-deletar-baralho>
+    </div>
+</div>

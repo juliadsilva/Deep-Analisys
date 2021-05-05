@@ -1,0 +1,27 @@
+<button class="fixed-button wobble" (click)="open(mymodal)">  
+    <i class="fa fa-times fa-2x"></i>
+</button>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-center text-info">Deletar baralho</h5>
+            <button type="button" class="close text-dark" aria-label="Close" (click)="modal.close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form #form="ngForm">
+                <div class="form-group text-info text-center">
+                    <label for="cidade">Baralho</label>
+                    <select type="text" name="nome" #nomeantes="ngModel" ngModel required class="form-control">
+                            <option *ngFor="let baralho of baralhos; " selected>{{baralho.nome}}</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="delBaralho(form.value)">Deletar</button>
+        </div>
+    </div>
+</ng-template>

@@ -4,7 +4,6 @@ import { PartidasService } from '../service/partidas.service';
 import { UsuarioService } from '../service/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-baralho',
   templateUrl: './baralho.component.html',
@@ -61,7 +60,16 @@ export class BaralhoComponent implements OnInit {
     return `${totalWin} - ${totalLoss}`;
   }
 
-  addNewBaralho(baralho: any) {
+  addBaralho(baralho: any) {
+    this.baralhos.push(baralho);
+  }
+
+  delBaralho(baralho: any) {
+    let index = this.baralhos.indexOf(baralho);
+    this.baralhos.splice(index,1)
+  }
+
+  editBaralho(baralho: any) {
     this.baralhos.push(baralho);
   }
 }

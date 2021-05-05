@@ -4,11 +4,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-modal-novo-baralho',
-  templateUrl: './modal-novo-baralho.component.html',
-  styleUrls: ['./modal-novo-baralho.component.css']
+  selector: 'app-modal-adicionar-baralho',
+  templateUrl: './modal-adicionar-baralho.component.html',
+  styleUrls: ['./modal-adicionar-baralho.component.css']
 })
-export class ModalNovoBaralhoComponent implements OnInit {
+export class ModalAdicionarBaralhoComponent implements OnInit {
 
 
   @Output('close')

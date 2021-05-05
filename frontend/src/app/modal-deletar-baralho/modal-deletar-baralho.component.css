@@ -1,0 +1,25 @@
+input {
+    background-color: rgba(15, 117, 196, 0.2);
+}
+
+.fixed-button {
+    background-color: #012a4a;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border-radius: 30px;
+}
+
+.text-title {
+    color: #012a4a;
+    text-shadow: 0.1em 0.1em #062f4f;
+    text-align: center;
+    font-size: x-large;
+}

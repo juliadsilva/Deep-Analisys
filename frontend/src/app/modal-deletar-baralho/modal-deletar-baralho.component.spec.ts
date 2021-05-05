@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalNovoBaralhoComponent } from './modal-novo-baralho.component';
+import { ModalDeletarBaralhoComponent } from './modal-deletar-baralho.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ModalNovoBaralhoComponent', () => {
-  let component: ModalNovoBaralhoComponent;
-  let fixture: ComponentFixture<ModalNovoBaralhoComponent>;
+describe('ModalDeletarBaralhoComponent', () => {
+  let component: ModalDeletarBaralhoComponent;
+  let fixture: ComponentFixture<ModalDeletarBaralhoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ModalNovoBaralhoComponent]
+      declarations: [ ModalDeletarBaralhoComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalNovoBaralhoComponent);
+    fixture = TestBed.createComponent(ModalDeletarBaralhoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
