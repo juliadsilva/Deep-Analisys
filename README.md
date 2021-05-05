@@ -41,12 +41,11 @@
 	  - [x] Cadastrar 
 	  - [x] Listar
 	  - [x] Pesquisar
-    	  - [x] Deletar 
+	  - [x] Deletar 
  - Partidas:
 	  - [x] Cadastrar 
 	  - [x] Listar
-          - [x] Deletar  
-
+	  - [x] Deletar 
 ---
 
 ## 🎨 Layout
