@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+// Service
 import { BaralhoService } from '../service/baralho.service';
 import { PartidasService } from '../service/partidas.service';
 import { UsuarioService } from '../service/usuario.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-baralho',
   templateUrl: './baralho.component.html',
   styleUrls: ['./baralho.component.css']
 })
+
 export class BaralhoComponent implements OnInit {
 
   baralhos: any[] = [];
@@ -18,7 +22,12 @@ export class BaralhoComponent implements OnInit {
 
   public userId: number = 0;
 
-  constructor(private route: ActivatedRoute, private baralhoService: BaralhoService, private partidasService: PartidasService, private usuarioService: UsuarioService) { }
+  constructor(
+    private http: HttpClient, 
+    private route: ActivatedRoute, 
+    private baralhoService: BaralhoService, 
+    private partidasService: PartidasService, 
+    private usuarioService: UsuarioService) { }
 
   // Acontece antes da tela ser desenhada
   ngOnInit(): void {
@@ -58,18 +67,5 @@ export class BaralhoComponent implements OnInit {
       totalLoss += partida.loss
     });
     return `${totalWin} - ${totalLoss}`;
-  }
-
-  addBaralho(baralho: any) {
-    this.baralhos.push(baralho);
-  }
-
-  delBaralho(baralho: any) {
-    let index = this.baralhos.indexOf(baralho);
-    this.baralhos.splice(index,1)
-  }
-
-  editBaralho(baralho: any) {
-    this.baralhos.push(baralho);
   }
 }

@@ -4,11 +4,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-modal-nova-partida',
-  templateUrl: './modal-nova-partida.component.html',
-  styleUrls: ['./modal-nova-partida.component.css']
+  selector: 'app-modal-adicionar-partida',
+  templateUrl: './modal-adicionar-partida.component.html',
+  styleUrls: ['./modal-adicionar-partida.component.css']
 })
-export class ModalNovaPartidaComponent implements OnInit {
+export class ModalAdicionarPartidaComponent implements OnInit {
 
   @Output('close')
   novaPartidaEmitter: EventEmitter<any> = new EventEmitter<any>();

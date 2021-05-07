@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../service/usuario.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +16,7 @@ export class RegistroComponent implements OnInit {
 
   closeResult: string = '';
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private http:HttpClient, private usuarioService: UsuarioService, private router:Router) { }
 
   ngOnInit(): void {
     this.usuarios = this.usuarioService.getUsuarios();

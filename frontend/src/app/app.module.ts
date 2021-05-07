@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+
 
 // Modulos
 import { AppRoutingModule } from './app-routing.module';
@@ -26,9 +27,10 @@ import { DadosComponent } from './dados/dados.component';
 
 // Modal
 import { ModalAdicionarBaralhoComponent } from './modal-adicionar-baralho/modal-adicionar-baralho.component';
-import { ModalNovaPartidaComponent } from './modal-nova-partida/modal-nova-partida.component';
+import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida/modal-adicionar-partida.component';
 import { ModalDeletarBaralhoComponent } from './modal-deletar-baralho/modal-deletar-baralho.component';
 import { ModalEditarBaralhoComponent } from './modal-editar-baralho/modal-editar-baralho.component';
+import { ModalDeletarPartidaComponent } from './modal-deletar-partida/modal-deletar-partida.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,14 @@ import { ModalEditarBaralhoComponent } from './modal-editar-baralho/modal-editar
     BaralhoComponent,
     DadosComponent,
     ModalAdicionarBaralhoComponent,
-    ModalNovaPartidaComponent,
+    ModalAdicionarPartidaComponent,
     ModalDeletarBaralhoComponent,
-    ModalEditarBaralhoComponent
+    ModalEditarBaralhoComponent,
+    ModalDeletarPartidaComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,

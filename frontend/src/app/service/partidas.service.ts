@@ -57,4 +57,9 @@ export class PartidasService {
   addpartida(partida: any) {
     this.partidas.push(partida);
   }
+
+  delPartida(partida: any) {
+    let index = this.partidas.indexOf(partida);
+    this.partidas.splice(index, 1)
+  }
 }

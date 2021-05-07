@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalNovaPartidaComponent } from './modal-nova-partida.component';
+import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ModalNovaPartidaComponent', () => {
-  let component: ModalNovaPartidaComponent;
-  let fixture: ComponentFixture<ModalNovaPartidaComponent>;
+describe(' ModalAdicionarPartidaComponent', () => {
+  let component: ModalAdicionarPartidaComponent;
+  let fixture: ComponentFixture< ModalAdicionarPartidaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ ModalNovaPartidaComponent ]
+      declarations: [ ModalAdicionarPartidaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalNovaPartidaComponent);
+    fixture = TestBed.createComponent( ModalAdicionarPartidaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

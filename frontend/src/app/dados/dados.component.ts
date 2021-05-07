@@ -99,11 +99,6 @@ export class DadosComponent implements OnInit {
     return winRate.toPrecision(3);
   }
 
-  addNewPartida(partida:any) {
-    this.partidas.push(partida);
-    this.updateChart();
-  } 
-
   updateChart(){
     this.barChartData.forEach(ds =>{
       ds.data=[];

@@ -12,12 +12,16 @@
             </button>
         </div>
         <div class="modal-body">
-            <form #form="ngForm">
-                <div class="form-group text-info text-center">
-                    <label>Cor</label>
-                    <input type="text" name="cor" #cor="ngModel" ngModel required class="form-control">
-                    <label>Nome</label>
-                    <input type="text" name="nome" #cor="ngModel" ngModel required class="form-control">
+            <form #form="ngForm">                
+                    <div class="form-group text-info text-center">
+                        <label>Selecionar</label>
+                        <select type="text" name="nome" #nomeantes="ngModel" ngModel required class="form-control">
+                                <option *ngFor="let baralho of baralhos; " selected>{{baralho.nome}}</option>
+                        </select>
+                        <label>Cor</label>
+                        <input type="text" name="cor" #cor="ngModel" ngModel required class="form-control">
+                        <label>Nome</label>
+                        <input type="text" name="nome" #cor="ngModel" ngModel required class="form-control">
                 </div>
             </form>
         </div>

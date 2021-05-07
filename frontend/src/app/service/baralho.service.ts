@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +58,7 @@ export class BaralhoService {
     }
   ]
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getBaralhos(): any[] {
     return this.baralhos;
@@ -75,8 +76,9 @@ export class BaralhoService {
     this.baralhos.push(baralho);
   }
 
-  delBaralho(baralho: any) {
-    let index = this.baralhos.indexOf(baralho);
-    this.baralhos.splice(index, 1)
+  delBaralho(idB: number) {
+    this.baralhos.splice(idB, 1);
+
+    console.log(idB);
   }
 }

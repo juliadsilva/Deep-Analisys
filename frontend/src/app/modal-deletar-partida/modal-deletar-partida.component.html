@@ -1,12 +1,11 @@
 <button class="fixed-button wobble" (click)="open(mymodal)">  
-    <i class="fa fa-plus fa-2x"></i>
+    <i class="fa fa-times fa-2x"></i>
 </button>
-
 
 <ng-template #mymodal let-modal>
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title text-center text-info">nova partida</h5>
+            <h5 class="modal-title text-center text-info">Deletar Partida</h5>
             <button type="button" class="close text-dark" aria-label="Close" (click)="modal.close()">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -14,15 +13,15 @@
         <div class="modal-body">
             <form #form="ngForm">
                 <div class="form-group text-info text-center">
-                    <label>Win</label>
-                    <input type="number" name="win" #win="ngModel" ngModel required class="form-control" min="0" max="2">
-                    <label>Loss</label>
-                    <input type="number" name="loss" #loss="ngModel" ngModel required class="form-control" min="0" max="2">
+                    <label>Partida</label>
+                    <select type="text" name="nome" #nomeantes="ngModel" ngModel required class="form-control">
+                            <option *ngFor="let partida of partidas; " selected>{{partida.id}}</option>
+                    </select>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="addpartida(form.value)">Adicionar</button>
+            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="delPartida(form.value)">Deletar</button>
         </div>
     </div>
 </ng-template>

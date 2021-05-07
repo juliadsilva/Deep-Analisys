@@ -13,6 +13,8 @@ export class ModalEditarBaralhoComponent implements OnInit {
   @Output('close')
   editBaralhoEmitter: EventEmitter<any> = new EventEmitter<any>();
 
+  baralhos: any[] = [];
+  
   userId: number = 0;
 
   constructor(private modalService: NgbModal, private baralhoService: BaralhoService, private route: ActivatedRoute) { }
@@ -21,6 +23,7 @@ export class ModalEditarBaralhoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = parseInt(params.id);
     });
+    this.baralhos = this.baralhoService.getBaralhosById(this.userId)
   }
 
   open(content: any) {

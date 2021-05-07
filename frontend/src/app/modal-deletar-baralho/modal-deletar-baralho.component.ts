@@ -3,7 +3,6 @@ import { BaralhoService } from '../service/baralho.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-modal-deletar-baralho',
   templateUrl: './modal-deletar-baralho.component.html',
@@ -32,7 +31,7 @@ export class ModalDeletarBaralhoComponent implements OnInit {
   }
 
   delBaralho(form: any) {
-    let delBaralho = form;
+    let delBaralho = form.id;
     this.baralhoService.delBaralho(delBaralho);
     this.deletarBaralhoEmitter.emit(delBaralho)
     this.modalService.dismissAll();
