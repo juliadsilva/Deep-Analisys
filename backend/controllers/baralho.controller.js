@@ -1,6 +1,6 @@
 var Baralho = require('../models/baralho.model');
 
-exports.create = function(req, res) {
+exports.create = function(req, res, next) {
     let baralho = new Baralho({
         nome: req.body.nome,
         cor: req.body.cor,
@@ -12,14 +12,14 @@ exports.create = function(req, res) {
     })
 };
 
-exports.detailsById = function(req, res) {
+exports.detailsById = function(req, res, next) {
     Baralho.findById(req.params.id, function(err, baralho) {
         if (err) return next(err);
         res.send(baralho);
     })
 };
 
-exports.detailsByIdUsuario = function(req, res) {
+exports.detailsByIdUsuario = function(req, res, next) {
     Baralho.find({ idUsuario: req.params.idUsuario },
         function(err, baralho) {
             if (err) return next(err);
@@ -27,7 +27,7 @@ exports.detailsByIdUsuario = function(req, res) {
         })
 };
 
-exports.update = function(req, res) {
+exports.update = function(req, res, next) {
     Baralho.findByIdAndUpdate(req.params.id, {
             nome: req.body.nome
         },
@@ -38,7 +38,7 @@ exports.update = function(req, res) {
         })
 };
 
-exports.delete = function(req, res) {
+exports.delete = function(req, res, next) {
     Baralho.findByIdAndDelete(req.params.id, function(err, baralho) {
         if (err) return next(err);
         res.send(baralho);

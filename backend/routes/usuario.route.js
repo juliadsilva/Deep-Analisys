@@ -8,7 +8,7 @@ const usuario_controller = require('../controllers/usuario.controller');
 router.post('/', usuario_controller.create);
 
 // Read
-router.get('/:id', usuario_controller.detailsById);
-router.get('/email/:email', usuario_controller.detailsByEmail);
+router.get('/:token', usuario_controller.details);
+router.get('/check/:email', usuario_controller.detailsByEmail);
 
 module.exports = router;

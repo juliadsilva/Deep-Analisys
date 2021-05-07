@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const allowCors = require('./config/cors');
 
 // Importa routes
 const usuario = require('./routes/usuario.route');
@@ -17,16 +18,16 @@ db.once('open', function callback() {
     console.log(mongoose.connection.readyState);
 });
 
-
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 
+app.use(allowCors);
+
 app.use('/usuario', usuario);
 app.use('/baralho', baralho);
 app.use('/partida', partida);
-
 
 //Servidor
 let port = 8080;

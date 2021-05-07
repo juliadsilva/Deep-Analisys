@@ -1,13 +1,12 @@
 var Usuario = require('../models/usuario.model');
 
-exports.create = function(req, res) {
+exports.create = function(req, res, next) {
     let usuario = new Usuario({
         username: req.body.username,
-        pais: req.body.pais,
         estado: req.body.estado,
         cidade: req.body.cidade,
         email: req.body.email,
-        senha: req.body.senha
+        token: req.body.token
     });
     usuario.save(function(err) {
         if (err) return next(err);
@@ -15,14 +14,14 @@ exports.create = function(req, res) {
     })
 };
 
-exports.detailsById = function(req, res) {
-    Usuario.findById(req.params.id, function(err, user) {
+exports.details = function(req, res, next) {
+    Usuario.findById(req.params.token, function(err, user) {
         if (err) return next(err);
         res.send(user);
     })
 };
 
-exports.detailsByEmail = function(req, res) {
+exports.detailsByEmail = function(req, res, next) {
     Usuario.findOne({ email: req.params.email },
         function(err, user) {
             if (err) return next(err);
