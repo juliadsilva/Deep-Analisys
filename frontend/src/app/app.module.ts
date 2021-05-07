@@ -3,12 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
-
 // Modulos
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
+
+//TOASTR
+import { ToastrModule } from 'ngx-toastr';
+import  {  BrowserAnimationsModule  }  from  '@angular/platform-browser/animations' ;
 
 // Service
 import { BaralhoService } from './service/baralho.service';
@@ -49,12 +52,14 @@ import { ModalDeletarPartidaComponent } from './modal-deletar-partida/modal-dele
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     BaralhoService,

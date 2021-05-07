@@ -20,16 +20,22 @@
                     </div>
                     <div class="card-body">
                         <div class="container align-content-center">
-                            <form ngForm #form="ngForm" (ngSubmit)="onSubmit(form)">
-                                <div class=" form-group">
+                            <form #form="ngForm">
+                                <div class="form-group has-feedback" [class.has-success]="username.valid && (username.dirty || username.touched)" [class.has-error]="!username.valid  && (username.dirty || username.touched)">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" ngModel required #nomeField="ngModel" class="form-control " placeholder="Username ">
+                                    <input type="text" name="username" #username="ngModel" ngModel required class="form-control" placeholder="Username">
+                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                    <span class="help-block" *ngIf="!username.valid && (username.dirty || username.touched)"> <i class="fa fa-remove"></i> Ops</span>
+                                    <span class="help-block" *ngIf="username.valid && (username.dirty || username.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="senhaInput ">Senha</label>
-                                    <input type="password" name="senha " ngModel required #senhaField="ngModel" class="form-control " placeholder="Senha ">
+                                <div class="form-group has-feedback" [class.has-success]="senha.valid && (senha.dirty || senha.touched)" [class.has-error]="!senha.valid && (senha.dirty || senha.touched)">
+                                    <label for="username">Senha (8 digitos)</label>
+                                    <input type="password" name="senha" #senha="ngModel" ngModel required minlength="8" class="form-control" placeholder="Senha">
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                    <span class="help-block" *ngIf="!senha.valid && (senha.dirty || senha.touched)"> <i class="fa fa-remove"></i> Ops</span>
+                                    <span class="help-block" *ngIf="senha.valid && (senha.dirty || senha.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
-                                <button type="button" class="btn btn-block btn-outline-info" [disabled]="!form.valid ">Login</button>
+                                <button [disabled]="!form.valid" (click)="login(form.value)" type="submit" class="btn btn-block btn-outline-info">Login</button>
                             </form>
                         </div>
                     </div>
