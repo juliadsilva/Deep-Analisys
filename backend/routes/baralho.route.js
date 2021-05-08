@@ -8,8 +8,9 @@ const baralho_controller = require('../controllers/baralho.controller');
 router.post('/', baralho_controller.create);
 
 // Read
-router.get('/:id', baralho_controller.detailsById);
-router.get('/idUsuario/:idUsuario', baralho_controller.detailsByIdUsuario);
+router.get('/:id', baralho_controller.listar);
+router.get('/idUsuario/:idUsuario', baralho_controller.details);
+router.get('/check/:nome', detailsByName);
 
 // Update
 router.put('/:id', baralho_controller.update);

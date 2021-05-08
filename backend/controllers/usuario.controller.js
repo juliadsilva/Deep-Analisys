@@ -15,6 +15,13 @@ exports.create = function(req, res, next) {
 };
 
 exports.details = function(req, res, next) {
+    Usuario.findById(req.params.id, function(err, user) {
+        if (err) return next(err);
+        res.send(user);
+    })
+};
+
+exports.login = function(req, res, next) {
     Usuario.findById(req.params.token, function(err, user) {
         if (err) return next(err);
         res.send(user);

@@ -12,14 +12,22 @@ exports.create = function(req, res, next) {
     })
 };
 
-exports.detailsById = function(req, res, next) {
+exports.details = function(req, res, next) {
     Baralho.findById(req.params.id, function(err, baralho) {
         if (err) return next(err);
         res.send(baralho);
     })
 };
 
-exports.detailsByIdUsuario = function(req, res, next) {
+exports.detailsByName = function(req, res, next) {
+    Usuario.findOne({ nome: req.params.nome },
+        function(err, baralho) {
+            if (err) return next(err);
+            res.send(baralho.id);
+        })
+};
+
+exports.listar = function(req, res, next) {
     Baralho.find({ idUsuario: req.params.idUsuario },
         function(err, baralho) {
             if (err) return next(err);
