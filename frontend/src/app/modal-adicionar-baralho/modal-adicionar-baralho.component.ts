@@ -30,9 +30,7 @@ export class ModalAdicionarBaralhoComponent implements OnInit {
 
   addBaralho(form: any) {
     let newBaralho = form;
-    newBaralho.id = this.baralhoService.getBaralhos().length + 1;
-    newBaralho.idUser = this.userId;
-    this.baralhoService.addBaralho(newBaralho);
+    this.baralhoService.adicionar(newBaralho, this.userId);
     this.novoBaralhoEmitter.emit(newBaralho)
     this.modalService.dismissAll();
   }

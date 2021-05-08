@@ -1,84 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaralhoService {
 
-  // Simulação do banco de dados com um vetor de baralho
-  baralhos = [
-    {
-      'id': 1,
-      'idUser': 1,
-      'nome': 'Bant',
-      'cor': 'Branco'
-    },
-    {
-      'id': 2,
-      'idUser': 1,
-      'nome': 'Esper',
-      'cor': 'Azul'
-    },
-    {
-      'id': 3,
-      'idUser': 1,
-      'nome': 'Grixis',
-      'cor': 'Preto'
-    },
-    {
-      'id': 4,
-      'idUser': 1,
-      'nome': 'Jundin',
-      'cor': 'Branco'
-    },
-    {
-      'id': 5,
-      'idUser': 2,
-      'nome': 'Naya',
-      'cor': 'Azul'
-    },
-    {
-      'id': 6,
-      'idUser': 2,
-      'nome': 'Naya',
-      'cor': 'Vermelho'
-    },
-    {
-      'id': 7,
-      'idUser': 2,
-      'nome': 'Jundin',
-      'cor': 'Preto'
-    },
-    {
-      'id': 8,
-      'idUser': 2,
-      'nome': 'Esper',
-      'cor': 'Verde'
-    }
-  ]
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private toastr: ToastrService) { }
 
-  getBaralhos(): any[] {
-    return this.baralhos;
+  listar(id: number){
+    let url = `http://localhost:8080/idUsuario/{&id}`;
+    return this.http.get<any[]>(url);
   }
 
-  getBaralhosById(id: number) {
-    return this.baralhos.filter(b => b.idUser == id);
+  adicionar(form: any, id: number){
+    let nome = form.nome;
+    let cor = form.cor;
+    let idUsuario = id;
+      
+    let new_deck = {
+      nome: nome,
+      cor: cor,
+      idUsuario: idUsuario      
+    };
+
+    this.http.post<any[]>("http://localhost:8080/baralho",new_deck);
+    this.toastr.success('Baralho criado!','Sucesso!',{timeOut:5000});     
   }
 
-  addBaralho(baralho: any) {
-    this.baralhos.push(baralho);
+  deletar(nome: string){
+    //let url = `http://localhost:8080/baralho/check/{$nome}`;
+    let url = `http://localhost:8080/baralho/{$id}`;
+    return this.http.delete<any[]>(url);
   }
 
-  editBaralho(baralho: any) {
-    this.baralhos.push(baralho);
-  }
+  editar(form: any, id: number) {
+    let nome = form.nome;
+    let cor = form.cor;
+    let idBaralho = id;
+      
+    let up_deck = {
+      nome: nome,
+      cor: cor,
+      idBaralho: idBaralho 
+    };
 
-  delBaralho(idB: number) {
-    this.baralhos.splice(idB, 1);
-
-    console.log(idB);
+    this.http.put<any[]>("http://localhost:8080/baralho/{$id}",up_deck);
+    this.toastr.success('Baralho criado!','Sucesso!',{timeOut:5000});
   }
 }

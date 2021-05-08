@@ -13,7 +13,7 @@ export class ModalEditarBaralhoComponent implements OnInit {
   @Output('close')
   editBaralhoEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  baralhos: any[] = [];
+  baralhos: any;
   
   userId: number = 0;
 
@@ -23,19 +23,17 @@ export class ModalEditarBaralhoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = parseInt(params.id);
     });
-    this.baralhos = this.baralhoService.getBaralhosById(this.userId)
+    this.baralhos = this.baralhoService.listar(this.userId);
   }
 
   open(content: any) {
     this.modalService.open(content, { centered: true, size: 'sm' });
   }
 
-  editBaralho(form: any) {
-    let editBaralho = form;
-    editBaralho.id = this.baralhoService.getBaralhos().length + 1;
-    editBaralho.idUser = this.userId;
-    this.baralhoService.editBaralho(editBaralho);
-    this.editBaralhoEmitter.emit(editBaralho)
+  editBaralho(form: any, idBaralho: number) {
+    let upBaralho = form;
+    this.baralhoService.editar(upBaralho, idBaralho);
+    this. editBaralhoEmitter.emit(upBaralho)
     this.modalService.dismissAll();
   }
 

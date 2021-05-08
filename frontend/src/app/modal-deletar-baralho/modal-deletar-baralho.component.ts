@@ -13,7 +13,7 @@ export class ModalDeletarBaralhoComponent implements OnInit {
   @Output('close')
   deletarBaralhoEmitter: EventEmitter<any> = new EventEmitter<any>();
   
-  baralhos: any[] = [];
+  baralhos: any;
 
   userId: number = 0;
 
@@ -23,7 +23,7 @@ export class ModalDeletarBaralhoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = parseInt(params.id);
     });
-    this.baralhos = this.baralhoService.getBaralhosById(this.userId)
+    this.baralhos = this.baralhoService.listar(this.userId);
   }
 
   open(content: any) {
@@ -31,8 +31,8 @@ export class ModalDeletarBaralhoComponent implements OnInit {
   }
 
   delBaralho(form: any) {
-    let delBaralho = form.id;
-    this.baralhoService.delBaralho(delBaralho);
+    let delBaralho = form.nome;
+    this.baralhoService.deletar(delBaralho);
     this.deletarBaralhoEmitter.emit(delBaralho)
     this.modalService.dismissAll();
   }

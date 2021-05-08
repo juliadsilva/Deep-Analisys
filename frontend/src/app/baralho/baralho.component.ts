@@ -15,8 +15,8 @@ import { UsuarioService } from '../service/usuario.service';
 
 export class BaralhoComponent implements OnInit {
 
-  baralhos: any[] = [];
-  usuario: any[] = [];
+  baralhos: any;
+  usuario: any;
 
   closeResult: string = '';
 
@@ -34,8 +34,8 @@ export class BaralhoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params.id
     });
-    this.baralhos = this.baralhoService.getBaralhosById(this.userId)
-    this.usuario = this.usuarioService.getUsuariosById(this.userId)
+    this.baralhos = this.baralhoService.listar(this.userId);
+    this.usuario = this.usuarioService.listar(this.userId);
   }
 
   public getWinRate(baralho: any) {
@@ -68,4 +68,6 @@ export class BaralhoComponent implements OnInit {
     });
     return `${totalWin} - ${totalLoss}`;
   }
+
+  
 }

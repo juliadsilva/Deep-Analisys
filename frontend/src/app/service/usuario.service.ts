@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Md5 } from 'ts-md5';
@@ -11,6 +10,11 @@ import { Md5 } from 'ts-md5';
 export class UsuarioService {
 
   constructor(private http:HttpClient, private router: Router, private toastr: ToastrService ) { }
+
+  listar(id: number){
+    let url = `http://localhost:8080/usuario/${id}`;
+    return this.http.get<any[]>(url);
+  }
 
   cadastrar(form: any){
     let email = form.email;
@@ -28,8 +32,8 @@ export class UsuarioService {
       email: email,
       token: token
     };
-
-    this.http.post<number>("http://localhost:8080/usuario",new_user);
+ 
+    this.http.post<any[]>("http://localhost:8080/usuario",new_user);
     this.toastr.success('Seja bem vindo ao Deep Analisys!','Parabéns!',{timeOut:5000});     
     this.router.navigate(['/']);
   }
