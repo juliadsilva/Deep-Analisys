@@ -11,11 +11,11 @@ export class BaralhoService {
   constructor(private http:HttpClient, private toastr: ToastrService) { }
 
   listar(id: number){
-    let url = `http://localhost:8080/idUsuario/{&id}`;
+    let url = `http://localhost:8080/idUsuario/${id}`;
     return this.http.get<any[]>(url);
   }
 
-  adicionar(form: any, id: number){
+ adicionar(form: any, id: number){
     let nome = form.nome;
     let cor = form.cor;
     let idUsuario = id;
@@ -36,15 +36,15 @@ export class BaralhoService {
     return this.http.delete<any[]>(url);
   }
 
-  editar(form: any, id: number) {
+  editar(form: any) {
     let nome = form.nome;
     let cor = form.cor;
-    let idBaralho = id;
+    //let idBaralho = id;
       
     let up_deck = {
       nome: nome,
       cor: cor,
-      idBaralho: idBaralho 
+     //idBaralho: idBaralho 
     };
 
     this.http.put<any[]>("http://localhost:8080/baralho/{$id}",up_deck);

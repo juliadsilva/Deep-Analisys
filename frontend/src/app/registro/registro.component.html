@@ -74,8 +74,9 @@
                                     <span class="help-block" *ngIf="resenha.valid && (resenha.dirty || resenha.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
                             </div>
+                            <button [disabled]="isButtonDisabled(form, form.value.senha,form.value.resenha)" (click)="cadastrar(form.value) " type="submit " class="btn btn-block btn-outline-info">Cadastrar-se</button>
+                            <a class="text-center font-weight-bold" routerLink="/login">Já tem conta? Entre aqui</a><br>
                         </form>
-                        <button [disabled]="isButtonDisabled(form, form.value.senha,form.value.resenha)" (click)="cadastrar(form.value) " type="submit " class="btn btn-block btn-outline-info">Cadastrar-se</button>
                     </div>
                 </div>
             </div>

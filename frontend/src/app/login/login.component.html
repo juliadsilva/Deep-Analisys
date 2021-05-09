@@ -36,9 +36,8 @@
                                     <span class="help-block" *ngIf="senha.valid && (senha.dirty || senha.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
                                 <button [disabled]="!form.valid" (click)="login(form.value)" type="submit" class="btn btn-block btn-outline-info">Login</button>
+                                <a class="text-center font-weight-bold" routerLink="/registro">Não tem conta? Cadastre-se</a><br>
                             </form>
-                            <hr>
-                            <a class="text-center" routerLink="/registro">Não tem conta? Cadastre-se</a><br>
                         </div>
                     </div>
                 </div>

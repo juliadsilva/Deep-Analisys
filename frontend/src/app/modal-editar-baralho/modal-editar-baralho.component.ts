@@ -30,9 +30,9 @@ export class ModalEditarBaralhoComponent implements OnInit {
     this.modalService.open(content, { centered: true, size: 'sm' });
   }
 
-  editBaralho(form: any, idBaralho: number) {
+  editBaralho(form: any) {
     let upBaralho = form;
-    this.baralhoService.editar(upBaralho, idBaralho);
+    this.baralhoService.editar(upBaralho);
     this. editBaralhoEmitter.emit(upBaralho)
     this.modalService.dismissAll();
   }

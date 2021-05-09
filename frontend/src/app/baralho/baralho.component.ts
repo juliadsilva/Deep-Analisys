@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 // Service
 import { BaralhoService } from '../service/baralho.service';
@@ -18,16 +18,9 @@ export class BaralhoComponent implements OnInit {
   baralhos: any;
   usuario: any;
 
-  closeResult: string = '';
-
   public userId: number = 0;
 
-  constructor(
-    private http: HttpClient, 
-    private route: ActivatedRoute, 
-    private baralhoService: BaralhoService, 
-    private partidasService: PartidasService, 
-    private usuarioService: UsuarioService) { }
+  constructor(private route: ActivatedRoute, private toastr: ToastrService, private baralhoService: BaralhoService, private partidasService: PartidasService, private usuarioService: UsuarioService) { }
 
   // Acontece antes da tela ser desenhada
   ngOnInit(): void {
@@ -69,5 +62,5 @@ export class BaralhoComponent implements OnInit {
     return `${totalWin} - ${totalLoss}`;
   }
 
-  
+
 }
