@@ -9,7 +9,8 @@ router.post('/', usuario_controller.create);
 
 // Read
 router.get('/:id', usuario_controller.details);
-router.get('/:token', usuario_controller.login);
-router.get('/check/:email', usuario_controller.detailsByEmail);
+router.get('/login/:token', usuario_controller.login);
+router.get('/check/email/:email', usuario_controller.detailsByEmail);
+router.get('/check/username/:username', usuario_controller.detailsByUsername);
 
 module.exports = router;
