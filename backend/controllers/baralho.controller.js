@@ -8,36 +8,14 @@ exports.create = function(req, res, next) {
     });
     baralho.save(function(err) {
         if (err) return next(err);
-        res.send('Baralho criado com sucesso')
-    })
-};
-
-exports.details = function(req, res, next) {
-    Baralho.findById(req.params.id, function(err, baralho) {
-        if (err) return next(err);
         res.send(baralho);
     })
 };
 
-exports.detailsByName = function(req, res, next) {
-    Usuario.findOne({ nome: req.params.nome },
-        function(err, baralho) {
-            if (err) return next(err);
-            res.send(baralho.id);
-        })
-};
-
-exports.listar = function(req, res, next) {
-    Baralho.find({ idUsuario: req.params.idUsuario },
-        function(err, baralho) {
-            if (err) return next(err);
-            res.send(baralho);
-        })
-};
-
 exports.update = function(req, res, next) {
     Baralho.findByIdAndUpdate(req.params.id, {
-            nome: req.body.nome
+            nome: req.body.nome,
+            cor: req.body.cor,
         },
         function(err, baralho) {
             if (err) return next(err);
@@ -47,8 +25,38 @@ exports.update = function(req, res, next) {
 };
 
 exports.delete = function(req, res, next) {
-    Baralho.findByIdAndDelete(req.params.id, function(err, baralho) {
+    Baralho.findOneAndDelete({
+            nome: req.params.nome,
+            idUsuario: req.params.idUsuario
+        },
+        function(err, baralho) {
+            if (err) return next(err);
+            res.send(baralho);
+        })
+};
+
+exports.details = function(req, res, next) {
+    Baralho.findById(req.params.id, function(err, baralho) {
         if (err) return next(err);
         res.send(baralho);
     })
+};
+
+exports.detailsByNome = function(req, res, next) {
+    Baralho.findOne({
+            nome: req.params.nome,
+            idUsuario: req.params.idUsuario
+        },
+        function(err, baralho) {
+            if (err) return next(err);
+            res.send(baralho);
+        })
+};
+
+exports.detailsByIdUsuario = function(req, res, next) {
+    Baralho.find({ idUsuario: req.params.idUsuario },
+        function(err, baralho) {
+            if (err) return next(err);
+            res.send(baralho);
+        })
 };

@@ -8,7 +8,7 @@ exports.create = function(req, res, next) {
     });
     partida.save(function(err) {
         if (err) return next(err);
-        res.send('Partida criada com sucesso')
+        res.send(partida)
     })
 };
 
@@ -28,8 +28,9 @@ exports.detailsByIdBaralho = function(req, res, next) {
 };
 
 exports.delete = function(req, res, next) {
-    Partida.findByIdAndDelete(req.params.id, function(err, partida) {
-        if (err) return next(err);
-        res.send(partida);
-    })
+    Partida.findByIdAndDelete(req.params.id,
+        function(err, partida) {
+            if (err) return next(err);
+            res.send(partida);
+        })
 };
