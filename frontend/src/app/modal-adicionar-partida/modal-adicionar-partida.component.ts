@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { PartidasService } from '../service/partidas.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal-adicionar-partida',
@@ -15,11 +17,11 @@ export class ModalAdicionarPartidaComponent implements OnInit {
 
   baralhoId: number = 0;
 
-  constructor(private modalService: NgbModal, private partidaService: PartidasService, private route: ActivatedRoute) { }
+  constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.baralhoId = parseInt(params.id);
+      this.baralhoId = params.id;
     });
   }
 
@@ -28,12 +30,23 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   }
 
   addpartida(form: any) {
-    let newpartida = form;
-    newpartida.id = this.partidaService.getpartidas().length + 1;
-    newpartida.idBaralho = this.baralhoId;
-    this.partidaService.addpartida(newpartida);
-    this.novaPartidaEmitter.emit(newpartida);
-    this.modalService.dismissAll();
-  }
+    let win = form.win;
+    let loss = form.loss;
+    let idBaralho = this.baralhoId;
 
+    let new_partida = {
+      win: win,
+      loss: loss,
+      idBaralho: idBaralho
+    };
+
+    this.partidasService.adicionar(new_partida).subscribe(res => {
+      if (res.length != 0) {
+        this.toastr.success('Partida criada', 'Sucesso!', { timeOut: 5000 });
+        this.novaPartidaEmitter.emit(new_partida);
+        this.modalService.dismissAll();
+      } else
+        this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
+    });
+  }
 }

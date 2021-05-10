@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
  
     this.usuarioService.login(token).subscribe(res=>{
       if(res != null){
-        let id_logado = Object.values(res)[0];
+        let idLogin = Object.values(res)[0];
         this.toastr.success('Login efetuado com sucesso!','Sucesso!',{timeOut:2000});
-        this.router.navigate([`/baralho/${id_logado}`]);
+        this.router.navigate([`/baralho/${idLogin}`]);
       }else{
         this.toastr.error('Verifique seu usuário e senha!','Usuario não encontrado!',{timeOut:2000});
       }

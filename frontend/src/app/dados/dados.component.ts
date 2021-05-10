@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PartidasService} from '../service/partidas.service';
+import { PartidasService } from '../service/partidas.service';
+import { BaralhoService } from '../service/baralho.service';
 import { ChartDataSets, ChartOptions, plugins } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { ActivatedRoute } from '@angular/router';
@@ -10,20 +11,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./dados.component.css']
 })
 export class DadosComponent implements OnInit {
-  
-  partidas:any[] = [];
-  
-  closeResult: string  = '';
 
-  public baralhoId:number = 0;
+  partidas: any[] = [];
+  baralho: any;
 
-  barChartData: ChartDataSets[] = 
-  [
-    { data: [], 
-      label: 'Win' },
-    { data: [], 
-      label: 'Loss' }
-  ];
+  public baralhoId: number = 0;
+
+  barChartData: ChartDataSets[] =
+    [
+      {
+        data: [],
+        label: 'Win'
+      },
+      {
+        data: [],
+        label: 'Loss'
+      }
+    ];
 
   barChartLabels: Label[] = [];
 
@@ -47,9 +51,9 @@ export class DadosComponent implements OnInit {
           ticks: {
             beginAtZero: true,
             fontColor: 'white'
-          }, 
+          },
           gridLines: {
-            color: '#5f5e5e' 
+            color: '#5f5e5e'
           }
         }
       ],
@@ -80,33 +84,47 @@ export class DadosComponent implements OnInit {
   barChartPlugins = [];
   barChartType = 'bar' as const;
 
-  
-  constructor(private route:ActivatedRoute, private partidaService: PartidasService) { }
+  constructor(private route: ActivatedRoute, private partidasService: PartidasService, private baralhoService: BaralhoService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-    this.baralhoId = params.id
+      this.baralhoId = params.id
     });
-    this.partidas = this.partidaService.getpartidasbyId(this.baralhoId);
+
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      for (let index = 0; index < res.length; index++) {
+        this.partidas.push(res[index]);
+      }
+    });
+    this.baralhoService.detalhes(this.baralhoId).subscribe(res => {
+      this.baralho = Object.values(res);
+    });
+
     this.updateChart();
   }
-  
-  public getWinRate(partida:any) {
+
+  public getWinRate(partida: any) {
     let win = partida.win;
     let loss = partida.loss;
     let total = win + loss;
-    let winRate = (win/total)*100;
+    let winRate = (win / total) * 100;
     return winRate.toPrecision(3);
   }
 
-  updateChart(){
-    this.barChartData.forEach(ds =>{
-      ds.data=[];
-    })
-    this.barChartLabels=[]
+  updateChart() {
+    
+    this.barChartData.forEach(ds => {
+      ds.data = [];
+    });
 
-    this.partidas.forEach( partida=> {
-      this.barChartLabels.push(partida.id);
+    this.barChartLabels = [];
+
+    this.partidas.forEach(partida => {
+      console.log(partida._id);
+      console.log(partida.win);
+      console.log(partida.loss);
+
+      this.barChartLabels.push(partida._id);
       this.barChartData.find(ds => ds.label == "Win")?.data?.push(partida.win);
       this.barChartData.find(ds => ds.label == "Loss")?.data?.push(partida.loss);
     });

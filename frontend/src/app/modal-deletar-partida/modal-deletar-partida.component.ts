@@ -1,7 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { PartidasService } from '../service/partidas.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-modal-deletar-partida',
@@ -14,16 +17,20 @@ export class ModalDeletarPartidaComponent implements OnInit {
   deletarPartidaEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   partidas: any[] = [];
-
   baralhoId: number = 0;
 
-  constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute) { }
+  constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.baralhoId = parseInt(params.id);
+      this.baralhoId = params.id;
     });
-    this.partidas = this.partidasService.getpartidasbyId(this.baralhoId)
+
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      for (let index = 0; index < res.length; index++) {
+        this.partidas.push(res[index]);
+      }
+    });
   }
 
   open(content: any) {
@@ -31,9 +38,15 @@ export class ModalDeletarPartidaComponent implements OnInit {
   }
 
   delPartida(form: any) {
-    let delPartida = form;
-    this.partidasService.delPartida(delPartida);
-    this.deletarPartidaEmitter.emit(delPartida);
-    this.modalService.dismissAll();
+    let idPartida = form.id;
+  
+    this.partidasService.deletar(idPartida).subscribe(res => {
+      if (res != null) {
+        this.toastr.success('Partida excluída', 'Sucesso!', { timeOut: 5000 });
+        this.deletarPartidaEmitter.emit();
+        this.modalService.dismissAll();
+      } else
+        this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
+    });
   }
 }

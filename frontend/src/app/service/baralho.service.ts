@@ -1,53 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaralhoService {
 
+  constructor(private http:HttpClient) { }
 
-  constructor(private http:HttpClient, private toastr: ToastrService) { }
+ adicionar(new_baralho: any){
+    let url = `http://localhost:8080/baralho`;
+    return this.http.post<any[]>(url,new_baralho); 
+  }
 
-  listar(id: number){
-    let url = `http://localhost:8080/idUsuario/${id}`;
+  deletar(nome:string, idUsuario:number){
+    let url = `http://localhost:8080/baralho/${idUsuario}/${nome}`;
+    return this.http.delete<any>(url);
+  }
+
+  editar(idBaralho:number, up_baralho: any) {
+    let url = `http://localhost:8080/baralho/${idBaralho}`;
+    return this.http.put<any[]>(url, up_baralho);   
+  }
+
+  procurar(nome: string, idUsuario:number){
+    let url = `http://localhost:8080/baralho/${idUsuario}/${nome}`;
+    return this.http.get<object>(url);
+  }
+  
+  listarIdUser(id: number){
+    let url = `http://localhost:8080/baralho/idUsuario/${id}`;
     return this.http.get<any[]>(url);
   }
 
- adicionar(form: any, id: number){
-    let nome = form.nome;
-    let cor = form.cor;
-    let idUsuario = id;
-      
-    let new_deck = {
-      nome: nome,
-      cor: cor,
-      idUsuario: idUsuario      
-    };
-
-    this.http.post<any[]>("http://localhost:8080/baralho",new_deck);
-    this.toastr.success('Baralho criado!','Sucesso!',{timeOut:5000});     
-  }
-
-  deletar(nome: string){
-    //let url = `http://localhost:8080/baralho/check/{$nome}`;
-    let url = `http://localhost:8080/baralho/{$id}`;
-    return this.http.delete<any[]>(url);
-  }
-
-  editar(form: any) {
-    let nome = form.nome;
-    let cor = form.cor;
-    //let idBaralho = id;
-      
-    let up_deck = {
-      nome: nome,
-      cor: cor,
-     //idBaralho: idBaralho 
-    };
-
-    this.http.put<any[]>("http://localhost:8080/baralho/{$id}",up_deck);
-    this.toastr.success('Baralho criado!','Sucesso!',{timeOut:5000});
+  detalhes(id: number){
+    let url = `http://localhost:8080/baralho/${id}`;
+    return this.http.get<object>(url);
   }
 }

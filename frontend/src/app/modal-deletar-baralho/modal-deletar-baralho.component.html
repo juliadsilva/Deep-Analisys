@@ -14,7 +14,7 @@
             <form #form="ngForm">
                 <div class="form-group text-info text-center">
                     <label>Baralho</label>
-                    <select type="text" name="id" #id="ngModel" ngModel required class="form-control">
+                    <select type="text" name="nome" #nome="ngModel" ngModel required class="form-control">
                             <option *ngFor="let baralho of baralhos;" selected>{{baralho.nome}}</option>
                     </select>
                 </div>
