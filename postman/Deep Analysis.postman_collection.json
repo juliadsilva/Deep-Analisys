@@ -351,7 +351,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/partida/idBaralho/609956a3b731753c8838489d",
+							"raw": "http://localhost:8080/partida/idBaralho/60984c2c0b6c1d4c88dc115b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -360,7 +360,28 @@
 							"path": [
 								"partida",
 								"idBaralho",
-								"609956a3b731753c8838489d"
+								"60984c2c0b6c1d4c88dc115b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET partida (baralho/ident)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/partida/60984c2c0b6c1d4c88dc115b/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"partida",
+								"60984c2c0b6c1d4c88dc115b",
+								"1"
 							]
 						}
 					},
