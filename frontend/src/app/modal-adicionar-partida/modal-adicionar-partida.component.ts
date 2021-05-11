@@ -15,13 +15,21 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   @Output('close')
   novaPartidaEmitter: EventEmitter<any> = new EventEmitter<any>();
 
+  partidas: any[] = [];
   baralhoId: number = 0;
+  id: number = 0;
 
   constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.baralhoId = params.id;
+    });
+
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      for (let index = 0; index < res.length; index++) {
+        this.partidas.push(res[index]);
+      }
     });
   }
 
@@ -30,11 +38,13 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   }
 
   addpartida(form: any) {
+    let id = this.partidas.length + 1;
     let win = form.win;
     let loss = form.loss;
     let idBaralho = this.baralhoId;
 
     let new_partida = {
+      ident: id,
       win: win,
       loss: loss,
       idBaralho: idBaralho

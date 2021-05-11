@@ -28,13 +28,12 @@ export class BaralhoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params.id
     });
-    
+        
     this.baralhoService.listarIdUser(this.userId).subscribe(res=>{
       for( let index = 0; index< res.length; index++ ){
         this.baralhos.push(res[index]);
       }
     });
-
     
     this.usuarioService.detalhes(this.userId).subscribe(res =>{
       this.usuario = Object.values(res);

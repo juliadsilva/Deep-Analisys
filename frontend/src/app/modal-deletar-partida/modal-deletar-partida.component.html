@@ -14,8 +14,8 @@
             <form #form="ngForm">
                 <div class="form-group text-info text-center">
                     <label>Partida</label>
-                    <select type="text" name="id" #nid="ngModel" ngModel required class="form-control">
-                            <option *ngFor="let partida of partidas; " selected>{{partida._id}}</option>
+                    <select type="text" name="id" #id="ngModel" ngModel required class="form-control">
+                            <option *ngFor="let partida of partidas; " selected>{{partida.ident}}</option>
                     </select>
                 </div>
             </form>

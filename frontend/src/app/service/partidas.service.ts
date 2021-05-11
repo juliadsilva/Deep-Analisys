@@ -13,8 +13,13 @@ export class PartidasService {
     return this.http.post<any[]>(url,new_partida); 
   }
 
-  deletar(idPartida: number){
-    let url = `http://localhost:8080/partida/${idPartida}`;
+  procurar(ident: number, idBaralho:number){
+    let url = `http://localhost:8080/partida/${idBaralho}/${ident}`;
+    return this.http.get<object>(url);
+  }
+
+  deletar(id: number){
+    let url = `http://localhost:8080/partida/${id}`;
     return this.http.delete<any>(url);
   }
 

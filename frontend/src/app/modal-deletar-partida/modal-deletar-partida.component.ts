@@ -18,6 +18,7 @@ export class ModalDeletarPartidaComponent implements OnInit {
 
   partidas: any[] = [];
   baralhoId: number = 0;
+  partidaId: number = 0;
 
   constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
@@ -38,14 +39,21 @@ export class ModalDeletarPartidaComponent implements OnInit {
   }
 
   delPartida(form: any) {
-    let idPartida = form.id;
-  
-    this.partidasService.deletar(idPartida).subscribe(res => {
+    let identi = form.id;
+    let IdBaralho = this.baralhoId;
+
+    this.partidasService.procurar(identi, IdBaralho).subscribe(res => {
       if (res != null) {
-        this.toastr.success('Partida excluída', 'Sucesso!', { timeOut: 5000 });
-        this.deletarPartidaEmitter.emit();
-        this.modalService.dismissAll();
-      } else
+        this.partidaId = Object.values(res)[0];
+        this.partidasService.deletar(this.partidaId).subscribe(res => {
+          if (res != null) {
+            this.toastr.success('Partida excluída', 'Sucesso!', { timeOut: 5000 });
+            this.deletarPartidaEmitter.emit();
+            this.modalService.dismissAll();
+          } else
+            this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
+        });
+      }else
         this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
     });
   }
