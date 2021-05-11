@@ -10,6 +10,7 @@ router.post('/', partida_controller.create);
 // Read
 router.get('/:id', partida_controller.detailsById);
 router.get('/idBaralho/:idBaralho', partida_controller.detailsByIdBaralho);
+router.get('/:idBaralho/:ident', partida_controller.detailsByIdent);
 
 // Delete
 router.delete('/:id', partida_controller.delete);
