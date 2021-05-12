@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DadosComponent implements OnInit {
 
   partidas: any[] = [];
+  dadosGrafico: any[] = [];
   baralho: any;
 
   public baralhoId: number = 0;
@@ -90,6 +91,12 @@ export class DadosComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.baralhoId = params.id
     });
+        
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      for (let index = 0; index < res.length; index++) {
+        this.partidas.push(res[index]);
+      }
+    });
 
     this.baralhoService.detalhes(this.baralhoId).subscribe(res => {
       this.baralho = Object.values(res);
@@ -115,18 +122,14 @@ export class DadosComponent implements OnInit {
     });
 
     this.barChartLabels = [];
-    
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
-      for (let index = 0; index < res.length; index++) {
-        this.partidas.push(res[index]);
-      }
-    });
 
-    console.log(this.partidas)
-    this.partidas.forEach(partida =>{
-        this.barChartLabels.push(partida[0]);
-        this.barChartData.find(ds => ds.label == "Win")?.data?.push(partida[1]);
-        this.barChartData.find(ds => ds.label == "Loss")?.data?.push(partida[2]);
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      this.dadosGrafico = res;
+      for (let index = 0; index < this.dadosGrafico.length; index++) {
+        this.barChartLabels.push(this.dadosGrafico[index].ident);
+        this.barChartData.find(ds => ds.label == "Win")?.data?.push(this.dadosGrafico[index].win);
+        this.barChartData.find(ds => ds.label == "Loss")?.data?.push(this.dadosGrafico[index].loss);
+      }
     });
   }
 }

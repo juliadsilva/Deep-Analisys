@@ -50,6 +50,7 @@ export class ModalDeletarPartidaComponent implements OnInit {
             this.toastr.success('Partida excluída', 'Sucesso!', { timeOut: 5000 });
             this.deletarPartidaEmitter.emit();
             this.modalService.dismissAll();
+            location.reload();  
           } else
             this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
         });

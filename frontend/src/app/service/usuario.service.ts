@@ -25,11 +25,11 @@ export class UsuarioService {
 
   emailNaoExiste(email: string){
     let url = `http://localhost:8080/usuario/check/email/${email}`;
-    return this.http.get<any[]>(url);
+    return this.http.get<object>(url);
   } 
 
   usernameNaoExiste(username: string){
     let url = `http://localhost:8080/usuario/check/username/${username}`;
-    return this.http.get<any[]>(url);
+    return this.http.get<object>(url);
   } 
 }

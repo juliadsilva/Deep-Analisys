@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BaralhoService } from '../service/baralho.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modal-adicionar-baralho',
@@ -45,6 +46,7 @@ export class ModalAdicionarBaralhoComponent implements OnInit {
         this.toastr.success('Baralho criado', 'Sucesso!', { timeOut: 5000 });
         this.novoBaralhoEmitter.emit(new_baralho);
         this.modalService.dismissAll();
+        location.reload();   
       } else
         this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
     });

@@ -3,19 +3,36 @@
         <a class="navbar-brand" routerLink="/">
             <img src="../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
         </a>
-        <div>
-            <button class="btn btn-outline-info btn-md" type="submit">{{usuario[1]}}</button>
-        </div>
+
+        <button class="btn btn-outline-info btn-md" (click)="open(mymodal)">  
+            {{usuario[1]}}
+        </button>
+
+        <ng-template #mymodal let-modal>
+            <div class="modal-content modal-dialog-centered">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center text-info "> {{usuario[1]}}</h5>
+                    <button type="button " class="close text-dark " aria-label="Close " (click)="modal.close() ">
+                    <span aria-hidden="true ">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body ">
+                    <p>Estado: {{usuario[2]}}</p>
+                    <p>Cidade: {{usuario[3]}}</p>
+                    <p>E-mail: {{usuario[4]}}</p>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </nav>
 
-<div class="bg-image">
+<div class="bg-image ">
     <div class=" card-deck ">
         <div class="container ">
             <div class="row ">
                 <!-- NGFOR para criar cards com os baralhos-->
                 <form *ngFor="let baralho of baralhos; " class="col-md-4 animate__animated animate__bounceInRight ">
-                    <a routerLink="/dados/{{baralho._id}}">
+                    <a routerLink="/dados/{{baralho._id}} ">
                         <div class=" card mt-2 ">
                             <div class="card-body text-justify table-responsive ">
                                 <h5 class="card-title text-center text-title ">{{baralho.nome}}</h5>
@@ -29,8 +46,8 @@
                                     </thead>
                                     <tbody>
                                         <tr class="text-white ">
-                                            <td>{{getWinRate(baralho)}}</td>
-                                            <td>{{getMatches(baralho)}}</td>
+                                            <td>{{getWinRate(baralho._id)}}</td>
+                                            <td>{{getMatches(baralho._id)}}</td>
                                     </tbody>
                                 </table>
                             </div>

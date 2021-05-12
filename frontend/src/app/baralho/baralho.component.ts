@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // Service
 import { BaralhoService } from '../service/baralho.service';
@@ -18,56 +19,38 @@ export class BaralhoComponent implements OnInit {
   baralhos: any[] = [];
   partidas: any[] = [];
   usuario: any;
+  winrate: any[] = [];
 
   public userId: number = 0;
 
-  constructor(private route: ActivatedRoute, private form: FormsModule, private baralhoService: BaralhoService, private partidasService: PartidasService, private usuarioService: UsuarioService) { }
+  constructor(private modalService: NgbModal, private route: ActivatedRoute, private form: FormsModule, private baralhoService: BaralhoService, private partidasService: PartidasService, private usuarioService: UsuarioService) { }
 
   // Acontece antes da tela ser desenhada
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params.id
     });
-        
-    this.baralhoService.listarIdUser(this.userId).subscribe(res=>{
-      for( let index = 0; index< res.length; index++ ){
-        this.baralhos.push(res[index]);
-      }
-    });
-    
-    this.usuarioService.detalhes(this.userId).subscribe(res =>{
+
+    this.usuarioService.detalhes(this.userId).subscribe(res => {
       this.usuario = Object.values(res);
     });
-  }
-  
-  public getWinRate(baralho: any) {
-    /*let id = baralho.id;
-    let partidas = this.partidasService.listarIdBaralho(id);
-    let totalWin = 0;
-    let totalLoss = 0;
-    if (partidas.length > 0) {
-      partidas.forEach(partida => {
-        totalWin += partida.win
-        totalLoss += partida.loss
-      });
 
-      let total = totalWin + totalLoss;
-      let winRate = (totalWin / total) * 100;
-      return `${winRate.toPrecision(2)}%`;
-    }
-    else*/
-    return 'No games'
-  }
-
-  public getMatches(baralho: any) {
-    let id = baralho.id;
-    let totalWin = 0;
-    let totalLoss = 0;
-
-    this.partidas.forEach(partida => {
-      totalWin += partida.win
-      totalLoss += partida.loss
+    this.baralhoService.listarIdUser(this.userId).subscribe(res => {
+      for (let index = 0; index < res.length; index++) {
+        this.baralhos.push(res[index]);
+        
+      }
     });
-    return `${totalWin} - ${totalLoss}`;
+  }
+
+  open(content: any) {
+    this.modalService.open(content, { centered: true, size: 'sm' });
+  }
+
+  public getWinRate(baralhoId: number) {
+
+  }
+
+  public getMatches(baralhoId: number) {   
   }
 }

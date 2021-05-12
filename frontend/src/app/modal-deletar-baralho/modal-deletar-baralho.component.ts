@@ -45,6 +45,7 @@ export class ModalDeletarBaralhoComponent implements OnInit {
         this.toastr.success('Baralho excluído', 'Sucesso!', { timeOut: 5000 });
         this.deletarBaralhoEmitter.emit();
         this.modalService.dismissAll();
+        location.reload();  
       } else
         this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
     });
