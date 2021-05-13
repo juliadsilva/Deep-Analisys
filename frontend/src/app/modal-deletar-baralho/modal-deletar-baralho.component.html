@@ -21,7 +21,20 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="delBaralho(form.value)">Deletar</button>
+            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="open(mymodal)">Deletar</button>
+
+            <ng-template #mymodal let-modal>
+                <div class="modal-content modal-dialog-centered">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center text-danger ">Tem certeza que deseja deletar o baralho?</h5>
+                        <button type="button " class="close text-dark " aria-label="Close " (click)="modal.close() "></button>
+                        <span aria-hidden="true ">&times;</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="delBaralho(form.value)">Sim</button>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </ng-template>

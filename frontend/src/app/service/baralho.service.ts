@@ -8,7 +8,7 @@ export class BaralhoService {
 
   constructor(private http:HttpClient) { }
 
- adicionar(new_baralho: any){
+  adicionar(new_baralho: any){
     let url = `http://localhost:8080/baralho`;
     return this.http.post<any[]>(url,new_baralho); 
   }

@@ -49,7 +49,8 @@ export class ModalAdicionarPartidaComponent implements OnInit {
       loss: loss,
       idBaralho: idBaralho
     };
-
+    
+    console.log(new_partida)
     this.partidasService.adicionar(new_partida).subscribe(res => {
       if (res.length != 0) {
         this.toastr.success('Partida criada', 'Sucesso!', { timeOut: 5000 });
