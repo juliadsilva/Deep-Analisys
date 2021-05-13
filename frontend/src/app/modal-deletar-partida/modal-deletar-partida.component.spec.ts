@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalDeletarPartidaComponent } from './modal-deletar-partida.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule} from 'ngx-toastr';
+import { ModalDeletarPartidaComponent } from './modal-deletar-partida.component';
 
 describe('ModalDeletarPartidaComponent', () => {
   let component: ModalDeletarPartidaComponent;
@@ -8,7 +10,7 @@ describe('ModalDeletarPartidaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ ModalDeletarPartidaComponent ]
     })
     .compileComponents();

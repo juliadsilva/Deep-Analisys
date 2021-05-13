@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { BaralhoService } from '../service/baralho.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modal-adicionar-baralho',

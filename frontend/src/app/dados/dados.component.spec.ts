@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DadosComponent } from './dados.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { DadosComponent } from './dados.component';
 
 describe('DadosComponent', () => {
   let component: DadosComponent;
@@ -8,7 +9,7 @@ describe('DadosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [DadosComponent]
     })
       .compileComponents();

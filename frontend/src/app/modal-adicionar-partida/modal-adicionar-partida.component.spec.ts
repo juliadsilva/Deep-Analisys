@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida.component';
+import { ToastrModule } from 'ngx-toastr';
 
 describe(' ModalAdicionarPartidaComponent', () => {
   let component: ModalAdicionarPartidaComponent;
@@ -8,7 +10,7 @@ describe(' ModalAdicionarPartidaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ ModalAdicionarPartidaComponent ]
     })
     .compileComponents();

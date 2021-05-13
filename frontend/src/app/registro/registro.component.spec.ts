@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistroComponent } from './registro.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule} from 'ngx-toastr';
+import { RegistroComponent } from './registro.component';
 
 describe('RegistroComponent', () => {
   let component: RegistroComponent;
@@ -8,7 +11,7 @@ describe('RegistroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ToastrModule.forRoot()],
       declarations: [RegistroComponent]
     })
       .compileComponents();

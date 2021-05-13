@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BaralhoComponent } from './baralho.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { BaralhoComponent } from './baralho.component';
 
 describe('BaralhoComponent', () => {
   let component: BaralhoComponent;
@@ -8,7 +10,7 @@ describe('BaralhoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule],
       declarations: [BaralhoComponent]
     })
       .compileComponents();
