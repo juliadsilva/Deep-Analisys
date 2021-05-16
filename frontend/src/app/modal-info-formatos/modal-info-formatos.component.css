@@ -1,5 +1,4 @@
-input,
-select {
+input {
     background-color: rgba(15, 117, 196, 0.2);
 }
 
@@ -13,7 +12,7 @@ select {
     right: 15px;
     height: 50px;
     width: 50px;
-    margin-bottom: 140px;
+    margin-bottom: 200px;
     margin-right: 20px;
     border-radius: 30px;
 }

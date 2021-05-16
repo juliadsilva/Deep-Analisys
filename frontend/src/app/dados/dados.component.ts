@@ -18,21 +18,17 @@ export class DadosComponent implements OnInit {
 
   public baralhoId: number = 0;
 
-  barChartData: ChartDataSets[] =
+  lineChartData: ChartDataSets[] =
     [
       {
         data: [],
-        label: 'Win'
+        label: 'WinRate'
       },
-      {
-        data: [],
-        label: 'Loss'
-      }
     ];
 
-  barChartLabels: Label[] = [];
+  lineChartLabels: Label[] = [];
 
-  barChartOptions = {
+  lineChartOptions = {
     responsive: true,
     title: {
       display: true,
@@ -68,22 +64,17 @@ export class DadosComponent implements OnInit {
     }
   };
 
-  barChartColors: Color[] = [
+  lineChartColors: Color[] = [
     {
       backgroundColor: 'rgba(75, 192, 192,0.6)',
       borderColor: 'rgb(75, 192, 192)',
       borderWidth: 3
     },
-    {
-      backgroundColor: 'rgba(255, 36, 99,0.6)',
-      borderColor: 'rgb(255, 36, 99)',
-      borderWidth: 3
-    }
   ];
 
-  barChartLegend = true;
-  barChartPlugins = [];
-  barChartType = 'bar' as const;
+  lineChartLegend = true;
+  lineChartPlugins = [];
+  lineChartType = 'line' as const;
 
   constructor(private route: ActivatedRoute, private partidasService: PartidasService, private baralhoService: BaralhoService) { }
 
@@ -93,10 +84,26 @@ export class DadosComponent implements OnInit {
     });
         
     this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      let win  = 0;
+      let loss = 0;
+      let total = 0;
+      let winRate = 0;
+      
       for (let index = 0; index < res.length; index++) {
         this.partidas.push(res[index]);
+        win = res[index].win + win;
+        loss = res[index].loss + loss;
       }
-    });
+
+      total = win + loss;
+      winRate = (win / total) * 100;
+
+      let wr_baralho = {
+        winrate: winRate.toPrecision(3)
+      }
+
+      this.baralhoService.atualizarWinRate(this.baralhoId, wr_baralho).subscribe();
+    });   
 
     this.baralhoService.detalhes(this.baralhoId).subscribe(res => {
       this.baralho = Object.values(res);
@@ -117,18 +124,10 @@ export class DadosComponent implements OnInit {
 
   updateChart() {
 
-    this.barChartData.forEach(ds => {
-      ds.data = [];
-    });
-
-    this.barChartLabels = [];
-
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+     this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
       this.dadosGrafico = res;
       for (let index = 0; index < this.dadosGrafico.length; index++) {
-        this.barChartLabels.push(this.dadosGrafico[index].ident);
-        this.barChartData.find(ds => ds.label == "Win")?.data?.push(this.dadosGrafico[index].win);
-        this.barChartData.find(ds => ds.label == "Loss")?.data?.push(this.dadosGrafico[index].loss);
+        this.lineChartLabels.push(this.dadosGrafico[index].ident);     
       }
     });
   }

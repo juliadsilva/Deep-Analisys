@@ -43,11 +43,11 @@ export class ModalEditarBaralhoComponent implements OnInit {
     let idUsuario = this.userId;
 
     let nome= form.nome;
-    let cor = form.cor;
+    let formato = form.formato;
 
     let up_baralho = {
       nome: nome,
-      cor: cor
+      formato: formato
     }
     
     this.baralhoService.procurar(nomeselect, idUsuario).subscribe(res => {

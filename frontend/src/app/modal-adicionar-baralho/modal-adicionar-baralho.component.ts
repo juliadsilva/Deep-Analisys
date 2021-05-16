@@ -31,12 +31,13 @@ export class ModalAdicionarBaralhoComponent implements OnInit {
 
   addBaralho(form: any) {
     let nome = form.nome;
-    let cor = form.cor;
+    let formato = form.formato;
     let idUsuario = this.userId;
 
     let new_baralho = {
       nome: nome,
-      cor: cor,
+      formato: formato,
+      winrate: 0,
       idUsuario: idUsuario
     };
 

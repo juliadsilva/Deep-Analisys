@@ -38,17 +38,12 @@ export class BaralhoComponent implements OnInit {
     this.baralhoService.listarIdUser(this.userId).subscribe(res => {
       for (let index = 0; index < res.length; index++) {
         this.baralhos.push(res[index]);
-        
       }
     });
   }
 
   open(content: any) {
     this.modalService.open(content, { centered: true, size: 'sm' });
-  }
-
-  public getWinRate(baralhoId: number) {
-
   }
 
   public getMatches(baralhoId: number) {   

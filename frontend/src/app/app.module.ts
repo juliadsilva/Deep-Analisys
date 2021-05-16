@@ -27,13 +27,13 @@ import { TimeComponent } from './time/time.component';
 import { BaralhoComponent } from './baralho/baralho.component';
 import { DadosComponent } from './dados/dados.component';
 
-
 // Modal
 import { ModalAdicionarBaralhoComponent } from './modal-adicionar-baralho/modal-adicionar-baralho.component';
 import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida/modal-adicionar-partida.component';
 import { ModalDeletarBaralhoComponent } from './modal-deletar-baralho/modal-deletar-baralho.component';
 import { ModalEditarBaralhoComponent } from './modal-editar-baralho/modal-editar-baralho.component';
 import { ModalDeletarPartidaComponent } from './modal-deletar-partida/modal-deletar-partida.component';
+import { ModalInfoFormatosComponent } from './modal-info-formatos/modal-info-formatos.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { ModalDeletarPartidaComponent } from './modal-deletar-partida/modal-dele
     ModalDeletarBaralhoComponent,
     ModalEditarBaralhoComponent,
     ModalDeletarPartidaComponent,
+    ModalInfoFormatosComponent,
   ],
   imports: [
     BrowserModule,

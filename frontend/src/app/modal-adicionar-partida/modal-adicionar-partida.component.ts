@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { BaralhoService } from '../service/baralho.service';
 import { PartidasService } from '../service/partidas.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +20,7 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   baralhoId: number = 0;
   id: number = 0;
 
-  constructor(private modalService: NgbModal, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+  constructor(private modalService: NgbModal,  private baralhoService: BaralhoService, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

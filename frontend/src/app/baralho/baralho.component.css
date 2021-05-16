@@ -15,9 +15,19 @@
     padding-top: 80px;
 }
 
-.text-title {
-    color: #fdfdfd;
-    font-size: x-large;
+.fixed-button {
+    background-color: #012a4a;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 200px;
+    margin-right: 20px;
+    border-radius: 30px;
 }
 
 a:hover {

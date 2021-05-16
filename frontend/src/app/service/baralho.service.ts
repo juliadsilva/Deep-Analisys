@@ -23,6 +23,11 @@ export class BaralhoService {
     return this.http.put<any[]>(url, up_baralho);   
   }
 
+  atualizarWinRate(idBaralho:number, wr_baralho: any) {
+    let url = `http://localhost:8080/baralho/winrate/${idBaralho}`;
+    return this.http.put<any[]>(url, wr_baralho);   
+  }
+
   procurar(nome: string, idUsuario:number){
     let url = `http://localhost:8080/baralho/${idUsuario}/${nome}`;
     return this.http.get<object>(url);

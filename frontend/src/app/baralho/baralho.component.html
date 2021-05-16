@@ -35,21 +35,9 @@
                     <a routerLink="/dados/{{baralho._id}}">
                         <div class=" card mt-2 ">
                             <div class="card-body text-justify table-responsive ">
-                                <h5 class="card-title text-center text-title ">{{baralho.nome}}</h5>
-                                <h6 class="card-subtitle mb-2 text-light text-center ">Cor: {{baralho.cor}} </h6>
-                                <table class="table table-sm text-center ">
-                                    <thead>
-                                        <tr class="card-text text-white font-weight-bolder ">
-                                            <th scope="col ">WINRATE</th>
-                                            <th scope="col ">MATCHES</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-white ">
-                                            <td>{{getWinRate(baralho._id)}}</td>
-                                            <td>{{getMatches(baralho._id)}}</td>
-                                    </tbody>
-                                </table>
+                                <h4 class="card-title text-center text-info">{{baralho.nome}}</h4>
+                                <h5 class="card-subtitle mb-2 text-light text-center ">Formato: {{baralho.formato}} </h5>
+                                <h5 class="card-subtitle mb-2 text-light text-center ">WINRATE: {{baralho.winrate}} %</h5>
                             </div>
                         </div>
                     </a>
@@ -58,6 +46,8 @@
         </div>
     </div>
 </div>
+
+<app-modal-info-formatos></app-modal-info-formatos>
 
 <app-modal-adicionar-baralho></app-modal-adicionar-baralho>
 
