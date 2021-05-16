@@ -3,7 +3,8 @@ var Baralho = require('../models/baralho.model');
 exports.create = function(req, res, next) {
     let baralho = new Baralho({
         nome: req.body.nome,
-        cor: req.body.cor,
+        formato: req.body.formato,
+        winrate: req.body.winrate,
         idUsuario: req.body.idUsuario
     });
     baralho.save(function(err) {
@@ -15,11 +16,20 @@ exports.create = function(req, res, next) {
 exports.update = function(req, res, next) {
     Baralho.findByIdAndUpdate(req.params.id, {
             nome: req.body.nome,
-            cor: req.body.cor,
+            formato: req.body.formato,
         },
         function(err, baralho) {
             if (err) return next(err);
-            baralho.nome = req.body.nome;
+            res.send(baralho);
+        })
+};
+
+exports.updateWR = function(req, res, next) {
+    Baralho.findByIdAndUpdate(req.params.id, {
+            winrate: req.body.winrate,
+        },
+        function(err, baralho) {
+            if (err) return next(err);
             res.send(baralho);
         })
 };

@@ -14,6 +14,7 @@ router.get('/:idUsuario/:nome', baralho_controller.detailsByNome);
 
 // Update
 router.put('/:id', baralho_controller.update);
+router.put('/winrate/:id', baralho_controller.updateWR);
 
 // Delete
 router.delete('/:idUsuario/:nome', baralho_controller.delete);
