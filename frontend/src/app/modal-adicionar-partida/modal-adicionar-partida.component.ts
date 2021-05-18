@@ -18,8 +18,7 @@ export class ModalAdicionarPartidaComponent implements OnInit {
 
   partidas: any[] = [];
   baralhoId: number = 0;
-  id: number = 0;
-
+  
   constructor(private modalService: NgbModal,  private baralhoService: BaralhoService, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -50,8 +49,7 @@ export class ModalAdicionarPartidaComponent implements OnInit {
       loss: loss,
       idBaralho: idBaralho
     };
-    
-    console.log(new_partida)
+
     this.partidasService.adicionar(new_partida).subscribe(res => {
       if (res.length != 0) {
         this.toastr.success('Partida criada', 'Sucesso!', { timeOut: 5000 });
