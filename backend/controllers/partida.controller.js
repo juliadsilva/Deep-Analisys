@@ -21,7 +21,9 @@ exports.detailsById = function(req, res, next) {
 };
 
 exports.detailsByIdBaralho = function(req, res, next) {
-    Partida.find({ idBaralho: req.params.idBaralho },
+    Partida.find({
+            idBaralho: req.params.idBaralho
+        },
         function(err, partida) {
             if (err) return next(err);
             res.send(partida);
