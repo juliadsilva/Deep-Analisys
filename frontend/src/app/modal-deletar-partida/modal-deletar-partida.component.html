@@ -1,4 +1,4 @@
-<button class="fixed-button wobble" (click)="open(mymodal)">  
+<button id="deletar" class="fixed-button wobble" (click)="open(mymodal)">  
     <i class="fa fa-times fa-2x"></i>
 </button>
 
@@ -21,8 +21,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="open(mymodal)">Deletar</button>
-
+            <button id="delC" type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="open(mymodal)">Deletar</button>
             <ng-template #mymodal let-modal>
                 <div class="modal-content modal-dialog-centered">
                     <div class="modal-header">
@@ -31,7 +30,7 @@
                         <span aria-hidden="true ">&times;</span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="delPartida(form.value)">Sim</button>
+                        <button id="del" type=" button " class="btn btn-block btn-outline-info mb-2 " [disabled]="!form.valid " (click)="delPartida(form.value) ">Sim</button>
                     </div>
                 </div>
             </ng-template>

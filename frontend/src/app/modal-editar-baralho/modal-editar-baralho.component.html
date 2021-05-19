@@ -1,4 +1,4 @@
-<button class="fixed-button wobble" (click)="open(mymodal)">  
+<button id="editar" class="fixed-button wobble" (click)="open(mymodal)">  
     <i class="fa fa-pencil fa-2x"></i>
 </button>
 
@@ -41,7 +41,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="editBaralho(form.value)">Salvar</button>
+            <button id="edit" type="button " class="btn btn-block btn-outline-info mb-2" [disabled]="!form.valid" (click)="editBaralho(form.value)">Salvar</button>
         </div>
     </div>
 </ng-template>
