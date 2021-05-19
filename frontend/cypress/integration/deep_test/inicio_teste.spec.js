@@ -6,6 +6,7 @@ describe('Caso de Teste: Verificar que as páginas do site estão funcionando e 
 
         cy.visit('http://localhost:4200/');
         cy.get('h1').should('contain.text', 'Bem vindo ao Deep Analysis');
+        cy.wait(4000);
     });
 
     it('Cenário: Navegar ate Equipe - Verificar que a pagina contem nomes dos integrantes', () => {
@@ -14,6 +15,7 @@ describe('Caso de Teste: Verificar que as páginas do site estão funcionando e 
         cy.get('#time').click();
         cy.get('#nome1').should('contain.text', 'Julia Daniele Moreira da Silva');
         cy.get('#nome2').should('contain.text', 'Mateus Rocha de Carvalho Alves');
+        cy.wait(4000);
     });
 
     it('Cenário: Navegar ate Cadastre-se - Verificar o conteudo', () => {
@@ -22,6 +24,7 @@ describe('Caso de Teste: Verificar que as páginas do site estão funcionando e 
         cy.get('#registro').click();
         cy.get('h4').should('contain.text', 'Cadraste-se');
         cy.get('h5').should('not.contain.text', 'Cadraste-se');
+        cy.wait(4000);
 
     });
 
@@ -31,6 +34,7 @@ describe('Caso de Teste: Verificar que as páginas do site estão funcionando e 
         cy.get('#login').click();
         cy.get('h5').should('contain.text', 'Login');
         cy.get('a').should('contain.text', 'Não tem conta? Cadastre-se');
+        cy.wait(4000);
 
     });
 })
@@ -46,7 +50,7 @@ describe('Caso de Teste: Testar funcionalidades de Login', () => {
         cy.get('input[name ="senha"]').type('12345678');
         cy.get('input[name ="resenha"]').type('12345678');
         cy.get('button').click();
-        cy.wait(3000);
+        cy.wait(4000);
     });
 
     it('Cenario: Falha ao tentar registrar um usuario com dados errados!', () => {
@@ -58,26 +62,30 @@ describe('Caso de Teste: Testar funcionalidades de Login', () => {
         cy.get('input[name ="senha"]').type('12345678');
         cy.get('input[name ="resenha"]').type('1234567');
         cy.get('button').should('be.disabled');
+        cy.wait(4000);
     });
 
     it('Cenario de Teste: Login na plataforma com sucesso!', () => {
         var userInfo = createUser();
-        cy.wait(3000);
+        cy.wait(4000);
         cy.visit('http://localhost:4200/login');
         cy.get('input[name="username"]').type(userInfo[0]);
         cy.get('input[name ="senha"]').type(userInfo[1]);
         cy.get('button').click();
         cy.get('button').should('contain.text', 'userTest');
+        cy.wait(4000);
     });
 
     it('Cenario de Teste: Falha ao realizar login!', () => {
         cy.visit('http://localhost:4200/login');
-        cy.get('input[name="username"]').type('userDeep');
+        cy.get('input[name="username"]').type('userDeepNot');
         cy.get('input[name ="senha"]').type('12345678');
+        cy.get('button').click();
+        cy.wait(4000);
         // Testar toast
     })
 
-    //Functions
+    //Functionss
     function createUser() {
         let userTest = 'userTest';
         let userPass = '12345678';
