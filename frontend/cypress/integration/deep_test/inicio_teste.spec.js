@@ -1,8 +1,5 @@
 /// <reference types="cypress"/>
 
-const { Toast } = require("bootstrap");
-const { ToastContainerDirective } = require("ngx-toastr");
-
 describe('Caso de Teste: Verificar que as páginas do site estão funcionando e apresentam o contéudo correto.', () => {
 
     it('Cenário: Entrar no site', () => {
