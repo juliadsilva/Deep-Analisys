@@ -37,14 +37,15 @@ describe('Caso de Teste: Testar funcionalidades de Login', () => {
         cy.wait(3000);
     });
 
-    it('Cenario: Falha ao realizar login!', () => {
+    /*it('Cenario: Falha ao realizar login!', () => {
         cy.visit('http://localhost:4200/login');
         cy.get('input[name="username"]').type('userDeepNot');
         cy.get('input[name ="senha"]').type('12345678');
         cy.get('button').click();
         cy.wait(3000);
         // Testar toast
-    })
+    });
+    */
 
     //Functionss
     function createUser() {

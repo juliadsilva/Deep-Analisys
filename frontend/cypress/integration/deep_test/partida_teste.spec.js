@@ -50,6 +50,7 @@ describe('Caso de Teste: Testar funcionalidades da pagina de partidas', () => {
         cy.wait(1000);
         cy.get('#del').click();
         cy.wait(1000);
+        // Falta a assertiva aqui
     });
 
     //Functionss
