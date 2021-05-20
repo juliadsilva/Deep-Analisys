@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { InicioComponent } from './inicio.component';
 import { By } from '@angular/platform-browser';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
 
 describe('InicioComponent', () => {
   let component: InicioComponent;
@@ -33,7 +33,6 @@ describe('InicioComponent', () => {
       it('Deve ter um titulo', () => {
         fixture.detectChanges();
         let de = fixture.debugElement.nativeElement.querySelector('#titulo').textContent;
-        console.log(de);
         expect(de).toEqual('Bem vindo ao Deep Analysis');
       });
 
@@ -89,7 +88,16 @@ describe('InicioComponent', () => {
     });
 
     describe('Teste Funções', () => {
-     
+
+      it('Funcionalidade botão Login', () => {
+      fixture.detectChanges();
+      let button = fixture.debugElement.nativeElement.querySelector('#login');
+      expect(button).toBeTruthy();
+      userEvent.click(button);
+
+      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
+      console.log(de);
+      });    
     });
   });
 });

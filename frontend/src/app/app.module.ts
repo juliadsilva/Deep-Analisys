@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
-import { ModalModule } from 'ng2-modal';
 
 //TOASTR
 import { ToastrModule } from 'ngx-toastr';
