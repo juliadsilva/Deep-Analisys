@@ -14,7 +14,7 @@
                     <div class='card-header'>
                         <div class="row">
                             <div class="col-md-6 offset-md-5">
-                                <h5 class="text-green lead font-weight-bold">Login</h5>
+                                <h5 id="titulo" class="text-green lead font-weight-bold">Login</h5>
                             </div>
                         </div>
                     </div>
@@ -35,8 +35,8 @@
                                     <span class="help-block" *ngIf="!senha.valid && (senha.dirty || senha.touched)"> <i class="fa fa-remove"></i> Ops</span>
                                     <span class="help-block" *ngIf="senha.valid && (senha.dirty || senha.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
-                                <button [disabled]="!form.valid" (click)="login(form.value)" type="submit" class="btn btn-block btn-outline-info">Login</button>
-                                <a class="text-center font-weight-bold" routerLink="/registro">Não tem conta? Cadastre-se</a><br>
+                                <button id="b1" [disabled]="!form.valid" (click)="login(form.value)" type="submit" class="btn btn-block btn-outline-info">Login</button>
+                                <a id="a" class="text-center font-weight-bold" routerLink="/registro">Não tem conta? Cadastre-se</a><br>
                             </form>
                         </div>
                     </div>

@@ -32,28 +32,28 @@ describe('InicioComponent', () => {
 
       it('Deve ter um titulo', () => {
         fixture.detectChanges();
-        let de = fixture.debugElement.nativeElement.querySelector('#titulo').textContent;
+        let de = fixture.debugElement.query(By.css('#titulo')).nativeElement.textContent;
         expect(de).toEqual('Bem vindo ao Deep Analysis');
       });
 
       it('Deve ter uma descrição', () => {
         fixture.detectChanges();
-        let de = fixture.debugElement.nativeElement.querySelector('#descricao').textContent;
+        let de = fixture.debugElement.query(By.css('#descricao')).nativeElement.textContent;
         expect(de).toEqual('Coletor e organizador de dados para Magic: The Gathering Online');
       });
 
       it('Deve ter uma logo', () => {
         fixture.detectChanges();
-        let img = 'http://localhost:9876/assets/img/logo.png'
-        let de = fixture.debugElement.nativeElement.querySelector('img').src;
+        let img = 'http://localhost:9876/assets/img/logo.png';
+        let de = fixture.debugElement.query(By.css('img')).nativeElement.src;
         expect(de).toEqual(img);
       });
 
       it('Deve ter botoes', () => {
         fixture.detectChanges();
-        let b1 = fixture.debugElement.nativeElement.querySelector('#login');
-        let b2 = fixture.debugElement.nativeElement.querySelector('#registro');
-        let b3 = fixture.debugElement.nativeElement.querySelector('#time');
+        let b1 = fixture.debugElement.query(By.css('#login'));
+        let b2 = fixture.debugElement.query(By.css('#registro'));
+        let b3 = fixture.debugElement.query(By.css('#time'));
         expect(b1).toBeTruthy();
         expect(b2).toBeTruthy();
         expect(b3).toBeTruthy();
@@ -87,6 +87,7 @@ describe('InicioComponent', () => {
       });
     });
 
+    /*
     describe('Teste Funções', () => {
 
       it('Funcionalidade botão Login', () => {
@@ -97,7 +98,28 @@ describe('InicioComponent', () => {
 
       let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
       console.log(de);
-      });    
+      });  
+      
+      it('Funcionalidade botão Cadastre-se', () => {
+      fixture.detectChanges();
+      let button = fixture.debugElement.nativeElement.querySelector('#registro');
+      expect(button).toBeTruthy();
+      userEvent.click(button);
+
+      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
+      console.log(de);
+      });  
+
+      it('Funcionalidade botão Time', () => {
+      fixture.detectChanges();
+      let button = fixture.debugElement.nativeElement.querySelector('#time');
+      expect(button).toBeTruthy();
+      userEvent.click(button);
+
+      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
+      console.log(de);
+      });  
     });
+    */
   });
 });

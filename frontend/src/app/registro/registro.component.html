@@ -14,10 +14,10 @@
                 <div class='card-header'>
                     <div class="row">
                         <div class="col-md-15 offset-md-5">
-                            <h4 class="text-green font-weight-bold">Cadraste-se</h4>
+                            <h4 id="titulo" class="text-green font-weight-bold">Cadraste-se</h4>
                         </div>
                         <div class="col-md-9 offset-md-3">
-                            <h5 class="font-weight-bold">Preencha os campos para se cadastrar</h5>
+                            <h5 id="descricao" class="font-weight-bold">Preencha os campos para se cadastrar</h5>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                                     <span class="help-block" *ngIf="resenha.valid && (resenha.dirty || resenha.touched)"> <i class="fa fa-check"></i> Ok</span>
                                 </div>
                             </div>
-                            <button [disabled]="isButtonDisabled(form, form.value.senha,form.value.resenha)" (click)="cadastrar(form.value) " type="submit " class="btn btn-block btn-outline-info">Cadastrar-se</button>
+                            <button id="b1" [disabled]="isButtonDisabled(form, form.value.senha,form.value.resenha)" (click)="cadastrar(form.value) " type="submit " class="btn btn-block btn-outline-info">Cadastrar-se</button>
                             <a class="text-center font-weight-bold" routerLink="/login">Já tem conta? Entre aqui</a><br>
                         </form>
                     </div>
