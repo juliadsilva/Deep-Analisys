@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { fireEvent } from '@testing-library/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule} from 'ngx-toastr';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
 import { By } from '@angular/platform-browser';
-import userEvent from '@testing-library/user-event';
+
+import { UsuarioService } from '../service/usuario.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let service: UsuarioService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FormsModule, RouterTestingModule, HttpClientTestingModule, ToastrModule.forRoot()],
-      declarations: [ LoginComponent ]
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ToastrModule.forRoot()],
+      providers: [UsuarioService],
+      declarations: [LoginComponent]
     })
-    .compileComponents();
+      .compileComponents();
+
+    service = TestBed.inject(UsuarioService);
   });
 
   beforeEach(() => {
@@ -30,6 +36,10 @@ describe('LoginComponent', () => {
     it('Componente criado!', () => {
       expect(component).toBeTruthy();
     });
+    it('Deve usar o UsuarioService', () => {
+      service = TestBed.inject(UsuarioService);
+      expect(service.cadastrar).toBeTruthy();
+    });
 
     describe('Teste HTML', () => {
 
@@ -39,19 +49,19 @@ describe('LoginComponent', () => {
         expect(de).toEqual('Login');
       });
 
-      it('Deve ter um formulario com os campos vazios', () =>{
-        fixture.detectChanges();   
+      it('Deve ter um formulario com os campos vazios', () => {
+        fixture.detectChanges();
         let test = {
           username: '',
           senha: ''
-        }    
+        }
         let user = {
           username: fixture.debugElement.query(By.css('input[name="username"]')).nativeElement.value,
           senha: fixture.debugElement.query(By.css('input[name="senha"]')).nativeElement.value
         }
         expect(user).toEqual(test);
-      });     
-        
+      });
+
       it('Deve ter uma logo', () => {
         fixture.detectChanges();
         let img = 'http://localhost:9876/assets/img/logo.png'
@@ -101,12 +111,31 @@ describe('LoginComponent', () => {
 
     describe('Teste Funções', () => {
 
-      it('Funcionalidade botão Login', () => {
+      it('Funcionalidade preencher campos', fakeAsync(() => {
+        const username = fixture.debugElement.query(By.css('input[name="username"]')).nativeElement;
+        const senha = fixture.debugElement.query(By.css('input[name="senha"]')).nativeElement;
+        fixture.detectChanges();
 
-      });    
+        fireEvent.change(username, { target: { value: "test" } });
+        fireEvent.change(senha, { target: { value: "test" } });
+        fixture.detectChanges();
+
+        expect(username.value).toEqual('test');
+        expect(senha.value).toEqual('test');
+      }));
 
       it('Funcionalidade link', () => {
-      
+        let user = {
+          username: 'test',
+          senha: 'test'
+        }    
+       
+        spyOn(component, 'login');          
+
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+          expect(component.login(user)).toHaveBeenCalled();  
+        });
       });
     });
   });

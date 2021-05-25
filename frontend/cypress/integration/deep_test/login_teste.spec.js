@@ -24,6 +24,16 @@ describe('Caso de Teste: Testar funcionalidades de Login', () => {
         cy.get('input[name ="resenha"]').type('1234567');
         cy.get('button').should('be.disabled');
         cy.wait(3000);
+
+        Cypress.on("window:before:load", win => {
+            cy.stub(win.console, "error", msg => {
+                cy.now("task", "error", msg);
+            });
+
+            cy.stub(win.console, "warn", msg => {
+                cy.now("task", "warn", msg);
+            });
+        });
     });
 
     it('Cenario: Login na plataforma com sucesso!', () => {
@@ -37,15 +47,14 @@ describe('Caso de Teste: Testar funcionalidades de Login', () => {
         cy.wait(3000);
     });
 
-    /*it('Cenario: Falha ao realizar login!', () => {
+    it('Cenario: Falha ao realizar login!', () => {
         cy.visit('http://localhost:4200/login');
         cy.get('input[name="username"]').type('userDeepNot');
         cy.get('input[name ="senha"]').type('12345678');
         cy.get('button').click();
         cy.wait(3000);
-        // Testar toast
+        cy.log('ERRO');
     });
-    */
 
     //Functionss
     function createUser() {

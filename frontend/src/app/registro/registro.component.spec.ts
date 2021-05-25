@@ -1,9 +1,9 @@
-import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
-import { render, screen, fireEvent } from '@testing-library/angular';
-import { RouterTestingModule, SpyNgModuleFactoryLoader } from '@angular/router/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { fireEvent } from '@testing-library/angular';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule} from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { RegistroComponent } from './registro.component';
 import { By } from '@angular/platform-browser';
 
@@ -12,6 +12,7 @@ import { UsuarioService } from '../service/usuario.service';
 describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
+  let httpMock: HttpTestingController;
   let service: UsuarioService;
 
   beforeEach(async () => {
@@ -21,16 +22,20 @@ describe('RegistroComponent', () => {
       declarations: [RegistroComponent]
     })
       .compileComponents();
-
-      service = TestBed.inject(UsuarioService);
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
+    service = TestBed.inject(UsuarioService);
+    httpMock = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
   });
- 
+
+  afterEach(() => {
+    httpMock.verify();
+  });
+
   describe('Pagina de Registro!', () => {
 
     it('Componente criado!', () => {
@@ -38,7 +43,7 @@ describe('RegistroComponent', () => {
     });
     it('Deve usar o UsuarioService', () => {
       service = TestBed.inject(UsuarioService);
-      expect(service.cadastrar).toBeTruthy;
+      expect(service.cadastrar).toBeTruthy();
     });
 
     describe('Teste HTML', () => {
@@ -55,8 +60,8 @@ describe('RegistroComponent', () => {
         expect(de).toEqual('Preencha os campos para se cadastrar');
       });
 
-      it('Deve ter um formulario com os campos vazios', () =>{
-        fixture.detectChanges();   
+      it('Deve ter um formulario com os campos vazios', () => {
+        fixture.detectChanges();
         let test = {
           username: '',
           estado: '',
@@ -64,7 +69,7 @@ describe('RegistroComponent', () => {
           email: '',
           senha: '',
           resenha: ''
-        }    
+        }
         let user = {
           username: fixture.debugElement.query(By.css('input[name="username"]')).nativeElement.value,
           estado: fixture.debugElement.query(By.css('input[name="estado"]')).nativeElement.value,
@@ -74,8 +79,8 @@ describe('RegistroComponent', () => {
           resenha: fixture.debugElement.query(By.css('input[name="resenha"]')).nativeElement.value
         }
         expect(user).toEqual(test);
-      });     
-        
+      });
+
       it('Deve ter uma logo', () => {
         fixture.detectChanges();
         let img = 'http://localhost:9876/assets/img/logo.png'
@@ -124,7 +129,6 @@ describe('RegistroComponent', () => {
     });
 
     describe('Teste Funções', () => {
-
       it('Funcionalidade preencher campos', fakeAsync(() => {
         const username = fixture.debugElement.query(By.css('input[name="username"]')).nativeElement;
         const estado = fixture.debugElement.query(By.css('input[name="estado"]')).nativeElement;
@@ -133,14 +137,13 @@ describe('RegistroComponent', () => {
         const senha = fixture.debugElement.query(By.css('input[name="senha"]')).nativeElement;
         const resenha = fixture.debugElement.query(By.css('input[name="resenha"]')).nativeElement;
         fixture.detectChanges();
-        
-       
-        fireEvent.change(username,  { target: { value: "test" } });
-        fireEvent.change(estado,  { target: { value: "test" } });
-        fireEvent.change(cidade,  { target: { value: "test" } });
-        fireEvent.change(email,  { target: { value: "test@test.com" } });
-        fireEvent.change(senha,  { target: { value: "test" } });
-        fireEvent.change(resenha,  { target: { value: "test" } });
+
+        fireEvent.change(username, { target: { value: "test" } });
+        fireEvent.change(estado, { target: { value: "test" } });
+        fireEvent.change(cidade, { target: { value: "test" } });
+        fireEvent.change(email, { target: { value: "test@test.com" } });
+        fireEvent.change(senha, { target: { value: "test" } });
+        fireEvent.change(resenha, { target: { value: "test" } });
         fixture.detectChanges();
 
         expect(username.value).toEqual('test');
@@ -149,24 +152,77 @@ describe('RegistroComponent', () => {
         expect(email.value).toEqual('test@test.com');
         expect(senha.value).toEqual('test');
         expect(resenha.value).toEqual('test');
-      }));    
 
-      it('Funcionalidade botão cadastrar', inject([UsuarioService], (service: UsuarioService) => { 
+      }));
+
+      it('Funcionalidade botão cadastrar', () => {
         let new_user = {
           username: 'test',
           estado: 'test',
           cidade: 'test',
           email: 'test@test.com',
           token: 'test'
-        }    
-       
-        spyOn(component, 'cadastrar'),
-        component.cadastrar(new_user);
-        expect(component.cadastrar).toHaveBeenCalled();
+        }
 
-        expect(service.usernameNaoExiste('test')).toBeTruthy();
+        spyOn(component, 'cadastrar');
+
+        fixture.whenStable().then(() => {
+          expect(component.cadastrar(new_user)).toHaveBeenCalled();
+          expect(component.existeUsername('test')).toHaveBeenCalled();
+          expect(component.existeEmail('test@test.com')).toHaveBeenCalled();
+        });
+      });
+
+      it('Funcionalidade do service em relação a função "username ja existe"', fakeAsync(() => {
+
+        const username = 'test';
+
+        service.usernameNaoExiste(username).subscribe(res => {
+          let username = Object.values(res)[0];
+          expect(username).toEqual('t');
+        });
+
+        const req = httpMock.expectOne(`http://localhost:8080/usuario/check/username/${username}`);
+        expect(req.request.method).toEqual('GET');
+        req.flush(username);
 
       }));
+
+      it('Funcionalidade do service em relação a função "email ja existe"', fakeAsync(() => {
+
+        const email = 'test@test.com';
+
+        service.emailNaoExiste(email).subscribe(res => {
+          let email = Object.values(res)[0];
+          expect(email).toEqual('t');
+        });
+
+        const req = httpMock.expectOne(`http://localhost:8080/usuario/check/email/${email}`);
+        expect(req.request.method).toEqual('GET');
+        req.flush(email);
+
+      }));
+      it('Funcionalidade do service em relação a função "cadastrar"', fakeAsync(() => {
+
+        const new_user = {
+          username: 'test',
+          estado: 'test',
+          cidade: 'test',
+          email: 'test@test.com',
+          token: 'test'
+        }
+
+        service.cadastrar(new_user).subscribe(res => {
+          let username = Object.values(res)[1];
+          expect(username).toEqual('test');
+        });
+
+        const req = httpMock.expectOne('http://localhost:8080/usuario');
+        expect(req.request.method).toEqual('POST');
+        req.flush(new_user);
+      }));
+
+
     });
   });
 });

@@ -27,9 +27,11 @@ export class LoginComponent implements OnInit {
       if(res != null){
         let idLogin = Object.values(res)[0];
         this.toastr.success('Login efetuado com sucesso!','Sucesso!',{timeOut:2000});
+        console.log('Login - sucesso');
         this.router.navigate([`/baralho/${idLogin}`]);
       }else{
         this.toastr.error('Verifique seu usuário e senha!','Usuario não encontrado!',{timeOut:2000});
+        console.log('Login - erro')
       }
     });
   }
