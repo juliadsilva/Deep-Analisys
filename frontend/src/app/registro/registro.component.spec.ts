@@ -12,7 +12,6 @@ import { UsuarioService } from '../service/usuario.service';
 describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
-  let httpMock: HttpTestingController;
   let service: UsuarioService;
 
   beforeEach(async () => {
@@ -28,15 +27,10 @@ describe('RegistroComponent', () => {
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(UsuarioService);
-    httpMock = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
   });
 
-  afterEach(() => {
-    httpMock.verify();
-  });
-
-  describe('Pagina de Registro!', () => {
+   describe('Pagina de Registro!', () => {
 
     it('Componente criado!', () => {
       expect(component).toBeTruthy();
@@ -172,57 +166,6 @@ describe('RegistroComponent', () => {
           expect(component.existeEmail('test@test.com')).toHaveBeenCalled();
         });
       });
-
-      it('Funcionalidade do service em relação a função "username ja existe"', fakeAsync(() => {
-
-        const username = 'test';
-
-        service.usernameNaoExiste(username).subscribe(res => {
-          let username = Object.values(res)[0];
-          expect(username).toEqual('t');
-        });
-
-        const req = httpMock.expectOne(`http://localhost:8080/usuario/check/username/${username}`);
-        expect(req.request.method).toEqual('GET');
-        req.flush(username);
-
-      }));
-
-      it('Funcionalidade do service em relação a função "email ja existe"', fakeAsync(() => {
-
-        const email = 'test@test.com';
-
-        service.emailNaoExiste(email).subscribe(res => {
-          let email = Object.values(res)[0];
-          expect(email).toEqual('t');
-        });
-
-        const req = httpMock.expectOne(`http://localhost:8080/usuario/check/email/${email}`);
-        expect(req.request.method).toEqual('GET');
-        req.flush(email);
-
-      }));
-      it('Funcionalidade do service em relação a função "cadastrar"', fakeAsync(() => {
-
-        const new_user = {
-          username: 'test',
-          estado: 'test',
-          cidade: 'test',
-          email: 'test@test.com',
-          token: 'test'
-        }
-
-        service.cadastrar(new_user).subscribe(res => {
-          let username = Object.values(res)[1];
-          expect(username).toEqual('test');
-        });
-
-        const req = httpMock.expectOne('http://localhost:8080/usuario');
-        expect(req.request.method).toEqual('POST');
-        req.flush(new_user);
-      }));
-
-
     });
   });
 });

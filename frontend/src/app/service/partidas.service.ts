@@ -13,17 +13,17 @@ export class PartidasService {
     return this.http.post<any[]>(url,new_partida); 
   }
 
-  procurar(ident: number, idBaralho:number){
+  procurar(ident: any, idBaralho:any){
     let url = `http://localhost:8080/partida/${idBaralho}/${ident}`;
     return this.http.get<object>(url);
   }
 
-  deletar(id: number){
+  deletar(id: any){
     let url = `http://localhost:8080/partida/${id}`;
     return this.http.delete<any>(url);
   }
 
-  listarIdBaralho(id: number){
+  listarIdBaralho(id: any){
     let url = `http://localhost:8080/partida/idBaralho/${id}`;
     return this.http.get<any[]>(url);
   }

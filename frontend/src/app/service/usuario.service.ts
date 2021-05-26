@@ -18,7 +18,7 @@ export class UsuarioService {
     return this.http.get<object>(url);
   }
 
-  detalhes(id: number){
+  detalhes(id: any){
     let url = `http://localhost:8080/usuario/${id}`;
     return this.http.get<object>(url);
   }

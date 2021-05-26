@@ -13,32 +13,32 @@ export class BaralhoService {
     return this.http.post<any[]>(url,new_baralho); 
   }
 
-  deletar(nome:string, idUsuario:number){
+  deletar(nome:string, idUsuario:any){
     let url = `http://localhost:8080/baralho/${idUsuario}/${nome}`;
     return this.http.delete<any>(url);
   }
 
-  editar(idBaralho:number, up_baralho: any) {
+  editar(idBaralho:any, up_baralho: any) {
     let url = `http://localhost:8080/baralho/${idBaralho}`;
     return this.http.put<any[]>(url, up_baralho);   
   }
 
-  atualizarWinRate(idBaralho:number, wr_baralho: any) {
+  atualizarWinRate(idBaralho:any, wr_baralho: any) {
     let url = `http://localhost:8080/baralho/winrate/${idBaralho}`;
     return this.http.put<any[]>(url, wr_baralho);   
   }
 
-  procurar(nome: string, idUsuario:number){
+  procurar(nome: string, idUsuario:any){
     let url = `http://localhost:8080/baralho/${idUsuario}/${nome}`;
     return this.http.get<object>(url);
   }
   
-  listarIdUser(id: number){
+  listarIdUser(id: any){
     let url = `http://localhost:8080/baralho/idUsuario/${id}`;
     return this.http.get<any[]>(url);
   }
 
-  detalhes(id: number){
+  detalhes(id: any){
     let url = `http://localhost:8080/baralho/${id}`;
     return this.http.get<object>(url);
   }
