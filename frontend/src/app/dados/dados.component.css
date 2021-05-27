@@ -1,27 +1,32 @@
-        table {
-            background-color: rgba(6, 47, 79, 0.5);
-            margin-top: 20px;
-        }
-        
-        .bg-image {
-            background-image: url('../../assets/img/principal.jpg');
-            min-height: 100vh;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-        }
-        
-        canvas {
-            margin-top: 20px;
-            max-width: auto;
-            max-height: 400px;
-        }
-        
-        .card-deck {
-            padding-top: 80px;
-        }
-        
-        .card {
-            background-color: rgb(6, 47, 79);
-        }
+table {
+    background-color: rgba(6, 47, 79, 0.5);
+    margin-top: 20px;
+}
+
+.estilo {
+    background-color: rgba(6, 47, 79, 0.5);
+    margin-top: 20px;
+}
+
+.bg-image {
+    background-image: url('../../assets/img/principal.jpg');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+canvas {
+    margin-top: 20px;
+    max-width: auto;
+    max-height: 400px;
+}
+
+.card-deck {
+    padding-top: 80px;
+}
+
+.card {
+    background-color: rgb(6, 47, 79);
+}

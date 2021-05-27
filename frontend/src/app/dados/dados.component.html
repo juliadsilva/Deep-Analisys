@@ -4,8 +4,11 @@
         <a class="navbar-brand" routerLink="/">
             <img src="../assets/img/logo.png" width="180" height="30" class="d-inline-block align-text-top">
         </a>
-        <h4 class="font-weight-bolder text-info text-center">{{baralho[1]}}</h4>
-        <h4 class="text-light text-center">Formato: {{baralho[2]}}</h4>
+        <form *ngIf="baralho">
+            <h4 class="font-smaller text-info text-center">{{baralho?.nome}}
+                <h4 class="font-smaller text-light text-center">Formato: {{baralho?.formato}}</h4>
+            </h4>
+        </form>
     </div>
 </nav>
 

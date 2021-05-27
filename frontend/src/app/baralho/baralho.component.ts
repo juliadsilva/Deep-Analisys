@@ -31,19 +31,27 @@ export class BaralhoComponent implements OnInit {
       this.userId = params.id
     });
 
-    this.usuarioService.detalhes(this.userId).subscribe(res => {
-      this.usuario = Object.values(res);
-    });
+    this.serviceUsuario();   
+    this.serviceBaralho();    
+  }
 
+  open(content: any) {
+    this.modalService.open(content, { centered: true, size: 'sm' });
+  }
+
+  serviceUsuario(){
+    this.usuarioService.detalhes(this.userId).subscribe(res => {
+      if(res != null)
+        this.usuario = res;
+    });  
+  }
+
+  serviceBaralho(){
     this.baralhoService.listarIdUser(this.userId).subscribe(res => {
       for (let index = 0; index < res.length; index++) {
         this.baralhos.push(res[index]);
       }
     });
-  }
-
-  open(content: any) {
-    this.modalService.open(content, { centered: true, size: 'sm' });
   }
 
   public getMatches(baralhoId: number) {   

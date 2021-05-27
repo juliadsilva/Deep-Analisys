@@ -3,16 +3,30 @@ import { fireEvent } from '@testing-library/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RegistroComponent } from './registro.component';
 import { By } from '@angular/platform-browser';
 
 import { UsuarioService } from '../service/usuario.service';
+import { ExpectedConditions } from 'protractor';
 
 describe('RegistroComponent', () => {
+
+  let new_user = {
+    username: 'test',
+    estado: 'test',
+    cidade: 'test',
+    email: 'test@test.com',
+    token: '1fb0e331c05a52d5eb847d6fc018320d'
+  };
+  let username = 'test';
+  let email = 'test@test.com';
+
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
+  let httpMock: HttpTestingController;
   let service: UsuarioService;
+  let toastr: ToastrService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -26,11 +40,13 @@ describe('RegistroComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
+    httpMock = TestBed.inject(HttpTestingController);
     service = TestBed.inject(UsuarioService);
+    toastr = TestBed.inject(ToastrService);
     fixture.detectChanges();
   });
 
-   describe('Pagina de Registro!', () => {
+  describe('Pagina de Registro!', () => {
 
     it('Componente criado!', () => {
       expect(component).toBeTruthy();
@@ -146,26 +162,36 @@ describe('RegistroComponent', () => {
         expect(email.value).toEqual('test@test.com');
         expect(senha.value).toEqual('test');
         expect(resenha.value).toEqual('test');
-
       }));
 
       it('Funcionalidade botão cadastrar', () => {
-        let new_user = {
-          username: 'test',
-          estado: 'test',
-          cidade: 'test',
-          email: 'test@test.com',
-          token: 'test'
-        }
-
         spyOn(component, 'cadastrar');
 
         fixture.whenStable().then(() => {
           expect(component.cadastrar(new_user)).toHaveBeenCalled();
-          expect(component.existeUsername('test')).toHaveBeenCalled();
-          expect(component.existeEmail('test@test.com')).toHaveBeenCalled();
+          fixture.detectChanges();
+        });
+      });
+
+      it('Funcionalidade usuario nao existente', () => {
+
+        spyOn(component, 'cadastrar');
+
+        fixture.whenStable().then(() => {
+          service.usernameNaoExiste(username).subscribe(res => {
+            if(res!= null){
+              console.log(res);
+              console.log(toastr.success);
+              expect(toastr.success).toHaveBeenCalledWith('Usermane já existe. Tente outro!');
+            };
+          });
+
+          const req = httpMock.expectOne(`http://localhost:8080/usuario/check/username/${username}`);
+          expect(req.request.method).toEqual('GET');
+          req.flush(username);
         });
       });
     });
   });
 });
+
