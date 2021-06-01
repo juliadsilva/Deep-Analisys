@@ -6,6 +6,14 @@ import {ToastrModule} from 'ngx-toastr';
 import { ModalEditarBaralhoComponent } from './modal-editar-baralho.component';
 
 describe('ModalEditarBaralhoComponent', () => {
+
+  let edit_baralho = {
+    nomeselect: 'test',
+    idUsuario: 'test',
+    nome: 'test',
+    formato: 'test'
+  }
+  
   let component: ModalEditarBaralhoComponent;
   let fixture: ComponentFixture<ModalEditarBaralhoComponent>;
   let modalService: NgbModal;
@@ -33,5 +41,16 @@ describe('ModalEditarBaralhoComponent', () => {
     spyOn(modalService, 'open').calls;
     component.open('<xxxx>');
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
+  });
+
+  describe('Teste Funções', () => {
+    it('Editar baralho', () => {
+      spyOn(component, 'editBaralho');
+
+      fixture.whenStable().then(() => {
+        expect(component.editBaralho(edit_baralho)).toHaveBeenCalled();
+        fixture.detectChanges();
+      });
+    });
   });
 });

@@ -6,6 +6,13 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 
 describe(' ModalAdicionarPartidaComponent', () => {
+  let new_partida = {
+    ident: 1,
+    win: 2,
+    loss: 1,
+    idBaralho: 'test'
+  };
+
   let component: ModalAdicionarPartidaComponent;
   let fixture: ComponentFixture< ModalAdicionarPartidaComponent>;
   let modalService: NgbModal;
@@ -33,5 +40,16 @@ describe(' ModalAdicionarPartidaComponent', () => {
     spyOn(modalService, 'open').calls;
     component.open('<xxxx>');
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
+  });
+
+  describe('Teste Funções', () => {
+    it('Adicionar partida', () => {
+      spyOn(component, 'addpartida');
+
+      fixture.whenStable().then(() => {
+        expect(component.addpartida(new_partida)).toHaveBeenCalled();
+        fixture.detectChanges();
+      });
+    });
   });
 });

@@ -6,6 +6,12 @@ import { ToastrModule} from 'ngx-toastr';
 import { ModalDeletarBaralhoComponent } from './modal-deletar-baralho.component';
 
 describe('ModalDeletarBaralhoComponent', () => {
+
+  let del_baralho = {
+    nome: 'test',
+    idUsuario: 'test'
+  };
+
   let component: ModalDeletarBaralhoComponent;
   let fixture: ComponentFixture<ModalDeletarBaralhoComponent>;
   let modalService: NgbModal;
@@ -34,4 +40,15 @@ describe('ModalDeletarBaralhoComponent', () => {
     component.open('<xxxx>');
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
+
+  describe('Teste Funções', () => {
+    it('Deletar baralho', () => {
+      spyOn(component, 'delBaralho');
+
+      fixture.whenStable().then(() => {
+        expect(component.delBaralho(del_baralho)).toHaveBeenCalled();
+        fixture.detectChanges();
+      });
+    });
+  });  
 });

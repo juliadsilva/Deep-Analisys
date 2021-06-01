@@ -6,6 +6,11 @@ import { ToastrModule} from 'ngx-toastr';
 import { ModalDeletarPartidaComponent } from './modal-deletar-partida.component';
 
 describe('ModalDeletarPartidaComponent', () => {
+  let del_partida = {
+    ident: 1,
+    idBaralho: 'test'
+  };
+
   let component: ModalDeletarPartidaComponent;
   let fixture: ComponentFixture<ModalDeletarPartidaComponent>;
   let modalService: NgbModal;
@@ -33,5 +38,16 @@ describe('ModalDeletarPartidaComponent', () => {
     spyOn(modalService, 'open').calls;
     component.open('<xxxx>');
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
+  });
+
+  describe('Teste Funções', () => {
+    it('Deletar partida', () => {
+      spyOn(component, 'delPartida');
+
+      fixture.whenStable().then(() => {
+        expect(component.delPartida(del_partida)).toHaveBeenCalled();
+        fixture.detectChanges();
+      });
+    });
   });
 });

@@ -172,25 +172,6 @@ describe('RegistroComponent', () => {
           fixture.detectChanges();
         });
       });
-
-      it('Funcionalidade usuario nao existente', () => {
-
-        spyOn(component, 'cadastrar');
-
-        fixture.whenStable().then(() => {
-          service.usernameNaoExiste(username).subscribe(res => {
-            if(res!= null){
-              console.log(res);
-              console.log(toastr.success);
-              expect(toastr.success).toHaveBeenCalledWith('Usermane já existe. Tente outro!');
-            };
-          });
-
-          const req = httpMock.expectOne(`http://localhost:8080/usuario/check/username/${username}`);
-          expect(req.request.method).toEqual('GET');
-          req.flush(username);
-        });
-      });
     });
   });
 });

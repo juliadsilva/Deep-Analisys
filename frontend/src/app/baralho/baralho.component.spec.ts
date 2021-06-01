@@ -7,12 +7,15 @@ import { BaralhoComponent } from './baralho.component';
 import { BaralhoService } from '../service/baralho.service';
 import { UsuarioService } from '../service/usuario.service';
 
+import { Observable } from 'rxjs';
+
 describe('BaralhoComponent', () => {
   let component: BaralhoComponent;
   let fixture: ComponentFixture<BaralhoComponent>;
   let modalService: NgbModal;
   let serviceUsuario: UsuarioService;
   let serviceBaralho: BaralhoService;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,9 +28,10 @@ describe('BaralhoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BaralhoComponent);
     component = fixture.componentInstance;
-    serviceUsuario =  TestBed.inject(UsuarioService);
-    serviceBaralho =  TestBed.inject(BaralhoService);
+    serviceUsuario = TestBed.inject(UsuarioService);
+    serviceBaralho = TestBed.inject(BaralhoService);
     modalService = TestBed.inject(NgbModal);
+    httpMock = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
   });
 
@@ -53,14 +57,13 @@ describe('BaralhoComponent', () => {
     });
   });
 
-  describe('Funcionalidades', () => {
-    /*it('Detalhes do Usuario', fakeAsync(() => {
-     /* let id = '60ada4ffa7dec534785f2bb1';
+  describe('Teste de Funções', () => {
+    it('Detalhes do Usuario', () => {
+      let id = '60ada4ffa7dec534785f2bb1';
       spyOn(serviceUsuario, 'detalhes').calls;
       component.serviceUsuario();
-      expect(serviceUsuario.detalhes).toHaveBeenCalledWith(id);   
-    }));
-    */
+      expect(serviceUsuario.detalhes).toHaveBeenCalledWith(id);
+    });
   });
 });
 
