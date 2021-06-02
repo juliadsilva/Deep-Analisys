@@ -1,4 +1,7 @@
 <p align="center">
+
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/juliadsilva/Deep-Analisys/Node.js%20CI?style=social">
+	
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/juliadsilva/Deep-Analisys?style=social">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/juliadsilva/Deep-Analisys?style=social">
@@ -6,6 +9,8 @@
   <a href="https://github.com/juliadsilva/Deep-Analisys/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/juliadsilva/Deep-Analisys?style=social">
   </a>
+	
+   <img alt="Stars" src="https://img.shields.io/github/stars/juliadsilva/Deep-Analisys?style=social">
 </p>
 
 <h4 align="center"> 
