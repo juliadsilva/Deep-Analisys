@@ -7,7 +7,6 @@ import { BaralhoComponent } from './baralho.component';
 import { BaralhoService } from '../service/baralho.service';
 import { UsuarioService } from '../service/usuario.service';
 
-import { Observable } from 'rxjs';
 
 describe('BaralhoComponent', () => {
   let component: BaralhoComponent;
@@ -58,12 +57,7 @@ describe('BaralhoComponent', () => {
   });
 
   describe('Teste de Funções', () => {
-    it('Detalhes do Usuario', () => {
-      let id = '60ada4ffa7dec534785f2bb1';
-      spyOn(serviceUsuario, 'detalhes').calls;
-      component.serviceUsuario();
-      expect(serviceUsuario.detalhes).toHaveBeenCalledWith(id);
-    });
+    
   });
 });
 

@@ -87,39 +87,8 @@ describe('InicioComponent', () => {
       });
     });
 
-    /*
-    describe('Teste Funções', () => {
-
-      it('Funcionalidade botão Login', () => {
-      fixture.detectChanges();
-      let button = fixture.debugElement.nativeElement.querySelector('#login');
-      expect(button).toBeTruthy();
-      userEvent.click(button);
-
-      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
-      console.log(de);
-      });  
-      
-      it('Funcionalidade botão Cadastre-se', () => {
-      fixture.detectChanges();
-      let button = fixture.debugElement.nativeElement.querySelector('#registro');
-      expect(button).toBeTruthy();
-      userEvent.click(button);
-
-      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
-      console.log(de);
-      });  
-
-      it('Funcionalidade botão Time', () => {
-      fixture.detectChanges();
-      let button = fixture.debugElement.nativeElement.querySelector('#time');
-      expect(button).toBeTruthy();
-      userEvent.click(button);
-
-      let de = fixture.debugElement.nativeElement.querySelector('h4').textContent;
-      console.log(de);
-      });  
+    describe('Teste de Funções', () => {
+    
     });
-    */
   });
 });
