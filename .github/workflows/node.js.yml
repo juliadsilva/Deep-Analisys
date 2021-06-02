@@ -10,26 +10,26 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  run:
+    name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node: [10, 12, 14]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-      working-directory: ./frontend
-    - run: npm run build --if-present
-      working-directory: ./frontend
-    - run: karma start config/karma.conf.js
-      working-directory: ./frontend
-    - run: npm test
-      working-directory: ./frontend
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
