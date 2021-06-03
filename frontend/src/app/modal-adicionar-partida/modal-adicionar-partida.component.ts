@@ -18,8 +18,8 @@ export class ModalAdicionarPartidaComponent implements OnInit {
 
   partidas: any[] = [];
   baralhoId: number = 0;
-  
-  constructor(private modalService: NgbModal,  private baralhoService: BaralhoService, private partidasService: PartidasService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+
+  constructor(private modalService: NgbModal,  private partidasService: PartidasService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -31,6 +31,8 @@ export class ModalAdicionarPartidaComponent implements OnInit {
         this.partidas.push(res[index]);
       }
     });
+    
+    this.partidas.sort(this.compare);
   }
 
   open(content: any) {
@@ -38,26 +40,48 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   }
 
   addpartida(form: any) {
-    let id = this.partidas.length + 1;
+    
+    let id = this.getNewId();
     let win = form.win;
     let loss = form.loss;
-    let idBaralho = this.baralhoId;
+    let idBaralho = this.baralhoId.toString().trim();
 
-    let new_partida = {
-      ident: id,
-      win: win,
-      loss: loss,
-      idBaralho: idBaralho
-    };
+    if (!this.validateScore(parseInt(win), parseInt(loss))) return;
+    else {
+      let new_partida = {
+        ident: id,
+        win: win,
+        loss: loss,
+        idBaralho: idBaralho
+      };
 
-    this.partidasService.adicionar(new_partida).subscribe(res => {
-      if (res.length != 0) {
-        this.toastr.success('Partida criada', 'Sucesso!', { timeOut: 5000 });
-        this.novaPartidaEmitter.emit(new_partida);
-        this.modalService.dismissAll();
-        location.reload();  
-      } else
-        this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
-    });
+      this.partidasService.adicionar(new_partida).subscribe(res => {
+        if (res.length != 0) {
+          this.toastr.success('Partida criada', 'Sucesso!', { timeOut: 5000 });
+          this.novaPartidaEmitter.emit(new_partida);
+          this.modalService.dismissAll();
+          location.reload();
+        } else
+          this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
+      });
+    }
+  }
+
+  validateScore(win: number, loss: number) {
+    if (win > 2 || loss > 2 || win < 0 || loss < 0) {
+      this.toastr.error('Ops, valores devem estar entre zero e dois!', 'Erro!', { timeOut: 5000 });
+      return false;
+    }
+    return true;
+  }
+
+  compare(a:any,b:any) {
+    if (a.ident < b.ident) return -1;
+    if (a.ident > b.ident) return 1;
+    return 0;
+  }
+
+  getNewId(){
+    return this.partidas[this.partidas.length-1].ident+1
   }
 }

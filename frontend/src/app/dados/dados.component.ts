@@ -16,7 +16,7 @@ export class DadosComponent implements OnInit {
   dadosGrafico: any[] = [];
   winRates: any[] = [];
   baralho: any;
-
+  partidasWinRateTime:any[]=[]
   public baralhoId: number = 0;
 
   lineChartData: ChartDataSets[] =
@@ -86,28 +86,36 @@ export class DadosComponent implements OnInit {
     });
 
     this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
-      let win = 0;
-      let loss = 0;
-      let total = 0;
-      let winRate = 0;
+      for (let index = 0; index < res.length; index++) {
+        this.partidasWinRateTime.push(res[index]);
+      }
+    });
+
+    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+      let totalWinInTime = 0;
+      let totalLossInTime = 0;
+      let totalInTime = 0;
+      let winRateInTime = 0;
 
       if (res.length > 0) {
         for (let index = 0; index < res.length; index++) {
           this.partidas.push(res[index]);
-          win = res[index].win + win;
-          loss = res[index].loss + loss;
+          totalWinInTime = res[index].win + totalWinInTime;
+          totalLossInTime = res[index].loss + totalLossInTime;
+          totalInTime = totalWinInTime + totalLossInTime;
+          winRateInTime = (totalWinInTime / totalInTime) * 100;
+          this.winRates.push(winRateInTime.toPrecision(3));
         }
-        total = win + loss;
-        winRate = (win / total) * 100;
+        totalInTime = totalWinInTime + totalLossInTime;
+        winRateInTime = (totalWinInTime / totalInTime) * 100;
       }
       else {
-        winRate = 0;
+        winRateInTime = 0;
       }
 
       let wr_baralho = {
-        winrate: winRate.toPrecision(3)
+        winrate: winRateInTime.toPrecision(3)
       }
-      this.winRates.push(winRate);
       this.baralhoService.atualizarWinRate(this.baralhoId, wr_baralho).subscribe();
     });
 
@@ -115,7 +123,6 @@ export class DadosComponent implements OnInit {
       if (res != null) 
         this.baralho = res;
     });
-
     this.updateChart();
   }
 
