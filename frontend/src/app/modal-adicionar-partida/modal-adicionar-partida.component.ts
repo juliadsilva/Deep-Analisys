@@ -42,6 +42,7 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   addpartida(form: any) {
     
     let id = this.getNewId();
+    console.log(id);
     let win = form.win;
     let loss = form.loss;
     let idBaralho = this.baralhoId.toString().trim();
@@ -82,6 +83,9 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   }
 
   getNewId(){
-    return this.partidas[this.partidas.length-1].ident+1
+    if(this.partidas.length == 0)
+      return 1;
+    else    
+      return this.partidas[this.partidas.length-1].ident+1;   
   }
 }
