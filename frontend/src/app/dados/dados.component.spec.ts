@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DadosComponent } from './dados.component';
+import { By } from '@angular/platform-browser';
+
 import { PartidasService } from '../service/partidas.service';
 import { BaralhoService } from '../service/baralho.service';
 
@@ -45,7 +47,39 @@ describe('DadosComponent', () => {
     });
   });
 
-  describe('Teste de Funções', () => {
-    
+  describe('Teste CSS', () => {
+
+    it('Deve ter a classe table', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('table'));
+      expect(el).toBeTruthy();
+    });
+
+    it('Deve ter a classe canvas', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('canvas'));
+      expect(el).toBeTruthy();
+    });
+
+    it('Deve ter a classe bg-image', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.bg-image'));
+      expect(el).toBeTruthy();
+    });
+
+    it('Deve ter a classe card-deck', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.card-deck'));
+      expect(el).toBeTruthy();
+    });
+
+    it('Deve ter a classe card', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.card'));
+      expect(el).toBeTruthy();
+    });
+  });
+
+  describe('Teste de Funções', () => {    
   });
 });

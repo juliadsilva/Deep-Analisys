@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { BaralhoComponent } from './baralho.component';
+import { By } from '@angular/platform-browser';
+
 import { BaralhoService } from '../service/baralho.service';
 import { UsuarioService } from '../service/usuario.service';
 
@@ -56,8 +58,51 @@ describe('BaralhoComponent', () => {
     });
   });
 
+  describe('Teste CSS', () => {
+
+    it('Deve ter a classe bg-imagem', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.bg-image'));
+      expect(el).toBeTruthy();
+    });
+
+
+    it('Deve ter a classe card-deck', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.card-deck'));
+      expect(el).toBeTruthy();
+    });
+  }); 
+
   describe('Teste de Funções', () => {
-    
+    it('Detalhes', () => {
+      let id = '60ada4ffa7dec534785f2bb1';
+
+      component.serviceUsuario();
+      
+      serviceUsuario.detalhes(id).subscribe(res => {
+        expect(res).toContain('6');
+       });
+ 
+       const req = httpMock.expectOne(`http://localhost:8080/usuario/${id}`);
+       expect(req.request.method).toEqual('GET');
+       req.flush(id);
+    });
+
+    it('Listar', () => {
+      let id = '60ada4ffa7dec534785f2bb1';
+
+      component.serviceBaralho();
+
+      serviceBaralho.listarIdUser(id).subscribe(res => {
+        let nome = Object.values(res)[2];
+        expect(nome).toBe(nome); 
+      });
+
+      const req = httpMock.expectOne(`http://localhost:8080/baralho/idUsuario/${id}`);
+      expect(req.request.method).toEqual('GET');
+      req.flush(id);     
+    });
   });
 });
 

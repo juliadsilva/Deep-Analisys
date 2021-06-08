@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule} from 'ngx-toastr';
 import { ModalDeletarBaralhoComponent } from './modal-deletar-baralho.component';
+import { By } from '@angular/platform-browser';
 
 describe('ModalDeletarBaralhoComponent', () => {
 
@@ -41,14 +42,16 @@ describe('ModalDeletarBaralhoComponent', () => {
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
 
-  describe('Teste Funções', () => {
-    it('Deletar baralho', () => {
-      spyOn(component, 'delBaralho');
+  describe('Teste CSS', () => {
 
-      fixture.whenStable().then(() => {
-        expect(component.delBaralho(del_baralho)).toHaveBeenCalled();
-        fixture.detectChanges();
-      });
+    it('Deve ter a classe fixed-button', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.fixed-button'));
+      expect(el).toBeTruthy();
     });
+  });
+
+  describe('Teste Funções', () => {
+    
   });  
 });

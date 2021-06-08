@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalAdicionarBaralhoComponent } from './modal-adicionar-baralho.component';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { By } from '@angular/platform-browser';
 
 describe('ModalAdicionarBaralhoComponent', () => {
 
@@ -43,14 +44,16 @@ describe('ModalAdicionarBaralhoComponent', () => {
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
 
-  describe('Teste Funções', () => {
-    it('Adicionar baralho', () => {
-      spyOn(component, 'addBaralho');
+  describe('Teste CSS', () => {
 
-      fixture.whenStable().then(() => {
-        expect(component.addBaralho(new_baralho)).toHaveBeenCalled();
-        fixture.detectChanges();
-      });
+    it('Deve ter a classe fixed-button', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.fixed-button'));
+      expect(el).toBeTruthy();
     });
+  });
+
+  describe('Teste Funções', () => {
+    
   });
 });

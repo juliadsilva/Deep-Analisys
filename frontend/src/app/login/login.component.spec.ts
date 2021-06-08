@@ -36,11 +36,15 @@ describe('LoginComponent', () => {
     it('Componente criado!', () => {
       expect(component).toBeTruthy();
     });
-    it('Deve usar o UsuarioService', () => {
-      service = TestBed.inject(UsuarioService);
-      expect(service.cadastrar).toBeTruthy();
+
+    describe('Services', () => { 
+      it('Deve usar o UsuarioService', () => {
+        service = TestBed.inject(UsuarioService);
+        expect(service.cadastrar).toBeTruthy();
     });
 
+    });
+   
     describe('Teste HTML', () => {
 
       it('Deve ter um titulo', () => {
@@ -123,20 +127,6 @@ describe('LoginComponent', () => {
         expect(username.value).toEqual('test');
         expect(senha.value).toEqual('test');
       }));
-
-      it('Funcionalidade link', () => {
-        let user = {
-          username: 'test',
-          senha: 'test'
-        }    
-       
-        spyOn(component, 'login');          
-
-        fixture.whenStable().then(() => {
-          fixture.detectChanges();
-          expect(component.login(user)).toHaveBeenCalled();  
-        });
-      });
     });
   });
 });

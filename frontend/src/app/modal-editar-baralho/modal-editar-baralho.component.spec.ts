@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import {ToastrModule} from 'ngx-toastr';
 import { ModalEditarBaralhoComponent } from './modal-editar-baralho.component';
+import { By } from '@angular/platform-browser';
 
 describe('ModalEditarBaralhoComponent', () => {
 
@@ -43,14 +44,16 @@ describe('ModalEditarBaralhoComponent', () => {
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
 
-  describe('Teste Funções', () => {
-    it('Editar baralho', () => {
-      spyOn(component, 'editBaralho');
+  describe('Teste CSS', () => {
 
-      fixture.whenStable().then(() => {
-        expect(component.editBaralho(edit_baralho)).toHaveBeenCalled();
-        fixture.detectChanges();
-      });
+    it('Deve ter a classe fixed-button', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.fixed-button'));
+      expect(el).toBeTruthy();
     });
+  });
+
+  describe('Teste Funções', () => {
+    
   });
 });

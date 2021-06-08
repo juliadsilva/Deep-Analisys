@@ -53,7 +53,4 @@ export class BaralhoComponent implements OnInit {
       }
     });
   }
-
-  public getMatches(baralhoId: number) {   
-  }
 }

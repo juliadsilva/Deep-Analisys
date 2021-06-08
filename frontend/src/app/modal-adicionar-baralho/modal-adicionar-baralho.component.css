@@ -1,4 +1,7 @@
-input,
+input {
+    background-color: rgba(15, 117, 196, 0.2);
+}
+
 select {
     background-color: rgba(15, 117, 196, 0.2);
 }
@@ -16,11 +19,4 @@ select {
     margin-bottom: 140px;
     margin-right: 20px;
     border-radius: 30px;
-}
-
-.text-title {
-    color: #012a4a;
-    text-shadow: 0.1em 0.1em #062f4f;
-    text-align: center;
-    font-size: x-large;
 }

@@ -8,7 +8,7 @@ import { RegistroComponent } from './registro.component';
 import { By } from '@angular/platform-browser';
 
 import { UsuarioService } from '../service/usuario.service';
-import { ExpectedConditions } from 'protractor';
+
 
 describe('RegistroComponent', () => {
 
@@ -51,9 +51,12 @@ describe('RegistroComponent', () => {
     it('Componente criado!', () => {
       expect(component).toBeTruthy();
     });
-    it('Deve usar o UsuarioService', () => {
-      service = TestBed.inject(UsuarioService);
-      expect(service.cadastrar).toBeTruthy();
+
+    describe('Services', () => { 
+      it('Deve usar o UsuarioService', () => {
+        service = TestBed.inject(UsuarioService);
+        expect(service.cadastrar).toBeTruthy();
+      });
     });
 
     describe('Teste HTML', () => {

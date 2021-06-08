@@ -101,5 +101,27 @@ describe('BaralhoService', () => {
       expect(req.request.method).toEqual('GET');
       req.flush(new_baralho);
     }));
+
+    it('Listar Id User', fakeAsync(() => {
+      service.listarIdUser(idUsuario).subscribe(res => {
+        let nome = Object.values(res)[2];
+        expect(nome).toBe(nome); 
+      });
+
+      const req = httpMock.expectOne(`http://localhost:8080/baralho/idUsuario/${idUsuario}`);
+      expect(req.request.method).toEqual('GET');
+      req.flush(idUsuario);
+    }));
+
+    it('Detalhes', fakeAsync(() => {
+      service.detalhes(idBaralho).subscribe(res => {
+        let id = Object.values(res)[0];
+        expect(id).toEqual('6');   
+      });
+
+      const req = httpMock.expectOne(`http://localhost:8080/baralho/${idBaralho}`);
+      expect(req.request.method).toEqual('GET');
+      req.flush(idBaralho);
+    }));
   });
 });

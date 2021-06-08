@@ -3,9 +3,10 @@ table {
     margin-top: 20px;
 }
 
-.estilo {
-    background-color: rgba(6, 47, 79, 0.5);
+canvas {
     margin-top: 20px;
+    max-width: auto;
+    max-height: 400px;
 }
 
 .bg-image {
@@ -15,12 +16,6 @@ table {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-}
-
-canvas {
-    margin-top: 20px;
-    max-width: auto;
-    max-height: 400px;
 }
 
 .card-deck {

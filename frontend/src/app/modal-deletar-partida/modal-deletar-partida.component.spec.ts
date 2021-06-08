@@ -4,6 +4,7 @@ import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule} from 'ngx-toastr';
 import { ModalDeletarPartidaComponent } from './modal-deletar-partida.component';
+import { By } from '@angular/platform-browser';
 
 describe('ModalDeletarPartidaComponent', () => {
   let del_partida = {
@@ -40,14 +41,17 @@ describe('ModalDeletarPartidaComponent', () => {
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
 
-  describe('Teste Funções', () => {
-    it('Deletar partida', () => {
-      spyOn(component, 'delPartida');
+  describe('Teste CSS', () => {
 
-      fixture.whenStable().then(() => {
-        expect(component.delPartida(del_partida)).toHaveBeenCalled();
-        fixture.detectChanges();
-      });
+    it('Deve ter a classe fixed-button', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.fixed-button'));
+      expect(el).toBeTruthy();
     });
+  });  
+
+  describe('Teste Funções', () => {
+    
+    
   });
 });

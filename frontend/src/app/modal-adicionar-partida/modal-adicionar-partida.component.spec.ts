@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ModalAdicionarPartidaComponent } from './modal-adicionar-partida.component';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { By } from '@angular/platform-browser';
 
 describe(' ModalAdicionarPartidaComponent', () => {
   let new_partida = {
@@ -42,14 +43,16 @@ describe(' ModalAdicionarPartidaComponent', () => {
     expect(modalService.open).toHaveBeenCalledWith('<xxxx>', Object({ centered: true, size: 'sm' }));
   });
 
-  describe('Teste Funções', () => {
-    it('Adicionar partida', () => {
-      spyOn(component, 'addpartida');
+  describe('Teste CSS', () => {
 
-      fixture.whenStable().then(() => {
-        expect(component.addpartida(new_partida)).toHaveBeenCalled();
-        fixture.detectChanges();
-      });
+    it('Deve ter a classe fixed-button', () => {
+      fixture.detectChanges();
+      let el = fixture.debugElement.query(By.css('.fixed-button'));
+      expect(el).toBeTruthy();
     });
+  });
+
+  describe('Teste Funções', () => {
+    
   });
 });
