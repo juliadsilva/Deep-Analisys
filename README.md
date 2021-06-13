@@ -35,6 +35,7 @@
 
 ### 💻 Sobre
 
+O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional, uma aplicação web e um aplicativo mobile. O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.
 ---
 
 ### ⚙️ Funcionalidades
@@ -108,11 +109,13 @@ $ ng serve --open
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Website**  ([Angular](https://angular.io/docs/)  +  [TypeScript](https://www.typescriptlang.org/))
+#### **Website**  ([Angular](https://angular.io/docs/))
 
-#### **Server** ([NodeJS](https://nodejs.org/en/)  + [TypeScript](https://www.typescriptlang.org/))
+#### **Server** ([NodeJS](https://nodejs.org/en/))
 
-#### **Mobile**
+#### **Banco de Dados** ([MongoDB](https://www.mongodb.com/))
+
+#### **Mobile** ([Flutter](https://flutter.dev/))
 
 
 ## 🦸 Autores
