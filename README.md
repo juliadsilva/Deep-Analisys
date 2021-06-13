@@ -11,6 +11,16 @@
   </a>
 	
    <img alt="Stars" src="https://img.shields.io/github/stars/juliadsilva/Deep-Analisys?style=social">
+
+</p>
+<p align="center">
+	<img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node-dot-js&logoColor=white"/>
+	<img alt="Angular" src="https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white"/>
+	<img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+	<img alt="Jasmine" src="https://img.shields.io/badge/-Jasmine-%238A4182?style=for-the-badge&logo=Jasmine&logoColor=white"/>
+	<img alt="Cypress" src="https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e" alt="cypress">
+	<img alt="Postman" src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=red" />
+	<img alt="GitHub Actions" src="https://img.shields.io/badge/githubactions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white"/>
 </p>
 
 <h4 align="center"> 
@@ -30,7 +40,7 @@
  <a href="#layout">Layout</a>  • 	
  <a href="#como-executar-o-projetor">Como executar o projeto</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#autores">Autores</a>
+ <a href="#autores">Autor</a>
 </p>
 
 ### 💻 Sobre
