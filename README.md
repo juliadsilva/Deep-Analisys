@@ -34,17 +34,18 @@
  <a href="#sobre">Sobre</a> •
  <a href="#funcionalidades">Funcionalidades</a> •
  <a href="#layout">Layout</a>  • 	
- <a href="#como-executar-o-projetor">Como executar o projeto</a> • 
+ <a href="#como-executar-o-projeto">Como executar o projeto</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#autores">Autor</a>
+ <a href="#autor">Autor</a>
 </p>
 
-### 💻 Sobre
+### Sobre
 
-O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional e uma aplicação web . O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.
+<p>O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional e uma aplicação web . O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.</p>
+
 ---
 
-### ⚙️ Funcionalidades
+###  Funcionalidades
 
  - Usuário:
 	  - [x] Cadastrar  
@@ -60,21 +61,21 @@ O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados n�
 	  - [x] Deletar 
 ---
 
-## 🎨 Layout
+## Layout
 
 ![Tela Inicial](images/inicio.PNG)
 ![Baralhos](images/baralhos.PNG)
 ![Dados](images/dados.PNG)
 ---
 
-## 🚀 Como executar o projeto
+## Como executar o projeto
 
 Este projeto é divido em três partes:
 1. Banco de Dados
 2. Backend  
 3. Frontend 
 
-💡Tanto o Frontend quanto o Mobile precisam que o Backend esteja sendo executado para funcionar.
+Tanto o Frontend quanto o Mobile precisam que o Backend esteja sendo executado para funcionar.
 
 ### Pré-requisitos
 
@@ -88,7 +89,7 @@ No terminal digite:
 $ git clone https://github.com/juliadsilva/Deep-Analisys.git
 ```
 
-#### 🎲 Rodando o Banco de Dados
+#### Rodando o Banco de Dados
 
 No terminal digite o comando para iniciar o MongoDB:
 
@@ -96,7 +97,7 @@ No terminal digite o comando para iniciar o MongoDB:
 $ mongod --dbpath <CAMINHO DO MONGO DATA>
 ```
 
-#### 🎲 Rodando o Backend
+#### Rodando o Backend
 
 No Terminal, digite o seguinte comando para subir o servidor Node
 
@@ -105,14 +106,14 @@ $ cd <PASTA DO BACKEND>
 $ nodemon index.js
 ```
 
-#### 🎲 Rodando o Frontend
+#### Rodando o Frontend
 
 ```bash
 $ cd <PASTA DO FRONTEND>
 $ ng serve --open
 ```
 
-### 🛠 Tecnologias
+### Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -123,7 +124,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### **Banco de Dados** ([MongoDB](https://www.mongodb.com/))
 
 
-## 🦸 Autor
+##  Autor
 <a href="https://github.com/juliadsilva">Julia Daniele Moreira da Silva </a>
  
     
