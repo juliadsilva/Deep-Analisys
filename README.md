@@ -14,7 +14,7 @@
 </p>
 
 <h4 align="center"> 
-	🚧  Deep-Analisys -> Em construção...  🚧
+     Deep-Analisys
 </h4>
 
 <h1 align="center">
@@ -35,7 +35,7 @@
 
 ### 💻 Sobre
 
-O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional, uma aplicação web e um aplicativo mobile. O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.
+O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional e uma aplicação web . O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.
 ---
 
 ### ⚙️ Funcionalidades
@@ -60,65 +60,60 @@ O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados n�
 ## 🚀 Como executar o projeto
 
 Este projeto é divido em três partes:
-1. Backend  
-2. Frontend 
-3. Mobile 
+1. Banco de Dados
+2. Backend  
+3. Frontend 
 
 💡Tanto o Frontend quanto o Mobile precisam que o Backend esteja sendo executado para funcionar.
 
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Node.js](https://nodejs.org/en/) e  ([Angular](https://angular.io/docs/) 
+[Node.js](https://nodejs.org/en/),  [Angular](https://angular.io/docs/) e [MongoDB](https://www.mongodb.com/)
 
-#### 🎲 Rodando o Backend
+#### Clone o projeto
+No terminal digite:
+
+```
+$ git clone https://github.com/juliadsilva/Deep-Analisys.git
+```
+
+#### 🎲 Rodando o Banco de Dados
+
+No terminal digite o comando para iniciar o MongoDB:
 
 ```bash
-
-# Clone este repositório
-$ git clone 
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd backend
-
-# Execute a aplicação em modo de desenvolvimento
-$ nodemon index.jx
-
-# O servidor inciará na --------
-
+$ mongod --dbpath <CAMINHO DO MONGO DATA>
 ```
 
 #### 🎲 Rodando o Backend
 
+No Terminal, digite o seguinte comando para subir o servidor Node
+
 ```bash
+$ cd <PASTA DO BACKEND>
+$ nodemon index.js
+```
 
-# Clone este repositório
-$ git clone 
+#### 🎲 Rodando o Frontend
 
-# Acesse a pasta do projeto no terminal/cmd
-$ cd frontend
-
-# Execute a aplicação em modo de desenvolvimento
+```bash
+$ cd <PASTA DO FRONTEND>
 $ ng serve --open
-
-# O servidor inciará na --------
-
 ```
 
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Website**  ([Angular](https://angular.io/docs/))
+#### **Frontend**  ([Angular](https://angular.io/docs/))
 
-#### **Server** ([NodeJS](https://nodejs.org/en/))
+#### **Backend** ([NodeJS](https://nodejs.org/en/))
 
 #### **Banco de Dados** ([MongoDB](https://www.mongodb.com/))
 
-#### **Mobile** ([Flutter](https://flutter.dev/))
 
-
-## 🦸 Autores
+## 🦸 Autor
 <a href="https://github.com/juliadsilva">Julia Daniele Moreira da Silva </a>
  
     
