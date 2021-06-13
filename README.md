@@ -23,15 +23,11 @@
 	<img alt="GitHub Actions" src="https://img.shields.io/badge/githubactions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white"/>
 </p>
 
-<h4 align="center"> 
-     Deep-Analisys
-</h4>
 
 <h1 align="center">
     <img alt="NextLevelWeek" title="#NextLevelWeek" src="./frontend/src/assets/img/logo.png" />
 </h1>
 
-<h1 align="center">Deep Analisys</h1>
 <p align="center">O coletor e organizador de dados para Magic: the Gathering Online</p>
 
 <p align="center">
@@ -65,6 +61,10 @@ O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados n�
 ---
 
 ## 🎨 Layout
+
+![Tela Inicial](images/inicio.PNG)
+![Baralhos](images/baralhos.PNG)
+![Dados](images/dados.PNG)
 ---
 
 ## 🚀 Como executar o projeto
