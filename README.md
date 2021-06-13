@@ -41,7 +41,7 @@
 
 ### Sobre
 
-<p>O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional e uma aplicação web . O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.</p>
+<p>O Deep Analisys é um projeto que consiste de uma API rest, um banco de dados não relacional e uma aplicação web. O projeto tem por objetivo ajudar jogadores de Magic a manter um histórico de vitórias e derrotas para o seus decks, podendo assim, analisar se o baralho esta com um bom desempenho.</p>
 
 ---
 
@@ -53,7 +53,7 @@
   - Baralhos:
 	  - [x] Cadastrar 
 	  - [x] Listar
-	  - [x] Pesquisar
+	  - [x] Atualizar
 	  - [x] Deletar 
  - Partidas:
 	  - [x] Cadastrar 
