@@ -21,12 +21,12 @@ export class ModalAdicionarPartidaComponent implements OnInit {
 
   constructor(private modalService: NgbModal,  private partidasService: PartidasService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
       this.baralhoId = params.id;
     });
 
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+    (await this.partidasService.listarIdBaralho(this.baralhoId)).subscribe(res => {
       for (let index = 0; index < res.length; index++) {
         this.partidas.push(res[index]);
       }

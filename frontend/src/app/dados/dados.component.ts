@@ -79,19 +79,19 @@ export class DadosComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private partidasService: PartidasService, private baralhoService: BaralhoService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
     this.route.params.subscribe(params => {
       this.baralhoId = params.id
     });
 
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+    (await this.partidasService.listarIdBaralho(this.baralhoId)).subscribe(res => {
       for (let index = 0; index < res.length; index++) {
         this.partidasWinRateTime.push(res[index]);
       }
     });
 
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+    (await this.partidasService.listarIdBaralho(this.baralhoId)).subscribe(res => {
       let totalWinInTime = 0;
       let totalLossInTime = 0;
       let totalInTime = 0;
@@ -136,15 +136,15 @@ export class DadosComponent implements OnInit {
     return winRate.toPrecision(3);
   }
 
-  updateChart() {
+  async updateChart() {
 
     this.lineChartLabels = []
 
     this.lineChartData.forEach(ds => {
       ds.data = [];
-    })
-
-    this.partidasService.listarIdBaralho(this.baralhoId).subscribe(res => {
+    });
+    
+    (await this.partidasService.listarIdBaralho(this.baralhoId)).subscribe(res => {
       this.dadosGrafico = res;
       for (let index = 0; index < this.dadosGrafico.length; index++) {
         this.lineChartLabels.push(this.dadosGrafico[index].ident);

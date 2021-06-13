@@ -48,10 +48,12 @@ describe('BaralhoService', () => {
     });
 
     it('Adicionar', fakeAsync(() => {
+      let nome;
       service.adicionar(new_baralho).subscribe(res => {
-        let nome = Object.values(res)[1];
-        expect(nome).toEqual('test');
+         nome = Object.values(res)[1];
+         expect(nome).toEqual('test');         
       });
+      
 
       const req = httpMock.expectOne(`http://localhost:8080/baralho`);
       expect(req.request.method).toEqual('POST');

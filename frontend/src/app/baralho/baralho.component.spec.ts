@@ -78,12 +78,25 @@ describe('BaralhoComponent', () => {
     it('Detalhes', () => {
       let id = '60ada4ffa7dec534785f2bb1';
 
+      let userMock={
+        id: '60ada4ffa7dec534785f2bb1',
+        username: 'test',
+        estado: 'test',
+        cidade: 'test',
+        email: 'test@test.com',
+        token: '1fb0e331c05a52d5eb847d6fc018320d'
+    }
+      let recievedUser={}
       component.serviceUsuario();
       
       serviceUsuario.detalhes(id).subscribe(res => {
-        expect(res).toContain('6');
+        recievedUser=res
+        console.log(typeof(res));
+        expect(recievedUser).toEqual(userMock.id)
        });
- 
+       
+
+
        const req = httpMock.expectOne(`http://localhost:8080/usuario/${id}`);
        expect(req.request.method).toEqual('GET');
        req.flush(id);
@@ -103,6 +116,11 @@ describe('BaralhoComponent', () => {
       expect(req.request.method).toEqual('GET');
       req.flush(id);     
     });
+  });
+
+  it('Teste Baralho Componente!', () => {
+    
+    
   });
 });
 

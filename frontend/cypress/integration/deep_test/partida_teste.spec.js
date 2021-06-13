@@ -20,17 +20,6 @@ describe('Caso de Teste: Testar funcionalidades da pagina de partidas', () => {
         cy.get('h4').should('contain.text', 'partidaTeste');
     });
 
-    /*after(() => {
-    cy.get('back').click();
-    cy.get('#deletar').click();
-    cy.get('select[name="nome"').select('partidaTeste').should('have.value', 'partidaTeste');
-    cy.get('#delC').click();
-    cy.wait(1000);
-    cy.get('#del').click();
-    cy.wait(1000);
-    });
-    */
-
     it('Cenario: Criar partida com sucesso!', () => {
         cy.get('#adicionar').click();
         cy.get('input[name="win"]').type('2');
