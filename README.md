@@ -48,17 +48,17 @@
 ###  Funcionalidades
 
  - Usuário:
-	  - [x] Cadastrar  
-	  - [x] Realizar login	  
+	  - Cadastrar  
+	  - Realizar login	  
   - Baralhos:
-	  - [x] Cadastrar 
-	  - [x] Listar
-	  - [x] Atualizar
-	  - [x] Deletar 
+	  - Cadastrar 
+	  - Listar
+	  - Atualizar
+	  - Deletar 
  - Partidas:
-	  - [x] Cadastrar 
-	  - [x] Listar
-	  - [x] Deletar 
+	  - Cadastrar 
+	  - Listar
+	  - Deletar 
 ---
 
 ## Layout
