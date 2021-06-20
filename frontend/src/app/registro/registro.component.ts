@@ -50,11 +50,9 @@ export class RegistroComponent implements OnInit {
             this.usuarioService.cadastrar(new_user).subscribe(res => {
               if (res.length != 0) {
                 this.toastr.success('Seja bem vindo ao Deep Analisys!', 'Parabéns!', { timeOut: 5000 });
-                console.log('Registro - sucesso');
                 this.router.navigate([`/`]);
               } else{
                 this.toastr.error('Ops, algo deu muito errado :(!', 'Erro!', { timeOut: 5000 });
-                console.log('Registro - erro');
               }
             });
           }

@@ -43,8 +43,6 @@ export class BaralhoComponent implements OnInit {
     this.usuarioService.detalhes(this.userId).subscribe(res => {
       if(res != null)
         this.usuario = res;
-        console.log("aqui")
-        console.log(res);
     });  
   }
 

@@ -1,10 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientTestingModule} from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ToastrModule} from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ModalDeletarPartidaComponent } from './modal-deletar-partida.component';
 import { By } from '@angular/platform-browser';
+import { fireEvent } from '@testing-library/angular';
+
+import { PartidasService } from '../service/partidas.service';
 
 describe('ModalDeletarPartidaComponent', () => {
   let del_partida = {
@@ -15,6 +18,9 @@ describe('ModalDeletarPartidaComponent', () => {
   let component: ModalDeletarPartidaComponent;
   let fixture: ComponentFixture<ModalDeletarPartidaComponent>;
   let modalService: NgbModal;
+  let toastr: ToastrService;
+  let servicePartida: PartidasService;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -35,6 +41,13 @@ describe('ModalDeletarPartidaComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('Services', () => {
+    it('Deve usar o PartidasService', () => {
+      servicePartida = TestBed.inject(PartidasService);
+      expect(servicePartida.listarIdBaralho).toBeTruthy();
+    });
+  });
+
   it('Abrir modal!', () => {
     spyOn(modalService, 'open').calls;
     component.open('<xxxx>');
@@ -49,9 +62,4 @@ describe('ModalDeletarPartidaComponent', () => {
       expect(el).toBeTruthy();
     });
   });  
-
-  describe('Teste Funções', () => {
-    
-    
-  });
 });

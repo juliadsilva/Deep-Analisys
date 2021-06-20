@@ -86,9 +86,5 @@ describe('InicioComponent', () => {
         expect(el).toBeTruthy();
       });
     });
-
-    describe('Teste de Funções', () => {
-    
-    });
   });
 });

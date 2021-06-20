@@ -52,8 +52,4 @@ describe('ModalAdicionarBaralhoComponent', () => {
       expect(el).toBeTruthy();
     });
   });
-
-  describe('Teste Funções', () => {
-    
-  });
 });

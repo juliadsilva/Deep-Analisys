@@ -3,9 +3,10 @@ import { fireEvent } from '@testing-library/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
 import { By } from '@angular/platform-browser';
+import { Md5 } from 'ts-md5';
 
 import { UsuarioService } from '../service/usuario.service';
 
@@ -13,6 +14,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let service: UsuarioService;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -126,6 +128,32 @@ describe('LoginComponent', () => {
 
         expect(username.value).toEqual('test');
         expect(senha.value).toEqual('test');
+      }));
+
+      it('Login', fakeAsync(() => {
+        const username = fixture.debugElement.query(By.css('input[name="username"]')).nativeElement;
+        const senha = fixture.debugElement.query(By.css('input[name="senha"]')).nativeElement;
+        fixture.detectChanges();
+
+        fireEvent.change(username, { target: { value: "test" } });
+        fireEvent.change(senha, { target: { value: "test" } });
+        fixture.detectChanges();
+
+        let pre_token = username+senha;
+        let token = Md5.hashStr(pre_token).toString();
+
+        component.login(token);
+
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+          service.login(token).subscribe(res => {
+            expect(res).toContain(0);
+          });
+    
+          const req = httpMock.expectOne(`http://localhost:8080/usuario/login/${token}`);
+          expect(req.request.method).toEqual('GET');
+          req.flush(token);
+        });
       }));
     });
   });

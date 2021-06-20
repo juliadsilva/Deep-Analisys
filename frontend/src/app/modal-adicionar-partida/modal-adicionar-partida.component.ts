@@ -42,7 +42,6 @@ export class ModalAdicionarPartidaComponent implements OnInit {
   addpartida(form: any) {
     
     let id = this.getNewId();
-    console.log(id);
     let win = form.win;
     let loss = form.loss;
     let idBaralho = this.baralhoId.toString().trim();

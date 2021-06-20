@@ -50,8 +50,4 @@ describe('ModalDeletarBaralhoComponent', () => {
       expect(el).toBeTruthy();
     });
   });
-
-  describe('Teste Funções', () => {
-    
-  });  
 });

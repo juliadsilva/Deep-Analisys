@@ -79,7 +79,4 @@ describe('DadosComponent', () => {
       expect(el).toBeTruthy();
     });
   });
-
-  describe('Teste de Funções', () => {    
-  });
 });

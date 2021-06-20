@@ -9,7 +9,6 @@ import { By } from '@angular/platform-browser';
 
 import { UsuarioService } from '../service/usuario.service';
 
-
 describe('RegistroComponent', () => {
 
   let new_user = {
@@ -52,7 +51,7 @@ describe('RegistroComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    describe('Services', () => { 
+    describe('Services', () => {
       it('Deve usar o UsuarioService', () => {
         service = TestBed.inject(UsuarioService);
         expect(service.cadastrar).toBeTruthy();
@@ -167,14 +166,46 @@ describe('RegistroComponent', () => {
         expect(resenha.value).toEqual('test');
       }));
 
-      it('Funcionalidade botão cadastrar', () => {
-        spyOn(component, 'cadastrar');
+      it('Novo usuario', fakeAsync(() => {
+        const username = fixture.debugElement.query(By.css('input[name="username"]')).nativeElement;
+        const estado = fixture.debugElement.query(By.css('input[name="estado"]')).nativeElement;
+        const cidade = fixture.debugElement.query(By.css('input[name="cidade"]')).nativeElement;
+        const email = fixture.debugElement.query(By.css('input[name="email"]')).nativeElement
+        const senha = fixture.debugElement.query(By.css('input[name="senha"]')).nativeElement;
+        const resenha = fixture.debugElement.query(By.css('input[name="resenha"]')).nativeElement;
+        fixture.detectChanges();
+
+        fireEvent.change(username, { target: { value: "test" } });
+        fireEvent.change(estado, { target: { value: "test" } });
+        fireEvent.change(cidade, { target: { value: "test" } });
+        fireEvent.change(email, { target: { value: "test@test.com" } });
+        fireEvent.change(senha, { target: { value: "test" } });
+        fireEvent.change(resenha, { target: { value: "test" } });
+        fixture.detectChanges();
+
+        const new_user_test = {
+          username: username.value,
+          estado: estado.value,
+          cidade: cidade.value,
+          email: email.value,
+          senha: senha.value,
+          resenha: resenha.value
+        }
+        
+        component.cadastrar(new_user_test);
 
         fixture.whenStable().then(() => {
-          expect(component.cadastrar(new_user)).toHaveBeenCalled();
           fixture.detectChanges();
+          service.cadastrar(new_user_test).subscribe(res => {
+            let username = Object.values(res)[1];
+            expect(username).toEqual('test');
+          });
+
+          const req = httpMock.expectOne(`http://localhost:8080/usuario`);
+          expect(req.request.method).toEqual('POST');
+          req.flush(new_user_test);
         });
-      });
+      }));
     });
   });
 });

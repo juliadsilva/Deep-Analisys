@@ -21,6 +21,7 @@ describe('BaralhoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NgbModule, FormsModule, RouterTestingModule, HttpClientTestingModule],
+      providers: [UsuarioService, BaralhoService],
       declarations: [BaralhoComponent]
     })
       .compileComponents();
@@ -73,54 +74,5 @@ describe('BaralhoComponent', () => {
       expect(el).toBeTruthy();
     });
   }); 
-
-  describe('Teste de Funções', () => {
-    it('Detalhes', () => {
-      let id = '60ada4ffa7dec534785f2bb1';
-
-      let userMock={
-        id: '60ada4ffa7dec534785f2bb1',
-        username: 'test',
-        estado: 'test',
-        cidade: 'test',
-        email: 'test@test.com',
-        token: '1fb0e331c05a52d5eb847d6fc018320d'
-    }
-      let recievedUser={}
-      component.serviceUsuario();
-      
-      serviceUsuario.detalhes(id).subscribe(res => {
-        recievedUser=res
-        console.log(typeof(res));
-        expect(recievedUser).toEqual(userMock.id)
-       });
-       
-
-
-       const req = httpMock.expectOne(`http://localhost:8080/usuario/${id}`);
-       expect(req.request.method).toEqual('GET');
-       req.flush(id);
-    });
-
-    it('Listar', () => {
-      let id = '60ada4ffa7dec534785f2bb1';
-
-      component.serviceBaralho();
-
-      serviceBaralho.listarIdUser(id).subscribe(res => {
-        let nome = Object.values(res)[2];
-        expect(nome).toBe(nome); 
-      });
-
-      const req = httpMock.expectOne(`http://localhost:8080/baralho/idUsuario/${id}`);
-      expect(req.request.method).toEqual('GET');
-      req.flush(id);     
-    });
-  });
-
-  it('Teste Baralho Componente!', () => {
-    
-    
-  });
 });
 
